@@ -1,0 +1,30 @@
+name: Generate 2000 Contributions
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # runs once per day
+  workflow_dispatch:
+
+jobs:
+  commit-generator:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate commits
+        run: |
+          git config --global user.name "Dippp10-ally"
+          git config --global user.email "dipikabarkat@gmail.com"   
+
+          for i in $(seq 1 2000)
+          do
+            echo "Commit $i at $(date)" >> contributions.txt
+            git add contributions.txt
+            git commit -m "Contribution commit $i"
+          done
+
+      - name: Push commits
+        run: |
+          git push

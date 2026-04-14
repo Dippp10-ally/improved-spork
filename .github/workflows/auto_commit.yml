@@ -2,8 +2,11 @@ name: Generate 2000 Contributions
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # runs once per day
+    - cron: "0 0 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   commit-generator:
@@ -12,11 +15,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate commits
         run: |
           git config --global user.name "Dippp10-ally"
-          git config --global user.email "dipikabarkat@gmail.com"   
+          git config --global user.email "dipikabarkat@gmail.com"
 
           for i in $(seq 1 2000)
           do

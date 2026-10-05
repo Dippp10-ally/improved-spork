@@ -1,0 +1,21 @@
+name: Repositories 1-20
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 1 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout task catalog
+        uses: actions/checkout@v4
+
+      - name: Show assigned repositories
+        run: |
+          jq '.repositories[0:20]' repository-tasks.json

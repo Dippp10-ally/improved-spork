@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_TOKEN4 }}
+          token: ${{ github.token }}
 
       - name: Generate commits
         run: |

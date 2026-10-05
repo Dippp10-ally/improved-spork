@@ -16,6 +16,49 @@ jobs:
       - name: Checkout task catalog
         uses: actions/checkout@v4
 
-      - name: Show assigned repositories
+      - name: Process repositories 1-20
+        env:
+          GH_TOKEN: ${{ secrets.REPO_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
         run: |
-          jq '.repositories[0:20]' repository-tasks.json
+          set -euo pipefail
+
+          jq -c '.repositories[0:20][]' repository-tasks.json |
+          while IFS= read -r item; do
+            repo=$(jq -r '.repo' <<< "$item")
+            task=$(jq -r '.task' <<< "$item")
+            commit_message=$(jq -r '.commit' <<< "$item")
+
+            echo "Processing $repo"
+            echo "Task: $task"
+
+            if ! gh repo view "$OWNER/$repo" >/dev/null 2>&1; then
+              gh repo create "$OWNER/$repo" --private
+            fi
+
+            rm -rf target
+            git clone "https://x-access-token:${GH_TOKEN}@github.com/${OWNER}/${repo}.git" target
+            cd target
+
+            if [ ! -x scripts/maintenance.sh ]; then
+              echo "No maintenance script; skipping."
+              cd ..
+              continue
+            fi
+
+            TASK="$task" ./scripts/maintenance.sh
+
+            if [ -x scripts/test.sh ]; then
+              ./scripts/test.sh
+            fi
+
+            if [ -n "$(git status --porcelain)" ]; then
+              git config user.name "Dippp10-ally"
+              git config user.email "dipikabarkat@gmail.com "
+              git add -A
+              git commit -m "$commit_message"
+              git push origin HEAD
+            fi
+
+            cd ..
+          done

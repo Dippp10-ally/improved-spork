@@ -1,0 +1,504 @@
+{
+  "repositories": [
+    {
+      "repo": "repo n1",
+      "task": "Add input validation for empty values",
+      "commit": "fix: add empty value validation"
+    },
+    {
+      "repo": "repo n2",
+      "task": "Add unit tests for boundary conditions",
+      "commit": "test: add boundary condition coverage"
+    },
+    {
+      "repo": "repo n3",
+      "task": "Improve error handling for invalid input",
+      "commit": "fix: improve invalid input handling"
+    },
+    {
+      "repo": "repo n4",
+      "task": "Update README with installation instructions",
+      "commit": "docs: update installation instructions"
+    },
+    {
+      "repo": "repo n5",
+      "task": "Add tests for empty collections",
+      "commit": "test: cover empty collections"
+    },
+    {
+      "repo": "repo n6",
+      "task": "Handle missing configuration values",
+      "commit": "fix: handle missing configuration values"
+    },
+    {
+      "repo": "repo n7",
+      "task": "Add validation for numeric input",
+      "commit": "feat: validate numeric input"
+    },
+    {
+      "repo": "repo n8",
+      "task": "Improve malformed data handling",
+      "commit": "fix: improve malformed data handling"
+    },
+    {
+      "repo": "repo n9",
+      "task": "Add regression tests for existing behavior",
+      "commit": "test: add regression coverage"
+    },
+    {
+      "repo": "repo n10",
+      "task": "Document command usage examples",
+      "commit": "docs: add command usage examples"
+    },
+    {
+      "repo": "repo n11",
+      "task": "Add validation for required fields",
+      "commit": "feat: validate required fields"
+    },
+    {
+      "repo": "repo n12",
+      "task": "Handle unavailable files gracefully",
+      "commit": "fix: handle unavailable files"
+    },
+    {
+      "repo": "repo n13",
+      "task": "Add tests for null values",
+      "commit": "test: cover null values"
+    },
+    {
+      "repo": "repo n14",
+      "task": "Improve command error messages",
+      "commit": "fix: improve command error messages"
+    },
+    {
+      "repo": "repo n15",
+      "task": "Document configuration options",
+      "commit": "docs: document configuration options"
+    },
+    {
+      "repo": "repo n16",
+      "task": "Add duplicate input handling",
+      "commit": "fix: handle duplicate input"
+    },
+    {
+      "repo": "repo n17",
+      "task": "Add tests for invalid arguments",
+      "commit": "test: cover invalid arguments"
+    },
+    {
+      "repo": "repo n18",
+      "task": "Improve logging for failed operations",
+      "commit": "feat: improve operation logging"
+    },
+    {
+      "repo": "repo n19",
+      "task": "Validate configuration file structure",
+      "commit": "fix: validate configuration structure"
+    },
+    {
+      "repo": "repo n20",
+      "task": "Add usage examples to documentation",
+      "commit": "docs: add usage examples"
+    },
+    {
+      "repo": "repo n21",
+      "task": "Add tests for minimum input values",
+      "commit": "test: cover minimum input values"
+    },
+    {
+      "repo": "repo n22",
+      "task": "Handle unexpected response data",
+      "commit": "fix: handle unexpected response data"
+    },
+    {
+      "repo": "repo n23",
+      "task": "Add validation for required options",
+      "commit": "feat: validate required options"
+    },
+    {
+      "repo": "repo n24",
+      "task": "Improve README troubleshooting guidance",
+      "commit": "docs: improve troubleshooting guidance"
+    },
+    {
+      "repo": "repo n25",
+      "task": "Add tests for duplicate values",
+      "commit": "test: cover duplicate values"
+    },
+    {
+      "repo": "repo n26",
+      "task": "Handle invalid file paths",
+      "commit": "fix: handle invalid file paths"
+    },
+    {
+      "repo": "repo n27",
+      "task": "Add validation for string length limits",
+      "commit": "feat: validate string length limits"
+    },
+    {
+      "repo": "repo n28",
+      "task": "Improve handling of missing environment variables",
+      "commit": "fix: handle missing environment variables"
+    },
+    {
+      "repo": "repo n29",
+      "task": "Add tests for default configuration",
+      "commit": "test: cover default configuration"
+    },
+    {
+      "repo": "repo n30",
+      "task": "Document supported input formats",
+      "commit": "docs: document supported input formats"
+    },
+    {
+      "repo": "repo n31",
+      "task": "Add empty input validation",
+      "commit": "fix: validate empty input"
+    },
+    {
+      "repo": "repo n32",
+      "task": "Add tests for error conditions",
+      "commit": "test: cover error conditions"
+    },
+    {
+      "repo": "repo n33",
+      "task": "Improve validation error messages",
+      "commit": "fix: improve validation error messages"
+    },
+    {
+      "repo": "repo n34",
+      "task": "Document expected output format",
+      "commit": "docs: document output format"
+    },
+    {
+      "repo": "repo n35",
+      "task": "Add tests for large input values",
+      "commit": "test: cover large input values"
+    },
+    {
+      "repo": "repo n36",
+      "task": "Handle invalid date input",
+      "commit": "fix: handle invalid date input"
+    },
+    {
+      "repo": "repo n37",
+      "task": "Add validation for supported formats",
+      "commit": "feat: validate supported formats"
+    },
+    {
+      "repo": "repo n38",
+      "task": "Improve failure recovery behavior",
+      "commit": "fix: improve failure recovery"
+    },
+    {
+      "repo": "repo n39",
+      "task": "Add tests for default values",
+      "commit": "test: cover default values"
+    },
+    {
+      "repo": "repo n40",
+      "task": "Document common failure scenarios",
+      "commit": "docs: document common failure scenarios"
+    },
+    {
+      "repo": "repo n41",
+      "task": "Add validation for whitespace-only input",
+      "commit": "fix: validate whitespace-only input"
+    },
+    {
+      "repo": "repo n42",
+      "task": "Add tests for case-sensitive input",
+      "commit": "test: cover case-sensitive input"
+    },
+    {
+      "repo": "repo n43",
+      "task": "Improve handling of unsupported options",
+      "commit": "fix: handle unsupported options"
+    },
+    {
+      "repo": "repo n44",
+      "task": "Document supported command options",
+      "commit": "docs: document supported command options"
+    },
+    {
+      "repo": "repo n45",
+      "task": "Add tests for repeated operations",
+      "commit": "test: cover repeated operations"
+    },
+    {
+      "repo": "repo n46",
+      "task": "Handle missing directories safely",
+      "commit": "fix: handle missing directories safely"
+    },
+    {
+      "repo": "repo n47",
+      "task": "Add validation for identifier formats",
+      "commit": "feat: validate identifier formats"
+    },
+    {
+      "repo": "repo n48",
+      "task": "Improve timeout error reporting",
+      "commit": "fix: improve timeout error reporting"
+    },
+    {
+      "repo": "repo n49",
+      "task": "Add tests for retry behavior",
+      "commit": "test: cover retry behavior"
+    },
+    {
+      "repo": "repo n50",
+      "task": "Document retry configuration",
+      "commit": "docs: document retry configuration"
+    },
+    {
+      "repo": "repo n51",
+      "task": "Add validation for maximum values",
+      "commit": "fix: validate maximum values"
+    },
+    {
+      "repo": "repo n52",
+      "task": "Add tests for special characters",
+      "commit": "test: cover special characters"
+    },
+    {
+      "repo": "repo n53",
+      "task": "Improve handling of malformed records",
+      "commit": "fix: handle malformed records"
+    },
+    {
+      "repo": "repo n54",
+      "task": "Document data validation rules",
+      "commit": "docs: document data validation rules"
+    },
+    {
+      "repo": "repo n55",
+      "task": "Add tests for missing fields",
+      "commit": "test: cover missing fields"
+    },
+    {
+      "repo": "repo n56",
+      "task": "Handle invalid numeric ranges",
+      "commit": "fix: handle invalid numeric ranges"
+    },
+    {
+      "repo": "repo n57",
+      "task": "Add validation for identifiers",
+      "commit": "feat: validate identifiers"
+    },
+    {
+      "repo": "repo n58",
+      "task": "Improve diagnostic output",
+      "commit": "feat: improve diagnostic output"
+    },
+    {
+      "repo": "repo n59",
+      "task": "Add tests for repeated input",
+      "commit": "test: cover repeated input"
+    },
+    {
+      "repo": "repo n60",
+      "task": "Document troubleshooting commands",
+      "commit": "docs: document troubleshooting commands"
+    },
+    {
+      "repo": "repo n61",
+      "task": "Add validation for invalid states",
+      "commit": "fix: validate invalid states"
+    },
+    {
+      "repo": "repo n62",
+      "task": "Add tests for state transitions",
+      "commit": "test: cover state transitions"
+    },
+    {
+      "repo": "repo n63",
+      "task": "Improve handling of failed requests",
+      "commit": "fix: improve failed request handling"
+    },
+    {
+      "repo": "repo n64",
+      "task": "Document request and response examples",
+      "commit": "docs: add request and response examples"
+    },
+    {
+      "repo": "repo n65",
+      "task": "Add tests for boundary dates",
+      "commit": "test: cover boundary dates"
+    },
+    {
+      "repo": "repo n66",
+      "task": "Handle missing response fields",
+      "commit": "fix: handle missing response fields"
+    },
+    {
+      "repo": "repo n67",
+      "task": "Add validation for required parameters",
+      "commit": "feat: validate required parameters"
+    },
+    {
+      "repo": "repo n68",
+      "task": "Improve error recovery documentation",
+      "commit": "docs: improve error recovery guidance"
+    },
+    {
+      "repo": "repo n69",
+      "task": "Add tests for invalid states",
+      "commit": "test: cover invalid states"
+    },
+    {
+      "repo": "repo n70",
+      "task": "Document environment setup",
+      "commit": "docs: document environment setup"
+    },
+    {
+      "repo": "repo n71",
+      "task": "Add validation for empty records",
+      "commit": "fix: validate empty records"
+    },
+    {
+      "repo": "repo n72",
+      "task": "Add tests for malformed records",
+      "commit": "test: cover malformed records"
+    },
+    {
+      "repo": "repo n73",
+      "task": "Improve handling of unsupported formats",
+      "commit": "fix: handle unsupported formats"
+    },
+    {
+      "repo": "repo n74",
+      "task": "Document supported file formats",
+      "commit": "docs: document supported file formats"
+    },
+    {
+      "repo": "repo n75",
+      "task": "Add tests for missing configuration",
+      "commit": "test: cover missing configuration"
+    },
+    {
+      "repo": "repo n76",
+      "task": "Handle invalid configuration values",
+      "commit": "fix: handle invalid configuration values"
+    },
+    {
+      "repo": "repo n77",
+      "task": "Add validation for input ranges",
+      "commit": "feat: validate input ranges"
+    },
+    {
+      "repo": "repo n78",
+      "task": "Improve command-line help output",
+      "commit": "docs: improve command-line help"
+    },
+    {
+      "repo": "repo n79",
+      "task": "Add tests for help command behavior",
+      "commit": "test: cover help command behavior"
+    },
+    {
+      "repo": "repo n80",
+      "task": "Document command-line examples",
+      "commit": "docs: document command-line examples"
+    },
+    {
+      "repo": "repo n81",
+      "task": "Add validation for duplicate identifiers",
+      "commit": "fix: validate duplicate identifiers"
+    },
+    {
+      "repo": "repo n82",
+      "task": "Add tests for duplicate records",
+      "commit": "test: cover duplicate records"
+    },
+    {
+      "repo": "repo n83",
+      "task": "Improve handling of empty responses",
+      "commit": "fix: handle empty responses"
+    },
+    {
+      "repo": "repo n84",
+      "task": "Document response error conditions",
+      "commit": "docs: document response error conditions"
+    },
+    {
+      "repo": "repo n85",
+      "task": "Add tests for response validation",
+      "commit": "test: cover response validation"
+    },
+    {
+      "repo": "repo n86",
+      "task": "Handle unexpected null responses",
+      "commit": "fix: handle null responses"
+    },
+    {
+      "repo": "repo n87",
+      "task": "Add validation for response structure",
+      "commit": "feat: validate response structure"
+    },
+    {
+      "repo": "repo n88",
+      "task": "Improve diagnostic logging",
+      "commit": "feat: improve diagnostic logging"
+    },
+    {
+      "repo": "repo n89",
+      "task": "Add tests for logging behavior",
+      "commit": "test: cover logging behavior"
+    },
+    {
+      "repo": "repo n90",
+      "task": "Document diagnostic logging options",
+      "commit": "docs: document diagnostic logging"
+    },
+    {
+      "repo": "repo n91",
+      "task": "Add validation for unsupported values",
+      "commit": "fix: validate unsupported values"
+    },
+    {
+      "repo": "repo n92",
+      "task": "Add tests for unsupported values",
+      "commit": "test: cover unsupported values"
+    },
+    {
+      "repo": "repo n93",
+      "task": "Improve handling of invalid requests",
+      "commit": "fix: improve invalid request handling"
+    },
+    {
+      "repo": "repo n94",
+      "task": "Document request validation rules",
+      "commit": "docs: document request validation rules"
+    },
+    {
+      "repo": "repo n95",
+      "task": "Add regression tests for error handling",
+      "commit": "test: add error handling regression tests"
+    },
+    {
+      "repo": "repo n96",
+      "task": "Handle missing optional values safely",
+      "commit": "fix: handle missing optional values"
+    },
+    {
+      "repo": "repo n97",
+      "task": "Add validation for configuration types",
+      "commit": "feat: validate configuration types"
+    },
+    {
+      "repo": "repo n98",
+      "task": "Improve documentation for common workflows",
+      "commit": "docs: improve common workflow documentation"
+    },
+    {
+      "repo": "repo n99",
+      "task": "Add tests for recovery behavior",
+      "commit": "test: cover recovery behavior"
+    },
+    {
+      "repo": "repo n100",
+      "task": "Improve handling of unexpected failures",
+      "commit": "fix: improve unexpected failure handling"
+    }
+  ]
+    }

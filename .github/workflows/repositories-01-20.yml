@@ -18,7 +18,8 @@ jobs:
 
       - name: Process repositories 1-20
         env:
-          GH_TOKEN: ${{ github.token }}
+          # Swapped out github.token for your administrative PAT secret
+          GH_TOKEN: ${{ secrets.MY_PAT }}
           OWNER: ${{ github.repository_owner }}
         run: |
           set -euo pipefail

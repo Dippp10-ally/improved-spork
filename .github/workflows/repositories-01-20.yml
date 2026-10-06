@@ -38,6 +38,9 @@ jobs:
             echo "Task: $task"
             echo "======================================"
 
+            # Explicitly construct the clean authenticated URL string
+            REMOTE_URL="https://x-access-token:${GH_TOKEN}@://github.com{OWNER}/${repo}.git"
+
             # 1. Create the repository if it does not exist yet
             if ! gh repo view "$OWNER/$repo" >/dev/null 2>&1; then
               echo "Repository $OWNER/$repo does not exist. Creating public repository..."
@@ -51,16 +54,16 @@ jobs:
 
             rm -rf target
 
-            # 3. Handle cloning or local initialization with sanitized URLs
-            if git clone "https://x-access-token:${GH_TOKEN}@://github.com{OWNER}/${repo}.git" target 2>/dev/null; then
+            # 3. Handle cloning or local initialization with the safe URL variable
+            if git clone "$REMOTE_URL" target 2>/dev/null; then
               echo "Successfully cloned existing repository."
               cd target
             else
               echo "Repository appears to be empty. Initializing locally..."
-              mkdir target
+              mkdir -p target
               cd target
               git init -b main
-              git remote add origin "https://x-access-token:${GH_TOKEN}@://github.com{OWNER}/${repo}.git"
+              git remote add origin "$REMOTE_URL"
             fi
 
             # 4. Create/update the maintenance record
@@ -87,7 +90,7 @@ jobs:
               git add MAINTENANCE.md
               git commit -m "$commit_message"
               
-              # Push to the origin branch smoothly
+              # Push using the clean URL explicitly to bypass potential remote config corruption
               git push -u origin HEAD
 
               echo "Changes pushed to $OWNER/$repo"

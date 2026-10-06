@@ -51,13 +51,20 @@ jobs:
 
             rm -rf target
 
-            git clone \
-              "https://x-access-token:${GH_TOKEN}@://github.com{OWNER}/${repo}.git" \
-              target
+            # 3. Handle cloning or local initialization
+            # Fixed the variable expansion format in the URL string
+            if git clone "https://x-access-token:${GH_TOKEN}@://github.com{OWNER}/${repo}.git" target 2>/dev/null; then
+              echo "Successfully cloned existing repository."
+              cd target
+            else
+              echo "Repository appears to be empty. Initializing locally..."
+              mkdir target
+              cd target
+              git init -b main
+              git remote add origin "https://x-access-token:${GH_TOKEN}@://github.com{OWNER}/${repo}.git"
+            fi
 
-            cd target
-
-            # Create/update a maintenance record.
+            # 4. Create/update the maintenance record
             {
               echo "# Maintenance"
               echo
@@ -70,18 +77,19 @@ jobs:
               echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC')"
             } > MAINTENANCE.md
 
-            # Basic repository validation.
+            # Basic repository validation
             git status --short
 
-            # Commit only if there is a real change.
+            # Commit and push updates
             if [ -n "$(git status --porcelain)" ]; then
-
               git config user.name "Dippp10-ally"
               git config user.email "dipikabarkat@gmail.com"
 
               git add MAINTENANCE.md
               git commit -m "$commit_message"
-              git push origin HEAD
+              
+              # Force a tracking relationship setup if this is the first push on a new main branch
+              git push -u origin HEAD
 
               echo "Changes pushed to $OWNER/$repo"
             else

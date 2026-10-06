@@ -51,8 +51,7 @@ jobs:
 
             rm -rf target
 
-            # 3. Handle cloning or local initialization
-            # Fixed the variable expansion format in the URL string
+            # 3. Handle cloning or local initialization with sanitized URLs
             if git clone "https://x-access-token:${GH_TOKEN}@://github.com{OWNER}/${repo}.git" target 2>/dev/null; then
               echo "Successfully cloned existing repository."
               cd target
@@ -88,7 +87,7 @@ jobs:
               git add MAINTENANCE.md
               git commit -m "$commit_message"
               
-              # Force a tracking relationship setup if this is the first push on a new main branch
+              # Push to the origin branch smoothly
               git push -u origin HEAD
 
               echo "Changes pushed to $OWNER/$repo"

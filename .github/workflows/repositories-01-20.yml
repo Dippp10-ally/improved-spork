@@ -18,7 +18,6 @@ jobs:
 
       - name: Process repositories 1-20
         env:
-          # Swapped out github.token for your administrative PAT secret
           GH_TOKEN: ${{ secrets.MY_PAT }}
           OWNER: ${{ github.repository_owner }}
         run: |
@@ -46,9 +45,9 @@ jobs:
               echo "Repository created successfully."
             fi
 
-            # 2. Star the repository
+            # 2. Star the repository using the GitHub API
             echo "Starring repository $OWNER/$repo..."
-            gh repo star "$OWNER/$repo" || echo "Already starred or unable to star."
+            gh api -X PUT "/user/starred/$OWNER/$repo" || echo "Already starred or unable to star."
 
             rm -rf target
 

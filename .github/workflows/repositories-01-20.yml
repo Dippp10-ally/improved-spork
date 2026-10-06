@@ -54,7 +54,7 @@ jobs:
 
             rm -rf target
 
-            # 3. Handle cloning or local initialization (with stdin redirected to prevent loop breaks)
+            # 3. Handle cloning or local initialization
             if git clone "$REMOTE_URL" target < /dev/null 2>/dev/null; then
               echo "Successfully cloned existing repository."
               cd target
@@ -63,7 +63,6 @@ jobs:
               mkdir -p target
               cd target
               git init -b main
-              git remote add origin "$REMOTE_URL"
             fi
 
             # 4. Create/update the maintenance record
@@ -90,8 +89,8 @@ jobs:
               git add MAINTENANCE.md
               git commit -m "$commit_message"
               
-              # Redirecting push stdin to /dev/null ensures loop stream integrity
-              git push -u origin HEAD < /dev/null
+              # Force git to use the explicit variable string to completely override broken tracking paths
+              git push -u "$REMOTE_URL" HEAD < /dev/null
 
               echo "Changes pushed to $OWNER/$repo"
             else

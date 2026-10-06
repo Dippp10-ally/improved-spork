@@ -54,8 +54,8 @@ jobs:
 
             rm -rf target
 
-            # 3. Handle cloning or local initialization with the safe URL variable
-            if git clone "$REMOTE_URL" target 2>/dev/null; then
+            # 3. Handle cloning or local initialization (with stdin redirected to prevent loop breaks)
+            if git clone "$REMOTE_URL" target < /dev/null 2>/dev/null; then
               echo "Successfully cloned existing repository."
               cd target
             else
@@ -90,8 +90,8 @@ jobs:
               git add MAINTENANCE.md
               git commit -m "$commit_message"
               
-              # Push using the clean URL explicitly to bypass potential remote config corruption
-              git push -u origin HEAD
+              # Redirecting push stdin to /dev/null ensures loop stream integrity
+              git push -u origin HEAD < /dev/null
 
               echo "Changes pushed to $OWNER/$repo"
             else

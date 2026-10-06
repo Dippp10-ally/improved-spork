@@ -30,7 +30,7 @@ jobs:
             task=$(jq -r '.task' <<< "$item")
             commit_message=$(jq -r '.commit' <<< "$item")
 
-            # Clean spaces into hyphens for valid GitHub slugs (e.g. "repo n1" -> "repo-n1")
+            # Clean spaces into hyphens for valid GitHub repository names.
             repo="${raw_repo// /-}"
 
             echo "======================================"
@@ -38,34 +38,45 @@ jobs:
             echo "Task: $task"
             echo "======================================"
 
-            # Explicitly construct the clean authenticated URL string
-            REMOTE_URL="https://x-access-token:${GH_TOKEN}@://github.com{OWNER}/${repo}.git"
+            # Correct authenticated GitHub repository URL.
+            REMOTE_URL="https://x-access-token:${GH_TOKEN}@github.com/${OWNER}/${repo}.git"
 
-            # 1. Create the repository if it does not exist yet
+            # 1. Create the repository if it does not exist yet.
             if ! gh repo view "$OWNER/$repo" >/dev/null 2>&1; then
               echo "Repository $OWNER/$repo does not exist. Creating public repository..."
-              gh repo create "$repo" --public --include-all-branches=false
+
+              gh repo create "$repo" \
+                --public \
+                --include-all-branches=false
+
               echo "Repository created successfully."
             fi
 
-            # 2. Star the repository using the GitHub API
+            # 2. Star the repository using the GitHub API.
             echo "Starring repository $OWNER/$repo..."
-            gh api -X PUT "/user/starred/$OWNER/$repo" || echo "Already starred or unable to star."
+
+            gh api -X PUT "/user/starred/$OWNER/$repo" \
+              || echo "Already starred or unable to star."
 
             rm -rf target
 
-            # 3. Handle cloning or local initialization
+            # 3. Handle cloning or local initialization.
             if git clone "$REMOTE_URL" target < /dev/null 2>/dev/null; then
               echo "Successfully cloned existing repository."
               cd target
             else
               echo "Repository appears to be empty. Initializing locally..."
+
               mkdir -p target
               cd target
+
               git init -b main
+
+              # Explicitly configure the remote for a newly initialized repository.
+              git remote add origin "$REMOTE_URL"
             fi
 
-            # 4. Create/update the maintenance record
+            # 4. Create/update the maintenance record.
             {
               echo "# Maintenance"
               echo
@@ -78,19 +89,19 @@ jobs:
               echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC')"
             } > MAINTENANCE.md
 
-            # Basic repository validation
+            # Basic repository validation.
             git status --short
 
-            # Commit and push updates
+            # 5. Commit and push updates.
             if [ -n "$(git status --porcelain)" ]; then
               git config user.name "Dippp10-ally"
               git config user.email "dipikabarkat@gmail.com"
 
               git add MAINTENANCE.md
               git commit -m "$commit_message"
-              
-              # Force git to use the explicit variable string to completely override broken tracking paths
-              git push -u "$REMOTE_URL" HEAD < /dev/null
+
+              # Push the current main branch to GitHub.
+              git push -u origin HEAD
 
               echo "Changes pushed to $OWNER/$repo"
             else
@@ -101,3 +112,4 @@ jobs:
             rm -rf target
 
           done
+

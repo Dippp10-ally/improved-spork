@@ -1,4 +1,4 @@
-name: Repositories 1-20
+name: Repositories 1-10
 
 on:
   workflow_dispatch:
@@ -16,14 +16,14 @@ jobs:
       - name: Checkout task catalog
         uses: actions/checkout@v4
 
-      - name: Process repositories 1-20
+      - name: Process repositories 1-10
         env:
           GH_TOKEN: ${{ secrets.MY_PAT }}
           OWNER: ${{ github.repository_owner }}
         run: |
           set -euo pipefail
 
-          jq -c '.repositories[0:20][]' repository-tasks.json |
+          jq -c '.repositories[0:10][]' repository-tasks.json |
           while IFS= read -r item; do
 
             raw_repo=$(jq -r '.repo' <<< "$item")

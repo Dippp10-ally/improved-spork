@@ -1,4 +1,3 @@
-
 name: Repositories 1-20
 
 on:
@@ -27,26 +26,33 @@ jobs:
           jq -c '.repositories[0:20][]' repository-tasks.json |
           while IFS= read -r item; do
 
-            repo=$(jq -r '.repo' <<< "$item")
+            raw_repo=$(jq -r '.repo' <<< "$item")
             task=$(jq -r '.task' <<< "$item")
             commit_message=$(jq -r '.commit' <<< "$item")
+
+            # Clean spaces into hyphens for valid GitHub slugs (e.g. "repo n1" -> "repo-n1")
+            repo="${raw_repo// /-}"
 
             echo "======================================"
             echo "Repository: $OWNER/$repo"
             echo "Task: $task"
             echo "======================================"
 
-            # GITHUB_TOKEN cannot create a new repository.
+            # 1. Create the repository if it does not exist yet
             if ! gh repo view "$OWNER/$repo" >/dev/null 2>&1; then
-              echo "Repository does not exist."
-              echo "Skipping $OWNER/$repo"
-              continue
+              echo "Repository $OWNER/$repo does not exist. Creating public repository..."
+              gh repo create "$repo" --public --include-all-branches=false
+              echo "Repository created successfully."
             fi
+
+            # 2. Star the repository
+            echo "Starring repository $OWNER/$repo..."
+            gh repo star "$OWNER/$repo" || echo "Already starred or unable to star."
 
             rm -rf target
 
             git clone \
-              "https://x-access-token:${GH_TOKEN}@github.com/${OWNER}/${repo}.git" \
+              "https://x-access-token:${GH_TOKEN}@://github.com{OWNER}/${repo}.git" \
               target
 
             cd target
@@ -72,12 +78,9 @@ jobs:
 
               git config user.name "Dippp10-ally"
               git config user.email "dipikabarkat@gmail.com"
-      
 
               git add MAINTENANCE.md
-
               git commit -m "$commit_message"
-
               git push origin HEAD
 
               echo "Changes pushed to $OWNER/$repo"
@@ -89,4 +92,3 @@ jobs:
             rm -rf target
 
           done
-

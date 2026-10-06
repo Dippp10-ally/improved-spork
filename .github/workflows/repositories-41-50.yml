@@ -1,0 +1,102 @@
+name: Repositories 41-50
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 20 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout task catalog
+        uses: actions/checkout@v4
+
+      - name: Process repositories 41-50
+        env:
+          GH_TOKEN: ${{ secrets.MY_PAT }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          set -euo pipefail
+
+          jq -c '.repositories[40:50][]' repository-tasks.json |
+          while IFS= read -r item; do
+
+            raw_repo=$(jq -r '.repo' <<< "$item")
+            task=$(jq -r '.task' <<< "$item")
+            commit_message=$(jq -r '.commit' <<< "$item")
+
+            repo="${raw_repo// /-}"
+
+            echo "======================================"
+            echo "Repository: $OWNER/$repo"
+            echo "Task: $task"
+            echo "======================================"
+
+            REMOTE_URL="https://x-access-token:${GH_TOKEN}@github.com/${OWNER}/${repo}.git"
+
+            if ! gh repo view "$OWNER/$repo" >/dev/null 2>&1; then
+              echo "Repository does not exist. Creating public repository..."
+
+              if ! gh repo create "$repo" --public --include-all-branches=false; then
+                echo "Repository creation was temporarily throttled."
+                echo "Stopping this batch safely."
+                exit 0
+              fi
+
+              echo "Repository created successfully."
+            fi
+
+            echo "Starring repository $OWNER/$repo..."
+            gh api -X PUT "/user/starred/$OWNER/$repo" \
+              || echo "Already starred or unable to star."
+
+            rm -rf target
+
+            if git clone "$REMOTE_URL" target < /dev/null 2>/dev/null; then
+              echo "Successfully cloned existing repository."
+              cd target
+            else
+              echo "Repository is empty. Initializing locally..."
+              mkdir -p target
+              cd target
+              git init -b main
+              git remote add origin "$REMOTE_URL"
+            fi
+
+            {
+              echo "# Maintenance"
+              echo
+              echo "## Current task"
+              echo
+              echo "$task"
+              echo
+              echo "## Updated"
+              echo
+              echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            } > MAINTENANCE.md
+
+            git status --short
+
+            if [ -n "$(git status --porcelain)" ]; then
+              git config user.name "Dippp10-ally"
+              git config user.email "dipikabarkat@gmail.com"
+
+              git add MAINTENANCE.md
+              git commit -m "$commit_message"
+              git push -u origin HEAD
+
+              echo "Changes pushed to $OWNER/$repo"
+            else
+              echo "No changes required."
+            fi
+
+            cd ..
+            rm -rf target
+
+          done
+

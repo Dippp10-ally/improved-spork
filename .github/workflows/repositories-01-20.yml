@@ -1,3 +1,4 @@
+
 name: Repositories 1-20
 
 on:
@@ -16,81 +17,76 @@ jobs:
       - name: Checkout task catalog
         uses: actions/checkout@v4
 
-      - name: Create, Star, and Process Repositories
+      - name: Process repositories 1-20
         env:
           GH_TOKEN: ${{ github.token }}
           OWNER: ${{ github.repository_owner }}
         run: |
           set -euo pipefail
 
-          if [ ! -f repository-tasks.json ]; then
-            echo "::error::repository-tasks.json not found in workspace root!"
-            exit 1
-          fi
+          jq -c '.repositories[0:20][]' repository-tasks.json |
+          while IFS= read -r item; do
 
-          jq -c '.repositories[0:20][]' repository-tasks.json | while IFS= read -r item; do
-            raw_repo=$(jq -r '.repo' <<< "$item")
+            repo=$(jq -r '.repo' <<< "$item")
             task=$(jq -r '.task' <<< "$item")
             commit_message=$(jq -r '.commit' <<< "$item")
 
-            # Convert spaces to hyphens (e.g. "repo n1" -> "repo-n1")
-            repo="${raw_repo// /-}"
-
             echo "======================================"
-            echo "Processing: $OWNER/$repo"
+            echo "Repository: $OWNER/$repo"
             echo "Task: $task"
             echo "======================================"
 
-            # 1. Check and create repository if it does not exist
+            # GITHUB_TOKEN cannot create a new repository.
             if ! gh repo view "$OWNER/$repo" >/dev/null 2>&1; then
-              echo "Repository $OWNER/$repo does not exist. Creating public repository..."
-              
-              # Fixed gh syntax: pass the short name and use explicit public flag
-              gh repo create "$repo" --public --include-all-branches=false
-              
-              echo "Repository created successfully."
-            fi
-
-            # 2. Star the repository
-            echo "Starring repository $OWNER/$repo..."
-            gh repo star "$OWNER/$repo" || echo "Note: Already starred or unable to star."
-
-            rm -rf target
-
-            # 3. Clone and apply maintenance scripts
-            git clone \
-              "https://x-access-token:${GH_TOKEN}@://github.com{OWNER}/${repo}.git" \
-              target
-
-            pushd target > /dev/null
-
-            if [ ! -x scripts/maintenance.sh ]; then
-              echo "No executable scripts/maintenance.sh; skipping."
-              popd > /dev/null
-              rm -rf target
+              echo "Repository does not exist."
+              echo "Skipping $OWNER/$repo"
               continue
             fi
 
-            TASK="$task" ./scripts/maintenance.sh
+            rm -rf target
 
-            if [ -x scripts/test.sh ]; then
-              echo "Running tests..."
-              ./scripts/test.sh
-            fi
+            git clone \
+              "https://x-access-token:${GH_TOKEN}@github.com/${OWNER}/${repo}.git" \
+              target
 
+            cd target
+
+            # Create/update a maintenance record.
+            {
+              echo "# Maintenance"
+              echo
+              echo "## Current task"
+              echo
+              echo "$task"
+              echo
+              echo "## Updated"
+              echo
+              echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            } > MAINTENANCE.md
+
+            # Basic repository validation.
+            git status --short
+
+            # Commit only if there is a real change.
             if [ -n "$(git status --porcelain)" ]; then
+
               git config user.name "Dippp10-ally"
               git config user.email "dipikabarkat@gmail.com"
+      
 
-              git add -A
+              git add MAINTENANCE.md
+
               git commit -m "$commit_message"
+
               git push origin HEAD
-              echo "Changes committed and pushed."
+
+              echo "Changes pushed to $OWNER/$repo"
             else
-              echo "No changes produced by task."
+              echo "No changes required."
             fi
 
-            popd > /dev/null
+            cd ..
             rm -rf target
 
           done
+

@@ -23,88 +23,17 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Your exact repository JSON data payload
-          JSON_DATA='{
-            "repositories": [
-              {
-                "repo": "repo n1",
-                "task": "Add input validation for empty values",
-                "commit": "fix: add empty value validation"
-              },
-              {
-                "repo": "repo n2",
-                "task": "Add unit tests for boundary conditions",
-                "commit": "test: add boundary condition coverage"
-              },
-              {
-                "repo": "repo n3",
-                "task": "Improve error handling for invalid input",
-                "commit": "fix: improve invalid input handling"
-              },
-              {
-                "repo": "repo n4",
-                "task": "Update README with installation instructions",
-                "commit": "docs: update installation instructions"
-              },
-              {
-                "repo": "repo n5",
-                "task": "Add tests for empty collections",
-                "commit": "test: cover empty collections"
-              },
-              {
-                "repo": "repo n6",
-                "task": "Handle missing configuration values",
-                "commit": "fix: handle missing configuration values"
-              },
-              {
-                "repo": "repo n7",
-                "task": "Add validation for numeric input",
-                "commit": "feat: validate numeric input"
-              },
-              {
-                "repo": "repo n8",
-                "task": "Improve malformed data handling",
-                "commit": "fix: improve malformed data handling"
-              },
-              {
-                "repo": "repo n9",
-                "task": "Add regression tests for existing behavior",
-                "commit": "test: add regression coverage"
-              },
-              {
-                "repo": "repo n10",
-                "task": "Document command usage examples",
-                "commit": "docs: add command usage examples"
-              },
-              {
-                "repo": "repo n11",
-                "task": "Add validation for required fields",
-                "commit": "feat: validate required fields"
-              },
-              {
-                "repo": "repo n12",
-                "task": "Handle unavailable files gracefully",
-                "commit": "fix: handle unavailable files"
-              },
-              {
-                "repo": "repo n13",
-                "task": "Add tests for null values",
-                "commit": "test: cover null values"
-              },
-              {
-                "repo": "repo n14",
-                "task": "Improve command error messages",
-                "commit": "fix: improve command error messages"
-              }
-            ]
-          }'
+          if [ ! -f repository-tasks.json ]; then
+            echo "::error::repository-tasks.json not found in workspace root!"
+            exit 1
+          fi
 
-          echo "$JSON_DATA" | jq -c '.repositories[0:20][]' | while IFS= read -r item; do
+          jq -c '.repositories[0:20][]' repository-tasks.json | while IFS= read -r item; do
             raw_repo=$(jq -r '.repo' <<< "$item")
             task=$(jq -r '.task' <<< "$item")
             commit_message=$(jq -r '.commit' <<< "$item")
 
-            # Convert spaces to hyphens for valid GitHub naming URLs
+            # Convert spaces to hyphens (e.g. "repo n1" -> "repo-n1")
             repo="${raw_repo// /-}"
 
             echo "======================================"
@@ -112,15 +41,19 @@ jobs:
             echo "Task: $task"
             echo "======================================"
 
-            # 1. Check & Create repository if missing
+            # 1. Check and create repository if it does not exist
             if ! gh repo view "$OWNER/$repo" >/dev/null 2>&1; then
               echo "Repository $OWNER/$repo does not exist. Creating public repository..."
-              gh repo create "$OWNER/$repo" --public --include-all-branches false
+              
+              # Fixed gh syntax: pass the short name and use explicit public flag
+              gh repo create "$repo" --public --include-all-branches=false
+              
+              echo "Repository created successfully."
             fi
 
             # 2. Star the repository
             echo "Starring repository $OWNER/$repo..."
-            gh repo star "$OWNER/$repo" || echo "Note: Already starred or failed to star."
+            gh repo star "$OWNER/$repo" || echo "Note: Already starred or unable to star."
 
             rm -rf target
 
@@ -132,7 +65,7 @@ jobs:
             pushd target > /dev/null
 
             if [ ! -x scripts/maintenance.sh ]; then
-              echo "No executable scripts/maintenance.sh; skipping tasks."
+              echo "No executable scripts/maintenance.sh; skipping."
               popd > /dev/null
               rm -rf target
               continue

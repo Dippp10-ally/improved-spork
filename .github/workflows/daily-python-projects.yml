@@ -55,16 +55,22 @@ jobs:
           }
 
       - name: Authenticate GitHub CLI
+        shell: bash
         env:
-          GH_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
+         REPO_ADMIN_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
         run: |
-          if [ -z "$GH_TOKEN" ]; then
-            echo "::error::Add the REPO_ADMIN_TOKEN repository secret."
-            exit 1
+          if [ -z "${REPO_ADMIN_TOKEN}" ]; then
+          echo "::error::Add the REPO_ADMIN_TOKEN repository secret."
+          exit 1
           fi
-          echo "$GH_TOKEN" | gh auth login --with-token
-          gh auth status
-          gh auth setup-git
+
+          # Important: do not leave GH_TOKEN set in the environment
+          unset GH_TOKEN
+
+          # Authenticate gh using the secret without storing it in GH_TOKEN
+           printf '%s' "${REPO_ADMIN_TOKEN}" | gh auth login --with-token
+           gh auth status
+           gh auth setup-git
 
       - name: Process task catalogue
         env:

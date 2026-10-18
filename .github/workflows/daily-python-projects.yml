@@ -1,0 +1,89 @@
+
+name: Daily Python Project Improvements
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+    - cron: "0 5 * * *"
+    - cron: "0 9 * * *"
+    - cron: "0 13 * * *"
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: "Select a batch of 10 tasks"
+        required: true
+        type: choice
+        options:
+          - "1"
+          - "2"
+          - "3"
+          - "4"
+          - "5"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-python-project-improvements
+  cancel-in-progress: false
+
+jobs:
+  improve:
+    name: Process 10 repository tasks
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out task catalogue
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: false
+
+      - name: Install test runner
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest
+
+      - name: Install GitHub CLI
+        run: |
+          type -p gh >/dev/null || {
+            sudo apt-get update
+            sudo apt-get install -y gh
+          }
+
+      - name: Authenticate GitHub CLI
+        env:
+          GH_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::Add the REPO_ADMIN_TOKEN repository secret."
+            exit 1
+          fi
+          gh auth status
+          gh auth setup-git
+
+      - name: Process task catalogue
+        env:
+          GH_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE_EXPR: ${{ github.event.schedule }}
+          MANUAL_BATCH: ${{ inputs.batch }}
+          RUN_NUMBER: ${{ github.run_number }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python .github/scripts/daily_projects.py
+
+      - name: Upload task report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-project-report-${{ github.run_number }}
+          path: project-report.csv
+          if-no-files-found: warn
+          retention-days: 30

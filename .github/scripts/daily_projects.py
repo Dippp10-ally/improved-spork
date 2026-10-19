@@ -17,6 +17,11 @@ EVENT_NAME = os.environ.get("EVENT_NAME", "")
 SCHEDULE_EXPR = os.environ.get("SCHEDULE_EXPR", "")
 MANUAL_BATCH = os.environ.get("MANUAL_BATCH", "")
 RUN_NUMBER = os.environ.get("RUN_NUMBER", "0")
+RUN_ID = os.environ.get("GITHUB_RUN_ID", RUN_NUMBER).strip()
+REPO_SUFFIX = os.environ.get(
+    "REPO_SUFFIX",
+    RUN_ID or datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S"),
+).strip()
 
 CRON_BATCHES = {
     "0 1 * * *": 1,
@@ -105,7 +110,7 @@ def selected_batch():
             f"Unknown schedule expression: {SCHEDULE_EXPR!r}"
         )
 
-    return CRRON_BATCHES[SCHEDULE_EXPR] if False else CRON_BATCHES[SCHEDULE_EXPR]
+    return CRON_BATCHES[SCHEDULE_EXPR]
 
 
 def select_tasks(tasks, batch):
@@ -372,7 +377,7 @@ def handle_numeric_validation(repo_dir):
 
 
 def is_positive_int(value):
-    """Return True when value is a positive integer."""
+    """Return True when the value is a positive integer."""
     return isinstance(value, int) and value > 0
 ''',
         "tests/test_number_validation.py": '''from src.number_validation import is_positive_int
@@ -689,20 +694,31 @@ def get_repo(full_name):
     return result.returncode == 0
 
 
-def ensure_repo(full_name, description):
+def ensure_repo(full_name, description, force_create=False):
     """
-    Ensure repository exists. Returns True if the repo was created by this call,
-    False if it already existed or creation failed.
+    Ensure a repository exists.
+
+    To make a fresh repo on each run, callers can pass force_create=True
+    and include a unique suffix in the repo name. This intentionally skips
+    the "already exists" guard for repeated automation tasks.
     """
-    if get_repo(full_name):
+    if not force_create and get_repo(full_name):
         return False
 
-    # Try to create the repository. Use check=False and inspect result so the
-    # caller can handle failures without raising.
     result = run(
-        ["gh", "repo", "create", full_name, "--public", "--add-readme", "--description", description[:300]],
+        [
+            "gh", "repo", "create",
+            full_name,
+            "--public",
+            "--add-readme",
+            "--description",
+            description[:300],
+        ],
         check=False,
     )
+    if result.returncode != 0:
+        error = (result.stderr or result.stdout or "Repository creation failed").strip()
+        print(f"Repo creation failed for {full_name}: {error[-1500:]}")
     return result.returncode == 0
 
 
@@ -737,9 +753,16 @@ def process_one(item, batch):
             item.get("commit") or "chore: apply tested task improvement"
         ).strip()
 
-        repo_name = normalize_repo_name(repo_value)
+        repo_base_name = normalize_repo_name(repo_value)
         task_text = str(task_value or "").strip()
-        full_name = f"{OWNER}/{repo_name}"
+
+        # Force a unique repository name each run to guarantee a fresh repo.
+        unique_repo_name = f"{repo_base_name}-{REPO_SUFFIX}"
+        unique_repo_name = normalize_repo_name(unique_repo_name)
+        if len(unique_repo_name) > 100:
+            unique_repo_name = unique_repo_name[:100]
+
+        full_name = f"{OWNER}/{unique_repo_name}"
 
         row["repository"] = full_name
         row["task"] = task_text
@@ -759,26 +782,22 @@ def process_one(item, batch):
             )
             return row
 
-        # ensure_repo now returns True if it created the repo
-        created = ensure_repo(full_name, task_text)
+        created = ensure_repo(full_name, task_text, force_create=True)
         if created:
-            # Star only newly created repositories. Non-fatal if it fails.
             star_result = run(
                 ["gh", "api", "-X", "PUT", f"user/starred/{full_name}"],
                 check=False,
                 capture=True,
             )
             if star_result.returncode == 0:
-                # update star count after starring
                 row["stars"] = get_star_count(full_name)
             else:
-                # record a non-fatal warning in details; continue processing
                 warning = (star_result.stderr or star_result.stdout or "").strip()
                 if warning:
                     row["details"] = (row.get("details", "") + " STAR_WARNING: " + warning[:1500]).strip()
 
         with tempfile.TemporaryDirectory(prefix="repo-task-") as temp:
-            clone_dir = Path(temp) / repo_name
+            clone_dir = Path(temp) / unique_repo_name
 
             run([
                 "gh", "repo", "clone", full_name, str(clone_dir)
@@ -786,7 +805,6 @@ def process_one(item, batch):
 
             test_file = handler(clone_dir)
 
-            # Run only the test file introduced by this handler.
             test_result = run(
                 ["python", "-m", "pytest", "-q", test_file],
                 cwd=clone_dir,
@@ -801,18 +819,17 @@ def process_one(item, batch):
                 ).strip()
                 row["status"] = "TEST_FAILED"
                 row["details"] = details[-2500:]
-                # update stars before returning
                 row["repository_url"] = f"https://github.com/{full_name}"
                 row["stars"] = get_star_count(full_name)
                 return row
 
             run(
-                ["git", "config", "user.name", "github-actions[bot]"],
+                ["git", "config", "user.name", "Dippp10-ally"],
                 cwd=clone_dir,
             )
             run(
                 ["git", "config", "user.email",
-                 "41898282+github-actions[bot]@users.noreply.github.com"],
+                "dipikabarkat@gmail.com"],
                 cwd=clone_dir,
             )
             run(["git", "add", "--", "src", "tests"], cwd=clone_dir)

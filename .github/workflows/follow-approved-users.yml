@@ -1,0 +1,49 @@
+
+name: Follow Approved GitHub Users
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  follow-users:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Check approval file
+        run: |
+          if [ ! -f approved_users.txt ]; then
+            echo "approved_users.txt not found"
+            exit 1
+          fi
+
+          if [ ! -s approved_users.txt ]; then
+            echo "No approved usernames found"
+            exit 1
+          fi
+
+      - name: Follow approved users
+        env:
+          GH_TOKEN: ${{ secrets.FOLLOW_TOKEN }}
+        run: |
+          gh auth login --with-token <<< "$GH_TOKEN"
+          python github-follow.py < approved_users.txt
+
+      - name: Save following results
+        run: |
+          git config user.name "Dippp10-ally"
+          git config user.email "dipikabarkat@gmail.com"
+          git add followed_users.txt
+          git diff --cached --quiet || git commit -m "chore: record followed users"
+          git push
+

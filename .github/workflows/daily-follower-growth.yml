@@ -115,8 +115,8 @@ jobs:
 
       - name: Commit daily results
         run: |
-          git config user.name "Dippp10-ally"
-          git config user.email "dipikabarkat@gmail.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add potential_followers.json
           git add followers_history.json
@@ -128,4 +128,3 @@ jobs:
           else
             echo "No changes to commit."
           fi
-

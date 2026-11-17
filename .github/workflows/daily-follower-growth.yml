@@ -1,0 +1,131 @@
+
+name: Daily GitHub Discovery and Follower Tracker
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Daily at 4:00 AM Oman time
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  daily-growth:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Discover potential collaborators
+        run: python attract_followers.py
+
+      - name: Track incoming followers
+        run: |
+          python - <<'PY'
+          import json
+          import urllib.request
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          username = "Dippp10-ally"
+          history_file = Path("followers_history.json")
+          stats_file = Path("follower_stats.json")
+
+          headers = {
+              "Accept": "application/vnd.github+json",
+              "User-Agent": "Dippp10-Follower-Tracker"
+          }
+
+          def get_json(url):
+              request = urllib.request.Request(url, headers=headers)
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  return json.loads(response.read().decode("utf-8"))
+
+          profile = get_json(
+              f"https://api.github.com/users/{username}"
+          )
+
+          followers = []
+          page = 1
+
+          while True:
+              url = (
+                  f"https://api.github.com/users/{username}/followers"
+                  f"?per_page=100&page={page}"
+              )
+              batch = get_json(url)
+
+              if not batch:
+                  break
+
+              followers.extend(
+                  user["login"] for user in batch
+              )
+
+              if len(batch) < 100:
+                  break
+
+              page += 1
+
+          previous = set()
+
+          if history_file.exists():
+              old_data = json.loads(
+                  history_file.read_text(encoding="utf-8")
+              )
+              previous = set(old_data.get("followers", []))
+
+          current = set(followers)
+          new_followers = sorted(current - previous)
+
+          history = {
+              "username": username,
+              "last_checked_utc": datetime.now(
+                  timezone.utc
+              ).isoformat(),
+              "followers": sorted(current)
+          }
+
+          history_file.write_text(
+              json.dumps(history, indent=2),
+              encoding="utf-8"
+          )
+
+          stats = {
+              "username": username,
+              "followers": profile["followers"],
+              "following": profile["following"],
+              "actual_follower_list_count": len(current),
+              "new_followers_since_previous_run": new_followers
+          }
+
+          stats_file.write_text(
+              json.dumps(stats, indent=2),
+              encoding="utf-8"
+          )
+
+          print(json.dumps(stats, indent=2))
+          PY
+
+      - name: Commit daily results
+        run: |
+          git config user.name "Dippp10-ally"
+          git config user.email "dipikabarkat@gmail.com"
+
+          git add potential_followers.json
+          git add followers_history.json
+          git add follower_stats.json
+
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: daily collaborator discovery and follower tracking"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+

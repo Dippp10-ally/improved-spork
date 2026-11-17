@@ -75,7 +75,7 @@ def main():
 
     OUTPUT.write_text(
         json.dumps(
-            list(developers.values())[:20]            
+            list(developers.values())[:20],          
             indent=2,
             ensure_ascii=False
         ),

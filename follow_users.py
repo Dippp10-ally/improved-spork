@@ -9,7 +9,7 @@ from pathlib import Path
 USERNAME = "Dippp10-ally"
 API = "https://api.github.com"
 
-APPROVED_FILE = Path("approved_users.txt")
+APPROVED_FILE = Path("approved_users10.txt")
 OUTPUT_FILE = Path("follow_results.json")
 
 DAILY_LIMIT = 20
@@ -36,7 +36,7 @@ def api_request(url, method="GET"):
 
 def get_approved_users():
     if not APPROVED_FILE.exists():
-        raise SystemExit("approved_users.txt not found")
+        raise SystemExit("approved_users10.txt not found")
 
     users = []
     seen = set()

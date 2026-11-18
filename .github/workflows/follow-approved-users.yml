@@ -22,12 +22,12 @@ jobs:
 
       - name: Check approval file
         run: |
-          if [ ! -f approved_users.txt ]; then
-            echo "approved_users.txt not found"
+          if [ ! -f approved_users10.txt ]; then
+            echo "approved_users10.txt not found"
             exit 1
           fi
 
-          if [ ! -s approved_users.txt ]; then
+          if [ ! -s approved_users10.txt ]; then
             echo "No approved usernames found"
             exit 1
           fi
@@ -37,7 +37,7 @@ jobs:
           GH_TOKEN: ${{ secrets.FOLLOW_TOKEN }}
         run: |
           gh auth login --with-token <<< "$GH_TOKEN"
-          python github-follow.py < approved_users.txt
+          python github-follow.py < approved_users10.txt
 
       - name: Save following results
         run: |

@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 USERNAME = "Dippp10-ally"
 API = "https://api.github.com"
 
-TOKEN = os.environ.get("FOLLOWING_TOKEN2")
+TOKEN = os.environ.get("FOLLOWING_TOKEN5")
 
 STATE_FILE = Path("follower_state.json")
 REPORT_FILE = Path("follower_growth.json")
@@ -174,7 +174,7 @@ def monitor_followers():
 
 def main():
     if not TOKEN:
-        raise SystemExit("FOLLOWING_TOKEN2 is missing.")
+        raise SystemExit("FOLLOWING_TOKEN5 is missing.")
 
     account = api(API + "/user")
 

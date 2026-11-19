@@ -30,7 +30,7 @@ jobs:
 
       - name: Discover developers and monitor followers
         env:
-          FOLLOW_TOKEN: ${{ secrets.FOLLOWING_TOKEN2 }}
+          FOLLOW_TOKEN: ${{ secrets.FOLLOWING_TOKEN5 }}
         run: python attract_followers.py
 
       - name: Save reports

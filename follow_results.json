@@ -1,0 +1,148 @@
+{
+  "account": "Dippp10-ally",
+  "approved_files": 13,
+  "processed": 32,
+  "newly_followed": 20,
+  "results": [
+    {
+      "username": "AKKA",
+      "status": "followed"
+    },
+    {
+      "username": "AKM-Mujahidur-Rahman",
+      "status": "followed"
+    },
+    {
+      "username": "AKM2199",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKMAMAI",
+      "status": "followed"
+    },
+    {
+      "username": "AKMBIKECOLLECTION",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKMODS",
+      "status": "followed"
+    },
+    {
+      "username": "AKO-Mack-Akmonic",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKPORG",
+      "status": "followed"
+    },
+    {
+      "username": "AKROMBEATWORX",
+      "status": "followed"
+    },
+    {
+      "username": "AKRubicon",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKS-19",
+      "status": "followed"
+    },
+    {
+      "username": "AKS12345",
+      "status": "followed"
+    },
+    {
+      "username": "AKSAdrian",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKSHAI0426",
+      "status": "followed"
+    },
+    {
+      "username": "AKSHAT-BHARDWAJ01",
+      "status": "followed"
+    },
+    {
+      "username": "AKSHATA3125",
+      "status": "followed"
+    },
+    {
+      "username": "AKSHAY-ISSAR",
+      "status": "followed"
+    },
+    {
+      "username": "AKSHAYA-1412",
+      "status": "followed"
+    },
+    {
+      "username": "AKSHAYA-I",
+      "status": "followed"
+    },
+    {
+      "username": "AKSHAYPRERAN",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKSoftwear",
+      "status": "followed"
+    },
+    {
+      "username": "AKT-amolak",
+      "status": "followed"
+    },
+    {
+      "username": "AKTREALESTATE-2",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKUCHARSKI1",
+      "status": "followed"
+    },
+    {
+      "username": "AKVINS23",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKY999",
+      "status": "followed"
+    },
+    {
+      "username": "AKamankesh96",
+      "status": "followed"
+    },
+    {
+      "username": "AKarapetyann",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKarsuma",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKbubble",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKogun47",
+      "status": "error",
+      "http_code": 404
+    },
+    {
+      "username": "AKraunsoe",
+      "status": "followed"
+    }
+  ]
+}

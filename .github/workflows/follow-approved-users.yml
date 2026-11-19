@@ -2,13 +2,16 @@
 name: Follow Approved GitHub Users
 
 on:
+  schedule:
+    # Daily at 8:15 PM Oman time (UTC 16:15)
+    - cron: "15 16 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  follow-users:
+  follow:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,32 +21,17 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.12"
 
-      - name: Check approval file
-        run: |
-          if [ ! -f approved_users10.txt ]; then
-            echo "approved_users10.txt not found"
-            exit 1
-          fi
-
-          if [ ! -s approved_users10.txt ]; then
-            echo "No approved usernames found"
-            exit 1
-          fi
-
-      - name: Follow approved users
+      - name: Run follow script
         env:
-          GH_TOKEN: ${{ secrets.FOLLOW_TOKEN }}
-        run: |
-          gh auth login --with-token <<< "$GH_TOKEN"
-          python github-follow.py < approved_users10.txt
+          FOLLOW_TOKEN: ${{ secrets.FOLLOW_TOKEN }}
+        run: python follow_users.py
 
-      - name: Save following results
+      - name: Save results
         run: |
           git config user.name "Dippp10-ally"
           git config user.email "dipikabarkat@gmail.com"
-          git add followed_users.txt
-          git diff --cached --quiet || git commit -m "chore: record followed users"
+          git add follow_results.json
+          git diff --cached --quiet || git commit -m "Update follow results"
           git push
-

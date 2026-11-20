@@ -1,1957 +1,1597 @@
 {
   "account": "Dippp10-ally",
-  "updated_at": "2026-11-19T15:54:06.423608+00:00",
-  "total_discovered": 325,
+  "updated_at": "2026-11-20T22:42:19.651390+00:00",
+  "total_discovered": 265,
   "developers": [
     {
-      "username": "mvalentsev",
-      "profile": "https://github.com/mvalentsev",
-      "repository": "mvalentsev/awesome-free-ai-coding",
-      "contributions": 687
+      "username": "mikey0000",
+      "profile": "https://github.com/mikey0000",
+      "repository": "mikey0000/PyMammotion",
+      "contributions": 674
     },
     {
-      "username": "github-actions[bot]",
-      "profile": "https://github.com/apps/github-actions",
-      "repository": "mvalentsev/awesome-free-ai-coding",
-      "contributions": 9
+      "username": "jLynx",
+      "profile": "https://github.com/jLynx",
+      "repository": "mikey0000/PyMammotion",
+      "contributions": 16
     },
     {
-      "username": "dependabot[bot]",
-      "profile": "https://github.com/apps/dependabot",
-      "repository": "mvalentsev/awesome-free-ai-coding",
+      "username": "jbowen116",
+      "profile": "https://github.com/jbowen116",
+      "repository": "mikey0000/PyMammotion",
+      "contributions": 8
+    },
+    {
+      "username": "svefro",
+      "profile": "https://github.com/svefro",
+      "repository": "mikey0000/PyMammotion",
+      "contributions": 8
+    },
+    {
+      "username": "cryptomilk",
+      "profile": "https://github.com/cryptomilk",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 6
-    },
-    {
-      "username": "imgbot[bot]",
-      "profile": "https://github.com/apps/imgbot",
-      "repository": "mvalentsev/awesome-free-ai-coding",
-      "contributions": 1
-    },
-    {
-      "username": "Berserk-hub150",
-      "profile": "https://github.com/Berserk-hub150",
-      "repository": "Berserk-hub150/Scalizer",
-      "contributions": 7
-    },
-    {
-      "username": "Avinashistoocool",
-      "profile": "https://github.com/Avinashistoocool",
-      "repository": "Avinashistoocool/Agnostos-v2",
-      "contributions": 87
-    },
-    {
-      "username": "kajisho5",
-      "profile": "https://github.com/kajisho5",
-      "repository": "kajisho5/ffmpeg-skill",
-      "contributions": 350
-    },
-    {
-      "username": "claude[bot]",
-      "profile": "https://github.com/apps/claude",
-      "repository": "kajisho5/ffmpeg-skill",
-      "contributions": 53
     },
     {
       "username": "claude",
       "profile": "https://github.com/claude",
-      "repository": "kajisho5/ffmpeg-skill",
-      "contributions": 4
-    },
-    {
-      "username": "rymalia",
-      "profile": "https://github.com/rymalia",
-      "repository": "kajisho5/ffmpeg-skill",
-      "contributions": 2
-    },
-    {
-      "username": "gezerui888",
-      "profile": "https://github.com/gezerui888",
-      "repository": "kajisho5/ffmpeg-skill",
-      "contributions": 2
-    },
-    {
-      "username": "srthomas21",
-      "profile": "https://github.com/srthomas21",
-      "repository": "kajisho5/ffmpeg-skill",
-      "contributions": 1
-    },
-    {
-      "username": "mytricker0",
-      "profile": "https://github.com/mytricker0",
-      "repository": "kajisho5/ffmpeg-skill",
-      "contributions": 1
-    },
-    {
-      "username": "PhungKhacVu",
-      "profile": "https://github.com/PhungKhacVu",
-      "repository": "kajisho5/ffmpeg-skill",
-      "contributions": 1
-    },
-    {
-      "username": "apimart001a",
-      "profile": "https://github.com/apimart001a",
-      "repository": "apimart001a/unified-ai-api-model-catalog",
-      "contributions": 3
-    },
-    {
-      "username": "azrael417",
-      "profile": "https://github.com/azrael417",
-      "repository": "NVIDIA/makani",
-      "contributions": 397
-    },
-    {
-      "username": "bonevbs",
-      "profile": "https://github.com/bonevbs",
-      "repository": "NVIDIA/makani",
-      "contributions": 57
-    },
-    {
-      "username": "stefanwayon",
-      "profile": "https://github.com/stefanwayon",
-      "repository": "NVIDIA/makani",
-      "contributions": 15
-    },
-    {
-      "username": "thomasarmstrong98",
-      "profile": "https://github.com/thomasarmstrong98",
-      "repository": "NVIDIA/makani",
-      "contributions": 4
-    },
-    {
-      "username": "0z5a",
-      "profile": "https://github.com/0z5a",
-      "repository": "NVIDIA/makani",
-      "contributions": 4
-    },
-    {
-      "username": "dallasfoster",
-      "profile": "https://github.com/dallasfoster",
-      "repository": "NVIDIA/makani",
-      "contributions": 3
-    },
-    {
-      "username": "MaxFreedomPollard",
-      "profile": "https://github.com/MaxFreedomPollard",
-      "repository": "NVIDIA/makani",
-      "contributions": 3
-    },
-    {
-      "username": "Alexey-Kamenev",
-      "profile": "https://github.com/Alexey-Kamenev",
-      "repository": "NVIDIA/makani",
-      "contributions": 2
-    },
-    {
-      "username": "NickGeneva",
-      "profile": "https://github.com/NickGeneva",
-      "repository": "NVIDIA/makani",
-      "contributions": 1
-    },
-    {
-      "username": "pzharrington",
-      "profile": "https://github.com/pzharrington",
-      "repository": "NVIDIA/makani",
-      "contributions": 1
-    },
-    {
-      "username": "albertocarpentieri",
-      "profile": "https://github.com/albertocarpentieri",
-      "repository": "NVIDIA/makani",
-      "contributions": 1
-    },
-    {
-      "username": "sgpearse",
-      "profile": "https://github.com/sgpearse",
-      "repository": "NVIDIA/makani",
-      "contributions": 1
-    },
-    {
-      "username": "daniel-ospina",
-      "profile": "https://github.com/daniel-ospina",
-      "repository": "daniel-ospina/tortoise",
-      "contributions": 4970
-    },
-    {
-      "username": "jay23606",
-      "profile": "https://github.com/jay23606",
-      "repository": "daniel-ospina/tortoise",
-      "contributions": 1
-    },
-    {
-      "username": "JohnnytheShark",
-      "profile": "https://github.com/JohnnytheShark",
-      "repository": "daniel-ospina/tortoise",
-      "contributions": 1
-    },
-    {
-      "username": "rahul05ranjan",
-      "profile": "https://github.com/rahul05ranjan",
-      "repository": "daniel-ospina/tortoise",
-      "contributions": 1
-    },
-    {
-      "username": "dhaanu2410",
-      "profile": "https://github.com/dhaanu2410",
-      "repository": "daniel-ospina/tortoise",
-      "contributions": 1
-    },
-    {
-      "username": "fly-io[bot]",
-      "profile": "https://github.com/apps/fly-io",
-      "repository": "daniel-ospina/tortoise",
-      "contributions": 1
-    },
-    {
-      "username": "mergify[bot]",
-      "profile": "https://github.com/apps/mergify",
-      "repository": "daniel-ospina/tortoise",
-      "contributions": 1
-    },
-    {
-      "username": "slsgzs-cloud",
-      "profile": "https://github.com/slsgzs-cloud",
-      "repository": "daniel-ospina/tortoise",
-      "contributions": 1
-    },
-    {
-      "username": "hw2hwei",
-      "profile": "https://github.com/hw2hwei",
-      "repository": "zhu-xlab/UniBuild",
-      "contributions": 19
-    },
-    {
-      "username": "solomonneas",
-      "profile": "https://github.com/solomonneas",
-      "repository": "escoffier-labs/brigade",
-      "contributions": 2807
-    },
-    {
-      "username": "cursoragent",
-      "profile": "https://github.com/cursoragent",
-      "repository": "escoffier-labs/brigade",
-      "contributions": 10
-    },
-    {
-      "username": "Copilot",
-      "profile": "https://github.com/apps/copilot-swe-agent",
-      "repository": "escoffier-labs/brigade",
-      "contributions": 4
-    },
-    {
-      "username": "brigadeclaw",
-      "profile": "https://github.com/brigadeclaw",
-      "repository": "escoffier-labs/brigade",
-      "contributions": 2
-    },
-    {
-      "username": "jal-co",
-      "profile": "https://github.com/jal-co",
-      "repository": "escoffier-labs/brigade",
-      "contributions": 1
-    },
-    {
-      "username": "google-labs-jules[bot]",
-      "profile": "https://github.com/apps/google-labs-jules",
-      "repository": "escoffier-labs/brigade",
-      "contributions": 1
-    },
-    {
-      "username": "mikemikimike",
-      "profile": "https://github.com/mikemikimike",
-      "repository": "escoffier-labs/brigade",
-      "contributions": 1
-    },
-    {
-      "username": "AndyGura",
-      "profile": "https://github.com/AndyGura",
-      "repository": "AndyGura/tailslab",
-      "contributions": 315
-    },
-    {
-      "username": "lgortot",
-      "profile": "https://github.com/lgortot",
-      "repository": "AndyGura/tailslab",
-      "contributions": 2
-    },
-    {
-      "username": "taxueseek",
-      "profile": "https://github.com/taxueseek",
-      "repository": "taxueseek/plugin-fast-adapt",
-      "contributions": 91
-    },
-    {
-      "username": "DeanChensj",
-      "profile": "https://github.com/DeanChensj",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 417
-    },
-    {
-      "username": "mathieuwang",
-      "profile": "https://github.com/mathieuwang",
-      "repository": "DeanChensj/jiangshan-map",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 6
     },
     {
-      "username": "xcv58",
-      "profile": "https://github.com/xcv58",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 4
-    },
-    {
-      "username": "lizhuojunx86",
-      "profile": "https://github.com/lizhuojunx86",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 3
-    },
-    {
-      "username": "zsc8917zsc",
-      "profile": "https://github.com/zsc8917zsc",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 3
-    },
-    {
-      "username": "LuciusChen",
-      "profile": "https://github.com/LuciusChen",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 2
-    },
-    {
-      "username": "koehhian",
-      "profile": "https://github.com/koehhian",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "jx70",
-      "profile": "https://github.com/jx70",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "guzhun-w",
-      "profile": "https://github.com/guzhun-w",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "gqfx",
-      "profile": "https://github.com/gqfx",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "frankslin",
-      "profile": "https://github.com/frankslin",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "feiandxs",
-      "profile": "https://github.com/feiandxs",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "vinlee19",
-      "profile": "https://github.com/vinlee19",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "PaulCAI1593",
-      "profile": "https://github.com/PaulCAI1593",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "jazhang00",
-      "profile": "https://github.com/jazhang00",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "eltociear",
-      "profile": "https://github.com/eltociear",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "HEOJUNFO",
-      "profile": "https://github.com/HEOJUNFO",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "ddhh-gif",
-      "profile": "https://github.com/ddhh-gif",
-      "repository": "DeanChensj/jiangshan-map",
-      "contributions": 1
-    },
-    {
-      "username": "ancsemi",
-      "profile": "https://github.com/ancsemi",
-      "repository": "ancsemi/Haven",
-      "contributions": 2188
-    },
-    {
-      "username": "Amnibro",
-      "profile": "https://github.com/Amnibro",
-      "repository": "ancsemi/Haven",
-      "contributions": 87
-    },
-    {
-      "username": "Bo0sted",
-      "profile": "https://github.com/Bo0sted",
-      "repository": "ancsemi/Haven",
-      "contributions": 36
-    },
-    {
-      "username": "birdcrazy",
-      "profile": "https://github.com/birdcrazy",
-      "repository": "ancsemi/Haven",
-      "contributions": 31
-    },
-    {
-      "username": "bernardokcosta",
-      "profile": "https://github.com/bernardokcosta",
-      "repository": "ancsemi/Haven",
-      "contributions": 19
-    },
-    {
-      "username": "3zmana",
-      "profile": "https://github.com/3zmana",
-      "repository": "ancsemi/Haven",
-      "contributions": 14
-    },
-    {
-      "username": "Roolk",
-      "profile": "https://github.com/Roolk",
-      "repository": "ancsemi/Haven",
-      "contributions": 7
-    },
-    {
-      "username": "michues",
-      "profile": "https://github.com/michues",
-      "repository": "ancsemi/Haven",
+      "username": "psewar",
+      "profile": "https://github.com/psewar",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 6
     },
     {
-      "username": "Jaymus3",
-      "profile": "https://github.com/Jaymus3",
-      "repository": "ancsemi/Haven",
-      "contributions": 6
-    },
-    {
-      "username": "reverb256",
-      "profile": "https://github.com/reverb256",
-      "repository": "ancsemi/Haven",
+      "username": "katsugtgz",
+      "profile": "https://github.com/katsugtgz",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 5
     },
     {
-      "username": "anthonymr7-cmd",
-      "profile": "https://github.com/anthonymr7-cmd",
-      "repository": "ancsemi/Haven",
-      "contributions": 4
+      "username": "d3dfantasy99",
+      "profile": "https://github.com/d3dfantasy99",
+      "repository": "mikey0000/PyMammotion",
+      "contributions": 5
     },
     {
-      "username": "KevonLin",
-      "profile": "https://github.com/KevonLin",
-      "repository": "ancsemi/Haven",
-      "contributions": 4
+      "username": "penify-dev[bot]",
+      "profile": "https://github.com/apps/penify-dev",
+      "repository": "mikey0000/PyMammotion",
+      "contributions": 5
     },
     {
-      "username": "Slyke",
-      "profile": "https://github.com/Slyke",
-      "repository": "ancsemi/Haven",
+      "username": "Jaano",
+      "profile": "https://github.com/Jaano",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 3
     },
     {
-      "username": "pablowdev",
-      "profile": "https://github.com/pablowdev",
-      "repository": "ancsemi/Haven",
+      "username": "ClockeNessMnstr",
+      "profile": "https://github.com/ClockeNessMnstr",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 3
     },
     {
-      "username": "KamdenB",
-      "profile": "https://github.com/KamdenB",
-      "repository": "ancsemi/Haven",
-      "contributions": 3
-    },
-    {
-      "username": "QuiXMaDe",
-      "profile": "https://github.com/QuiXMaDe",
-      "repository": "ancsemi/Haven",
+      "username": "nickknissen",
+      "profile": "https://github.com/nickknissen",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 2
     },
     {
-      "username": "Ti-03",
-      "profile": "https://github.com/Ti-03",
-      "repository": "ancsemi/Haven",
-      "contributions": 2
-    },
-    {
-      "username": "TianLaiEric",
-      "profile": "https://github.com/TianLaiEric",
-      "repository": "ancsemi/Haven",
-      "contributions": 2
-    },
-    {
-      "username": "CUBEEEK",
-      "profile": "https://github.com/CUBEEEK",
-      "repository": "ancsemi/Haven",
-      "contributions": 2
-    },
-    {
-      "username": "delenda-delenda",
-      "profile": "https://github.com/delenda-delenda",
-      "repository": "ancsemi/Haven",
-      "contributions": 2
-    },
-    {
-      "username": "CP92",
-      "profile": "https://github.com/CP92",
-      "repository": "ancsemi/Haven",
+      "username": "xdadrm",
+      "profile": "https://github.com/xdadrm",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 1
     },
     {
-      "username": "Dawnforger",
-      "profile": "https://github.com/Dawnforger",
-      "repository": "ancsemi/Haven",
+      "username": "sehgalanuj",
+      "profile": "https://github.com/sehgalanuj",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 1
     },
     {
-      "username": "jkswoods",
-      "profile": "https://github.com/jkswoods",
-      "repository": "ancsemi/Haven",
+      "username": "rotgier",
+      "profile": "https://github.com/rotgier",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 1
     },
     {
-      "username": "MutantRabbit767",
-      "profile": "https://github.com/MutantRabbit767",
-      "repository": "ancsemi/Haven",
+      "username": "maybeth211-rgb",
+      "profile": "https://github.com/maybeth211-rgb",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 1
     },
     {
-      "username": "USBAkimbo",
-      "profile": "https://github.com/USBAkimbo",
-      "repository": "ancsemi/Haven",
+      "username": "d-sso",
+      "profile": "https://github.com/d-sso",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 1
     },
     {
-      "username": "mike1237",
-      "profile": "https://github.com/mike1237",
-      "repository": "ancsemi/Haven",
+      "username": "Tommatheussen",
+      "profile": "https://github.com/Tommatheussen",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 1
     },
     {
-      "username": "monksy",
-      "profile": "https://github.com/monksy",
-      "repository": "ancsemi/Haven",
+      "username": "tobymarks",
+      "profile": "https://github.com/tobymarks",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 1
     },
     {
-      "username": "rajuriprathik-a11y",
-      "profile": "https://github.com/rajuriprathik-a11y",
-      "repository": "ancsemi/Haven",
+      "username": "R0M107",
+      "profile": "https://github.com/R0M107",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 1
     },
     {
-      "username": "tylerobara",
-      "profile": "https://github.com/tylerobara",
-      "repository": "ancsemi/Haven",
+      "username": "Kolia56",
+      "profile": "https://github.com/Kolia56",
+      "repository": "mikey0000/PyMammotion",
       "contributions": 1
     },
     {
-      "username": "oliviertassinari",
-      "profile": "https://github.com/oliviertassinari",
-      "repository": "mui/material-ui",
-      "contributions": 4959
+      "username": "kimjune01",
+      "profile": "https://github.com/kimjune01",
+      "repository": "mikey0000/PyMammotion",
+      "contributions": 1
+    },
+    {
+      "username": "jsloyer",
+      "profile": "https://github.com/jsloyer",
+      "repository": "mikey0000/PyMammotion",
+      "contributions": 1
+    },
+    {
+      "username": "jagheterfredrik",
+      "profile": "https://github.com/jagheterfredrik",
+      "repository": "mikey0000/PyMammotion",
+      "contributions": 1
+    },
+    {
+      "username": "speedv15",
+      "profile": "https://github.com/speedv15",
+      "repository": "mikey0000/PyMammotion",
+      "contributions": 1
+    },
+    {
+      "username": "github-actions[bot]",
+      "profile": "https://github.com/apps/github-actions",
+      "repository": "awesome-vpn/awesome-vpn",
+      "contributions": 256
+    },
+    {
+      "username": "leoerdman",
+      "profile": "https://github.com/leoerdman",
+      "repository": "leoerdman/Voice-Transcriptor",
+      "contributions": 850
+    },
+    {
+      "username": "0xRadikal",
+      "profile": "https://github.com/0xRadikal",
+      "repository": "0xRadikal/Free-Telegram-Proxy",
+      "contributions": 30
+    },
+    {
+      "username": "dependabot[bot]",
+      "profile": "https://github.com/apps/dependabot",
+      "repository": "0xRadikal/Free-Telegram-Proxy",
+      "contributions": 1
+    },
+    {
+      "username": "dcramer",
+      "profile": "https://github.com/dcramer",
+      "repository": "getsentry/sentry",
+      "contributions": 11388
+    },
+    {
+      "username": "evanpurkhiser",
+      "profile": "https://github.com/evanpurkhiser",
+      "repository": "getsentry/sentry",
+      "contributions": 6345
+    },
+    {
+      "username": "scttcper",
+      "profile": "https://github.com/scttcper",
+      "repository": "getsentry/sentry",
+      "contributions": 3628
+    },
+    {
+      "username": "markstory",
+      "profile": "https://github.com/markstory",
+      "repository": "getsentry/sentry",
+      "contributions": 2793
+    },
+    {
+      "username": "billyvg",
+      "profile": "https://github.com/billyvg",
+      "repository": "getsentry/sentry",
+      "contributions": 2748
+    },
+    {
+      "username": "Zylphrex",
+      "profile": "https://github.com/Zylphrex",
+      "repository": "getsentry/sentry",
+      "contributions": 2520
+    },
+    {
+      "username": "priscilawebdev",
+      "profile": "https://github.com/priscilawebdev",
+      "repository": "getsentry/sentry",
+      "contributions": 2336
+    },
+    {
+      "username": "asottile-sentry",
+      "profile": "https://github.com/asottile-sentry",
+      "repository": "getsentry/sentry",
+      "contributions": 2261
+    },
+    {
+      "username": "JonasBa",
+      "profile": "https://github.com/JonasBa",
+      "repository": "getsentry/sentry",
+      "contributions": 1984
+    },
+    {
+      "username": "wedamija",
+      "profile": "https://github.com/wedamija",
+      "repository": "getsentry/sentry",
+      "contributions": 1957
+    },
+    {
+      "username": "ckj",
+      "profile": "https://github.com/ckj",
+      "repository": "getsentry/sentry",
+      "contributions": 1940
+    },
+    {
+      "username": "ryan953",
+      "profile": "https://github.com/ryan953",
+      "repository": "getsentry/sentry",
+      "contributions": 1902
+    },
+    {
+      "username": "mattrobenolt",
+      "profile": "https://github.com/mattrobenolt",
+      "repository": "getsentry/sentry",
+      "contributions": 1891
+    },
+    {
+      "username": "malwilley",
+      "profile": "https://github.com/malwilley",
+      "repository": "getsentry/sentry",
+      "contributions": 1776
+    },
+    {
+      "username": "lynnagara",
+      "profile": "https://github.com/lynnagara",
+      "repository": "getsentry/sentry",
+      "contributions": 1728
+    },
+    {
+      "username": "mitsuhiko",
+      "profile": "https://github.com/mitsuhiko",
+      "repository": "getsentry/sentry",
+      "contributions": 1700
+    },
+    {
+      "username": "wmak",
+      "profile": "https://github.com/wmak",
+      "repository": "getsentry/sentry",
+      "contributions": 1407
+    },
+    {
+      "username": "DominikB2014",
+      "profile": "https://github.com/DominikB2014",
+      "repository": "getsentry/sentry",
+      "contributions": 1384
+    },
+    {
+      "username": "edwardgou-sentry",
+      "profile": "https://github.com/edwardgou-sentry",
+      "repository": "getsentry/sentry",
+      "contributions": 1338
+    },
+    {
+      "username": "getsentry-bot",
+      "profile": "https://github.com/getsentry-bot",
+      "repository": "getsentry/sentry",
+      "contributions": 1239
+    },
+    {
+      "username": "gggritso",
+      "profile": "https://github.com/gggritso",
+      "repository": "getsentry/sentry",
+      "contributions": 1228
+    },
+    {
+      "username": "narsaynorath",
+      "profile": "https://github.com/narsaynorath",
+      "repository": "getsentry/sentry",
+      "contributions": 1220
+    },
+    {
+      "username": "ArthurKnaus",
+      "profile": "https://github.com/ArthurKnaus",
+      "repository": "getsentry/sentry",
+      "contributions": 1219
+    },
+    {
+      "username": "ceorourke",
+      "profile": "https://github.com/ceorourke",
+      "repository": "getsentry/sentry",
+      "contributions": 1144
+    },
+    {
+      "username": "dashed",
+      "profile": "https://github.com/dashed",
+      "repository": "getsentry/sentry",
+      "contributions": 1095
+    },
+    {
+      "username": "sentry-junior[bot]",
+      "profile": "https://github.com/apps/sentry-junior",
+      "repository": "getsentry/sentry",
+      "contributions": 1068
+    },
+    {
+      "username": "michellewzhang",
+      "profile": "https://github.com/michellewzhang",
+      "repository": "getsentry/sentry",
+      "contributions": 1065
+    },
+    {
+      "username": "k-fish",
+      "profile": "https://github.com/k-fish",
+      "repository": "getsentry/sentry",
+      "contributions": 1062
+    },
+    {
+      "username": "TkDodo",
+      "profile": "https://github.com/TkDodo",
+      "repository": "getsentry/sentry",
+      "contributions": 933
+    },
+    {
+      "username": "shruthilayaj",
+      "profile": "https://github.com/shruthilayaj",
+      "repository": "getsentry/sentry",
+      "contributions": 925
+    },
+    {
+      "username": "Sagargupta16",
+      "profile": "https://github.com/Sagargupta16",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 83
+    },
+    {
+      "username": "theluckystrike",
+      "profile": "https://github.com/theluckystrike",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 10
+    },
+    {
+      "username": "GeminiGeorge22",
+      "profile": "https://github.com/GeminiGeorge22",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 9
+    },
+    {
+      "username": "emirmrkaljevic",
+      "profile": "https://github.com/emirmrkaljevic",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 5
+    },
+    {
+      "username": "GeiserX",
+      "profile": "https://github.com/GeiserX",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 5
     },
     {
       "username": "renovate[bot]",
       "profile": "https://github.com/apps/renovate",
-      "repository": "mui/material-ui",
-      "contributions": 3606
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 4
     },
     {
-      "username": "dmtrKovalenko",
-      "profile": "https://github.com/dmtrKovalenko",
-      "repository": "mui/material-ui",
-      "contributions": 1479
+      "username": "Wlain",
+      "profile": "https://github.com/Wlain",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 3
     },
     {
-      "username": "dependabot-preview[bot]",
-      "profile": "https://github.com/apps/dependabot-preview",
-      "repository": "mui/material-ui",
-      "contributions": 1454
+      "username": "mukul-dutt",
+      "profile": "https://github.com/mukul-dutt",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 3
     },
     {
-      "username": "eps1lon",
-      "profile": "https://github.com/eps1lon",
-      "repository": "mui/material-ui",
-      "contributions": 1327
+      "username": "Garvit09A",
+      "profile": "https://github.com/Garvit09A",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 3
     },
     {
-      "username": "hai-cea",
-      "profile": "https://github.com/hai-cea",
-      "repository": "mui/material-ui",
-      "contributions": 1085
+      "username": "estevecastells",
+      "profile": "https://github.com/estevecastells",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 3
     },
     {
-      "username": "siriwatknp",
-      "profile": "https://github.com/siriwatknp",
-      "repository": "mui/material-ui",
-      "contributions": 848
+      "username": "asveloper",
+      "profile": "https://github.com/asveloper",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 3
     },
     {
-      "username": "mbrookes",
-      "profile": "https://github.com/mbrookes",
-      "repository": "mui/material-ui",
-      "contributions": 771
+      "username": "AlonDrilich",
+      "profile": "https://github.com/AlonDrilich",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 3
     },
     {
-      "username": "mnajdova",
-      "profile": "https://github.com/mnajdova",
-      "repository": "mui/material-ui",
-      "contributions": 658
+      "username": "f-o-x11",
+      "profile": "https://github.com/f-o-x11",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "Janpot",
-      "profile": "https://github.com/Janpot",
-      "repository": "mui/material-ui",
-      "contributions": 438
+      "username": "negm17111995",
+      "profile": "https://github.com/negm17111995",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "michaldudak",
-      "profile": "https://github.com/michaldudak",
-      "repository": "mui/material-ui",
-      "contributions": 381
+      "username": "sbier060",
+      "profile": "https://github.com/sbier060",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "nathanmarks",
-      "profile": "https://github.com/nathanmarks",
-      "repository": "mui/material-ui",
-      "contributions": 351
+      "username": "imshashank",
+      "profile": "https://github.com/imshashank",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "danilo-leal",
-      "profile": "https://github.com/danilo-leal",
-      "repository": "mui/material-ui",
-      "contributions": 335
+      "username": "noahowsh",
+      "profile": "https://github.com/noahowsh",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "mmrtnz",
-      "profile": "https://github.com/mmrtnz",
-      "repository": "mui/material-ui",
-      "contributions": 329
+      "username": "hahahahahahahahah6",
+      "profile": "https://github.com/hahahahahahahahah6",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "sai6855",
-      "profile": "https://github.com/sai6855",
-      "repository": "mui/material-ui",
-      "contributions": 299
+      "username": "antonbaider",
+      "profile": "https://github.com/antonbaider",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "ZeeshanTamboli",
-      "profile": "https://github.com/ZeeshanTamboli",
-      "repository": "mui/material-ui",
-      "contributions": 297
+      "username": "Arshroop-Saini",
+      "profile": "https://github.com/Arshroop-Saini",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "code-infra-renovate[bot]",
-      "profile": "https://github.com/apps/code-infra-renovate",
-      "repository": "mui/material-ui",
-      "contributions": 289
+      "username": "Bl0ck154",
+      "profile": "https://github.com/Bl0ck154",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "alitaheri",
-      "profile": "https://github.com/alitaheri",
-      "repository": "mui/material-ui",
-      "contributions": 265
+      "username": "jakemarsh",
+      "profile": "https://github.com/jakemarsh",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "rosskevin",
-      "profile": "https://github.com/rosskevin",
-      "repository": "mui/material-ui",
-      "contributions": 264
+      "username": "Masonleenf",
+      "profile": "https://github.com/Masonleenf",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "cherniavskii",
-      "profile": "https://github.com/cherniavskii",
-      "repository": "mui/material-ui",
-      "contributions": 225
+      "username": "MattJeff",
+      "profile": "https://github.com/MattJeff",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "brijeshb42",
-      "profile": "https://github.com/brijeshb42",
-      "repository": "mui/material-ui",
-      "contributions": 189
+      "username": "Simba0315",
+      "profile": "https://github.com/Simba0315",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "hbjORbj",
-      "profile": "https://github.com/hbjORbj",
-      "repository": "mui/material-ui",
-      "contributions": 178
+      "username": "ununununium",
+      "profile": "https://github.com/ununununium",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "merceyz",
-      "profile": "https://github.com/merceyz",
-      "repository": "mui/material-ui",
-      "contributions": 172
+      "username": "anbh2787",
+      "profile": "https://github.com/anbh2787",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 2
     },
     {
-      "username": "DiegoAndai",
-      "profile": "https://github.com/DiegoAndai",
-      "repository": "mui/material-ui",
-      "contributions": 165
+      "username": "2cstudiodev-web",
+      "profile": "https://github.com/2cstudiodev-web",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 1
     },
     {
-      "username": "mj12albert",
-      "profile": "https://github.com/mj12albert",
-      "repository": "mui/material-ui",
-      "contributions": 165
+      "username": "wassenger-bot",
+      "profile": "https://github.com/wassenger-bot",
+      "repository": "Sagargupta16/awesome-mcp-servers",
+      "contributions": 1
     },
     {
-      "username": "newoga",
-      "profile": "https://github.com/newoga",
-      "repository": "mui/material-ui",
-      "contributions": 143
+      "username": "jonah-sullivan",
+      "profile": "https://github.com/jonah-sullivan",
+      "repository": "jonah-sullivan/plugin_build_tool",
+      "contributions": 83
     },
     {
-      "username": "mapache-salvaje",
-      "profile": "https://github.com/mapache-salvaje",
-      "repository": "mui/material-ui",
-      "contributions": 126
+      "username": "g-sherman",
+      "profile": "https://github.com/g-sherman",
+      "repository": "jonah-sullivan/plugin_build_tool",
+      "contributions": 58
     },
     {
-      "username": "joshwooding",
-      "profile": "https://github.com/joshwooding",
-      "repository": "mui/material-ui",
-      "contributions": 111
-    },
-    {
-      "username": "shaurya947",
-      "profile": "https://github.com/shaurya947",
-      "repository": "mui/material-ui",
-      "contributions": 102
-    },
-    {
-      "username": "richkuo",
-      "profile": "https://github.com/richkuo",
-      "repository": "richkuo/rk-skills",
-      "contributions": 506
-    },
-    {
-      "username": "Trott",
-      "profile": "https://github.com/Trott",
-      "repository": "nodejs/node",
-      "contributions": 3152
-    },
-    {
-      "username": "ry",
-      "profile": "https://github.com/ry",
-      "repository": "nodejs/node",
-      "contributions": 3021
-    },
-    {
-      "username": "bnoordhuis",
-      "profile": "https://github.com/bnoordhuis",
-      "repository": "nodejs/node",
-      "contributions": 2291
-    },
-    {
-      "username": "addaleax",
-      "profile": "https://github.com/addaleax",
-      "repository": "nodejs/node",
-      "contributions": 1655
-    },
-    {
-      "username": "isaacs",
-      "profile": "https://github.com/isaacs",
-      "repository": "nodejs/node",
-      "contributions": 1655
-    },
-    {
-      "username": "jasnell",
-      "profile": "https://github.com/jasnell",
-      "repository": "nodejs/node",
-      "contributions": 1434
-    },
-    {
-      "username": "targos",
-      "profile": "https://github.com/targos",
-      "repository": "nodejs/node",
-      "contributions": 1367
-    },
-    {
-      "username": "joyeecheung",
-      "profile": "https://github.com/joyeecheung",
-      "repository": "nodejs/node",
-      "contributions": 1307
-    },
-    {
-      "username": "aduh95",
-      "profile": "https://github.com/aduh95",
-      "repository": "nodejs/node",
-      "contributions": 1238
-    },
-    {
-      "username": "cjihrig",
-      "profile": "https://github.com/cjihrig",
-      "repository": "nodejs/node",
-      "contributions": 1186
-    },
-    {
-      "username": "nodejs-github-bot",
-      "profile": "https://github.com/nodejs-github-bot",
-      "repository": "nodejs/node",
-      "contributions": 1137
-    },
-    {
-      "username": "BridgeAR",
-      "profile": "https://github.com/BridgeAR",
-      "repository": "nodejs/node",
-      "contributions": 849
-    },
-    {
-      "username": "indutny",
-      "profile": "https://github.com/indutny",
-      "repository": "nodejs/node",
-      "contributions": 781
-    },
-    {
-      "username": "tniessen",
-      "profile": "https://github.com/tniessen",
-      "repository": "nodejs/node",
-      "contributions": 777
-    },
-    {
-      "username": "panva",
-      "profile": "https://github.com/panva",
-      "repository": "nodejs/node",
-      "contributions": 666
-    },
-    {
-      "username": "danbev",
-      "profile": "https://github.com/danbev",
-      "repository": "nodejs/node",
-      "contributions": 605
-    },
-    {
-      "username": "piscisaureus",
-      "profile": "https://github.com/piscisaureus",
-      "repository": "nodejs/node",
-      "contributions": 598
-    },
-    {
-      "username": "RafaelGSS",
-      "profile": "https://github.com/RafaelGSS",
-      "repository": "nodejs/node",
-      "contributions": 485
-    },
-    {
-      "username": "richardlau",
-      "profile": "https://github.com/richardlau",
-      "repository": "nodejs/node",
-      "contributions": 435
-    },
-    {
-      "username": "mhdawson",
-      "profile": "https://github.com/mhdawson",
-      "repository": "nodejs/node",
-      "contributions": 412
-    },
-    {
-      "username": "legendecas",
-      "profile": "https://github.com/legendecas",
-      "repository": "nodejs/node",
-      "contributions": 402
-    },
-    {
-      "username": "anonrig",
-      "profile": "https://github.com/anonrig",
-      "repository": "nodejs/node",
-      "contributions": 393
-    },
-    {
-      "username": "mcollina",
-      "profile": "https://github.com/mcollina",
-      "repository": "nodejs/node",
-      "contributions": 381
-    },
-    {
-      "username": "mscdex",
-      "profile": "https://github.com/mscdex",
-      "repository": "nodejs/node",
-      "contributions": 374
-    },
-    {
-      "username": "rvagg",
-      "profile": "https://github.com/rvagg",
-      "repository": "nodejs/node",
-      "contributions": 369
-    },
-    {
-      "username": "trevnorris",
-      "profile": "https://github.com/trevnorris",
-      "repository": "nodejs/node",
-      "contributions": 365
-    },
-    {
-      "username": "ronag",
-      "profile": "https://github.com/ronag",
-      "repository": "nodejs/node",
-      "contributions": 356
-    },
-    {
-      "username": "sam-github",
-      "profile": "https://github.com/sam-github",
-      "repository": "nodejs/node",
-      "contributions": 354
-    },
-    {
-      "username": "lpinca",
-      "profile": "https://github.com/lpinca",
-      "repository": "nodejs/node",
-      "contributions": 345
-    },
-    {
-      "username": "gabrielste1n",
-      "profile": "https://github.com/gabrielste1n",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 1578
-    },
-    {
-      "username": "Chadpiha",
-      "profile": "https://github.com/Chadpiha",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 358
-    },
-    {
-      "username": "boseq",
-      "profile": "https://github.com/boseq",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 334
-    },
-    {
-      "username": "xAlcahest",
-      "profile": "https://github.com/xAlcahest",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 168
-    },
-    {
-      "username": "greatcoat",
-      "profile": "https://github.com/greatcoat",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 87
-    },
-    {
-      "username": "hsusul",
-      "profile": "https://github.com/hsusul",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 85
-    },
-    {
-      "username": "IdrisGit",
-      "profile": "https://github.com/IdrisGit",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 32
-    },
-    {
-      "username": "stantheman0128",
-      "profile": "https://github.com/stantheman0128",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 11
-    },
-    {
-      "username": "clarkmaan",
-      "profile": "https://github.com/clarkmaan",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 9
-    },
-    {
-      "username": "DamianPala",
-      "profile": "https://github.com/DamianPala",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 9
-    },
-    {
-      "username": "widechaos",
-      "profile": "https://github.com/widechaos",
-      "repository": "OpenWhispr/openwhispr",
+      "username": "Minei3oat",
+      "profile": "https://github.com/Minei3oat",
+      "repository": "jonah-sullivan/plugin_build_tool",
       "contributions": 8
     },
     {
-      "username": "alex-shumilov",
-      "profile": "https://github.com/alex-shumilov",
-      "repository": "OpenWhispr/openwhispr",
+      "username": "TobiasRosskopf",
+      "profile": "https://github.com/TobiasRosskopf",
+      "repository": "jonah-sullivan/plugin_build_tool",
+      "contributions": 2
+    },
+    {
+      "username": "kant",
+      "profile": "https://github.com/kant",
+      "repository": "jonah-sullivan/plugin_build_tool",
+      "contributions": 1
+    },
+    {
+      "username": "Hugovdberg",
+      "profile": "https://github.com/Hugovdberg",
+      "repository": "jonah-sullivan/plugin_build_tool",
+      "contributions": 1
+    },
+    {
+      "username": "rohanarun",
+      "profile": "https://github.com/rohanarun",
+      "repository": "rohanarun/alpoge-rh-replay",
+      "contributions": 86
+    },
+    {
+      "username": "dgahelper",
+      "profile": "https://github.com/dgahelper",
+      "repository": "rohanarun/alpoge-rh-replay",
+      "contributions": 19
+    },
+    {
+      "username": "JanSimeonMetzger",
+      "profile": "https://github.com/JanSimeonMetzger",
+      "repository": "rohanarun/alpoge-rh-replay",
+      "contributions": 15
+    },
+    {
+      "username": "BenCaunt",
+      "profile": "https://github.com/BenCaunt",
+      "repository": "rohanarun/alpoge-rh-replay",
       "contributions": 7
     },
     {
-      "username": "AdityaPainuli",
-      "profile": "https://github.com/AdityaPainuli",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 6
+      "username": "arxhr007",
+      "profile": "https://github.com/arxhr007",
+      "repository": "rohanarun/alpoge-rh-replay",
+      "contributions": 7
     },
     {
-      "username": "ayalda",
-      "profile": "https://github.com/ayalda",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 6
-    },
-    {
-      "username": "Adityakk9031",
-      "profile": "https://github.com/Adityakk9031",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 5
-    },
-    {
-      "username": "chirag127",
-      "profile": "https://github.com/chirag127",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 5
-    },
-    {
-      "username": "Nathan-Roll1",
-      "profile": "https://github.com/Nathan-Roll1",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 5
-    },
-    {
-      "username": "dpersek",
-      "profile": "https://github.com/dpersek",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 4
-    },
-    {
-      "username": "etzelm",
-      "profile": "https://github.com/etzelm",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 4
-    },
-    {
-      "username": "sgrimbly",
-      "profile": "https://github.com/sgrimbly",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 4
-    },
-    {
-      "username": "danielmccannsayles",
-      "profile": "https://github.com/danielmccannsayles",
-      "repository": "OpenWhispr/openwhispr",
+      "username": "bgould132",
+      "profile": "https://github.com/bgould132",
+      "repository": "rohanarun/alpoge-rh-replay",
       "contributions": 3
     },
     {
-      "username": "FelipeAfonso",
-      "profile": "https://github.com/FelipeAfonso",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 3
+      "username": "juanfers1",
+      "profile": "https://github.com/juanfers1",
+      "repository": "rohanarun/alpoge-rh-replay",
+      "contributions": 1
     },
     {
-      "username": "RutamBhagat",
-      "profile": "https://github.com/RutamBhagat",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 3
+      "username": "varo6",
+      "profile": "https://github.com/varo6",
+      "repository": "rohanarun/alpoge-rh-replay",
+      "contributions": 1
     },
     {
-      "username": "Biotech-Basti",
-      "profile": "https://github.com/Biotech-Basti",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 3
+      "username": "krisyotam",
+      "profile": "https://github.com/krisyotam",
+      "repository": "rohanarun/alpoge-rh-replay",
+      "contributions": 1
     },
     {
-      "username": "tobek",
-      "profile": "https://github.com/tobek",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 3
+      "username": "surfyhou",
+      "profile": "https://github.com/surfyhou",
+      "repository": "rohanarun/alpoge-rh-replay",
+      "contributions": 1
     },
     {
-      "username": "sochotnicky",
-      "profile": "https://github.com/sochotnicky",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 3
+      "username": "Matt-Wood-23",
+      "profile": "https://github.com/Matt-Wood-23",
+      "repository": "Matt-Wood-23/mh3u-revival",
+      "contributions": 59
     },
     {
-      "username": "amahon",
-      "profile": "https://github.com/amahon",
-      "repository": "OpenWhispr/openwhispr",
+      "username": "dogchydios",
+      "profile": "https://github.com/dogchydios",
+      "repository": "Matt-Wood-23/mh3u-revival",
       "contributions": 2
     },
     {
-      "username": "wake0up0ne0",
-      "profile": "https://github.com/wake0up0ne0",
-      "repository": "OpenWhispr/openwhispr",
-      "contributions": 2
+      "username": "mwakidenis",
+      "profile": "https://github.com/mwakidenis",
+      "repository": "mwakidenis/mpesify",
+      "contributions": 4949
     },
     {
-      "username": "niakw",
-      "profile": "https://github.com/niakw",
-      "repository": "niakw/NiakVIO",
-      "contributions": 15026
+      "username": "fishmongr",
+      "profile": "https://github.com/fishmongr",
+      "repository": "Sogni-AI/sogni-creative-agent-skill",
+      "contributions": 547
     },
     {
-      "username": "codex",
-      "profile": "https://github.com/codex",
-      "repository": "niakw/NiakVIO",
-      "contributions": 34
-    },
-    {
-      "username": "lkdavies",
-      "profile": "https://github.com/lkdavies",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 49
-    },
-    {
-      "username": "arditti",
-      "profile": "https://github.com/arditti",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 27
-    },
-    {
-      "username": "piotrekwitkowski",
-      "profile": "https://github.com/piotrekwitkowski",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 14
-    },
-    {
-      "username": "dbrown-git",
-      "profile": "https://github.com/dbrown-git",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 8
-    },
-    {
-      "username": "joshbean",
-      "profile": "https://github.com/joshbean",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 2
-    },
-    {
-      "username": "thomasturrell",
-      "profile": "https://github.com/thomasturrell",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 2
-    },
-    {
-      "username": "etiennemunnich",
-      "profile": "https://github.com/etiennemunnich",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 1
-    },
-    {
-      "username": "jorgecis",
-      "profile": "https://github.com/jorgecis",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 1
-    },
-    {
-      "username": "Laren-AWS",
-      "profile": "https://github.com/Laren-AWS",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 1
-    },
-    {
-      "username": "mwarkentin",
-      "profile": "https://github.com/mwarkentin",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 1
-    },
-    {
-      "username": "pobtastic",
-      "profile": "https://github.com/pobtastic",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 1
-    },
-    {
-      "username": "vasylenko",
-      "profile": "https://github.com/vasylenko",
-      "repository": "aws-samples/amazon-cloudfront-functions",
-      "contributions": 1
-    },
-    {
-      "username": "nakednous",
-      "profile": "https://github.com/nakednous",
-      "repository": "objetos/p5.quadrille.js",
-      "contributions": 609
+      "username": "krunkosaurus",
+      "profile": "https://github.com/krunkosaurus",
+      "repository": "Sogni-AI/sogni-creative-agent-skill",
+      "contributions": 225
     },
     {
       "username": "semantic-release-bot",
       "profile": "https://github.com/semantic-release-bot",
-      "repository": "objetos/p5.quadrille.js",
-      "contributions": 2
+      "repository": "Sogni-AI/sogni-creative-agent-skill",
+      "contributions": 33
     },
     {
-      "username": "astrapi69",
-      "profile": "https://github.com/astrapi69",
-      "repository": "astrapi69/mystic-crypt",
-      "contributions": 1084
+      "username": "IC999",
+      "profile": "https://github.com/IC999",
+      "repository": "Sogni-AI/sogni-creative-agent-skill",
+      "contributions": 1
     },
     {
-      "username": "astrapisixtynine",
-      "profile": "https://github.com/astrapisixtynine",
-      "repository": "astrapi69/mystic-crypt",
-      "contributions": 268
+      "username": "NoCritics",
+      "profile": "https://github.com/NoCritics",
+      "repository": "NoCritics/consult-plugin",
+      "contributions": 23
     },
     {
-      "username": "jimmyMaci",
-      "profile": "https://github.com/jimmyMaci",
-      "repository": "astrapi69/mystic-crypt",
+      "username": "Lumidarin",
+      "profile": "https://github.com/Lumidarin",
+      "repository": "Lumidarin/agy-capsule",
+      "contributions": 71
+    },
+    {
+      "username": "z21100644",
+      "profile": "https://github.com/z21100644",
+      "repository": "Lumidarin/agy-capsule",
+      "contributions": 3
+    },
+    {
+      "username": "WiseYaroslav28",
+      "profile": "https://github.com/WiseYaroslav28",
+      "repository": "WiseYaroslav28/antigravity-features-v2",
+      "contributions": 68
+    },
+    {
+      "username": "MrRay57",
+      "profile": "https://github.com/MrRay57",
+      "repository": "WiseYaroslav28/antigravity-features-v2",
+      "contributions": 4
+    },
+    {
+      "username": "ibra-kdbra",
+      "profile": "https://github.com/ibra-kdbra",
+      "repository": "ibra-kdbra/JS_game_collections",
+      "contributions": 890
+    },
+    {
+      "username": "mouhamamd-kl",
+      "profile": "https://github.com/mouhamamd-kl",
+      "repository": "ibra-kdbra/JS_game_collections",
+      "contributions": 3
+    },
+    {
+      "username": "mdo",
+      "profile": "https://github.com/mdo",
+      "repository": "twbs/bootstrap",
+      "contributions": 9950
+    },
+    {
+      "username": "cvrebert",
+      "profile": "https://github.com/cvrebert",
+      "repository": "twbs/bootstrap",
+      "contributions": 2763
+    },
+    {
+      "username": "XhmikosR",
+      "profile": "https://github.com/XhmikosR",
+      "repository": "twbs/bootstrap",
+      "contributions": 2074
+    },
+    {
+      "username": "fat",
+      "profile": "https://github.com/fat",
+      "repository": "twbs/bootstrap",
+      "contributions": 1185
+    },
+    {
+      "username": "julien-deramond",
+      "profile": "https://github.com/julien-deramond",
+      "repository": "twbs/bootstrap",
+      "contributions": 654
+    },
+    {
+      "username": "patrickhlauke",
+      "profile": "https://github.com/patrickhlauke",
+      "repository": "twbs/bootstrap",
+      "contributions": 414
+    },
+    {
+      "username": "Johann-S",
+      "profile": "https://github.com/Johann-S",
+      "repository": "twbs/bootstrap",
+      "contributions": 386
+    },
+    {
+      "username": "MartijnCuppens",
+      "profile": "https://github.com/MartijnCuppens",
+      "repository": "twbs/bootstrap",
+      "contributions": 373
+    },
+    {
+      "username": "GeoSot",
+      "profile": "https://github.com/GeoSot",
+      "repository": "twbs/bootstrap",
+      "contributions": 231
+    },
+    {
+      "username": "hnrch02",
+      "profile": "https://github.com/hnrch02",
+      "repository": "twbs/bootstrap",
+      "contributions": 223
+    },
+    {
+      "username": "dependabot-preview[bot]",
+      "profile": "https://github.com/apps/dependabot-preview",
+      "repository": "twbs/bootstrap",
+      "contributions": 221
+    },
+    {
+      "username": "juthilo",
+      "profile": "https://github.com/juthilo",
+      "repository": "twbs/bootstrap",
+      "contributions": 129
+    },
+    {
+      "username": "coliff",
+      "profile": "https://github.com/coliff",
+      "repository": "twbs/bootstrap",
+      "contributions": 128
+    },
+    {
+      "username": "ffoodd",
+      "profile": "https://github.com/ffoodd",
+      "repository": "twbs/bootstrap",
+      "contributions": 123
+    },
+    {
+      "username": "ysds",
+      "profile": "https://github.com/ysds",
+      "repository": "twbs/bootstrap",
+      "contributions": 113
+    },
+    {
+      "username": "twbs-grunt",
+      "profile": "https://github.com/twbs-grunt",
+      "repository": "twbs/bootstrap",
+      "contributions": 95
+    },
+    {
+      "username": "louismaximepiton",
+      "profile": "https://github.com/louismaximepiton",
+      "repository": "twbs/bootstrap",
+      "contributions": 87
+    },
+    {
+      "username": "bardiharborow",
+      "profile": "https://github.com/bardiharborow",
+      "repository": "twbs/bootstrap",
+      "contributions": 71
+    },
+    {
+      "username": "rohit2sharma95",
+      "profile": "https://github.com/rohit2sharma95",
+      "repository": "twbs/bootstrap",
+      "contributions": 65
+    },
+    {
+      "username": "vsn4ik",
+      "profile": "https://github.com/vsn4ik",
+      "repository": "twbs/bootstrap",
       "contributions": 63
     },
     {
-      "username": "tatjana19",
-      "profile": "https://github.com/tatjana19",
-      "repository": "astrapi69/mystic-crypt",
-      "contributions": 52
+      "username": "kkirsche",
+      "profile": "https://github.com/kkirsche",
+      "repository": "twbs/bootstrap",
+      "contributions": 62
     },
     {
-      "username": "lightbluesee",
-      "profile": "https://github.com/lightbluesee",
-      "repository": "astrapi69/mystic-crypt",
-      "contributions": 28
+      "username": "pvdlg",
+      "profile": "https://github.com/pvdlg",
+      "repository": "twbs/bootstrap",
+      "contributions": 59
     },
     {
-      "username": "jacquelineMorin",
-      "profile": "https://github.com/jacquelineMorin",
-      "repository": "astrapi69/mystic-crypt",
-      "contributions": 12
+      "username": "andresgalante",
+      "profile": "https://github.com/andresgalante",
+      "repository": "twbs/bootstrap",
+      "contributions": 53
     },
     {
-      "username": "qwen-intl",
-      "profile": "https://github.com/qwen-intl",
-      "repository": "astrapi69/mystic-crypt",
-      "contributions": 11
+      "username": "pat270",
+      "profile": "https://github.com/pat270",
+      "repository": "twbs/bootstrap",
+      "contributions": 49
     },
     {
-      "username": "marie-christin",
-      "profile": "https://github.com/marie-christin",
-      "repository": "astrapi69/mystic-crypt",
-      "contributions": 1
+      "username": "zalog",
+      "profile": "https://github.com/zalog",
+      "repository": "twbs/bootstrap",
+      "contributions": 44
     },
     {
-      "username": "trueeyu",
-      "profile": "https://github.com/trueeyu",
-      "repository": "StarRocks/starrocks",
-      "contributions": 1041
-    },
-    {
-      "username": "murphyatwork",
-      "profile": "https://github.com/murphyatwork",
-      "repository": "StarRocks/starrocks",
-      "contributions": 879
-    },
-    {
-      "username": "amber-create",
-      "profile": "https://github.com/amber-create",
-      "repository": "StarRocks/starrocks",
-      "contributions": 854
-    },
-    {
-      "username": "stdpain",
-      "profile": "https://github.com/stdpain",
-      "repository": "StarRocks/starrocks",
-      "contributions": 849
-    },
-    {
-      "username": "LiShuMing",
-      "profile": "https://github.com/LiShuMing",
-      "repository": "StarRocks/starrocks",
-      "contributions": 786
-    },
-    {
-      "username": "HangyuanLiu",
-      "profile": "https://github.com/HangyuanLiu",
-      "repository": "StarRocks/starrocks",
-      "contributions": 728
-    },
-    {
-      "username": "evelynzhaojie",
-      "profile": "https://github.com/evelynzhaojie",
-      "repository": "StarRocks/starrocks",
-      "contributions": 698
-    },
-    {
-      "username": "luohaha",
-      "profile": "https://github.com/luohaha",
-      "repository": "StarRocks/starrocks",
-      "contributions": 690
-    },
-    {
-      "username": "Youngwb",
-      "profile": "https://github.com/Youngwb",
-      "repository": "StarRocks/starrocks",
-      "contributions": 683
-    },
-    {
-      "username": "stephen-shelby",
-      "profile": "https://github.com/stephen-shelby",
-      "repository": "StarRocks/starrocks",
-      "contributions": 656
-    },
-    {
-      "username": "dirtysalt",
-      "profile": "https://github.com/dirtysalt",
-      "repository": "StarRocks/starrocks",
-      "contributions": 653
-    },
-    {
-      "username": "hellolilyliuyi",
-      "profile": "https://github.com/hellolilyliuyi",
-      "repository": "StarRocks/starrocks",
-      "contributions": 652
-    },
-    {
-      "username": "kevincai",
-      "profile": "https://github.com/kevincai",
-      "repository": "StarRocks/starrocks",
-      "contributions": 617
-    },
-    {
-      "username": "sduzh",
-      "profile": "https://github.com/sduzh",
-      "repository": "StarRocks/starrocks",
-      "contributions": 615
-    },
-    {
-      "username": "Seaven",
-      "profile": "https://github.com/Seaven",
-      "repository": "StarRocks/starrocks",
-      "contributions": 609
-    },
-    {
-      "username": "alvin-phoenix-ai",
-      "profile": "https://github.com/alvin-phoenix-ai",
-      "repository": "StarRocks/starrocks",
-      "contributions": 591
-    },
-    {
-      "username": "wyb",
-      "profile": "https://github.com/wyb",
-      "repository": "StarRocks/starrocks",
-      "contributions": 496
-    },
-    {
-      "username": "sevev",
-      "profile": "https://github.com/sevev",
-      "repository": "StarRocks/starrocks",
-      "contributions": 486
-    },
-    {
-      "username": "ZiheLiu",
-      "profile": "https://github.com/ZiheLiu",
-      "repository": "StarRocks/starrocks",
-      "contributions": 483
-    },
-    {
-      "username": "Astralidea",
-      "profile": "https://github.com/Astralidea",
-      "repository": "StarRocks/starrocks",
-      "contributions": 477
-    },
-    {
-      "username": "meegoo",
-      "profile": "https://github.com/meegoo",
-      "repository": "StarRocks/starrocks",
-      "contributions": 469
-    },
-    {
-      "username": "gengjun-git",
-      "profile": "https://github.com/gengjun-git",
-      "repository": "StarRocks/starrocks",
-      "contributions": 455
-    },
-    {
-      "username": "xiangguangyxg",
-      "profile": "https://github.com/xiangguangyxg",
-      "repository": "StarRocks/starrocks",
-      "contributions": 407
-    },
-    {
-      "username": "DanRoscigno",
-      "profile": "https://github.com/DanRoscigno",
-      "repository": "StarRocks/starrocks",
-      "contributions": 396
-    },
-    {
-      "username": "starrocks-bot[bot]",
-      "profile": "https://github.com/apps/starrocks-bot",
-      "repository": "StarRocks/starrocks",
-      "contributions": 387
-    },
-    {
-      "username": "satanson",
-      "profile": "https://github.com/satanson",
-      "repository": "StarRocks/starrocks",
-      "contributions": 354
-    },
-    {
-      "username": "liuyehcf",
-      "profile": "https://github.com/liuyehcf",
-      "repository": "StarRocks/starrocks",
-      "contributions": 340
-    },
-    {
-      "username": "wanpengfei-git",
-      "profile": "https://github.com/wanpengfei-git",
-      "repository": "StarRocks/starrocks",
-      "contributions": 331
-    },
-    {
-      "username": "Hyper-FF",
-      "profile": "https://github.com/Hyper-FF",
-      "repository": "StarRocks/starrocks",
-      "contributions": 327
-    },
-    {
-      "username": "andyziye",
-      "profile": "https://github.com/andyziye",
-      "repository": "StarRocks/starrocks",
-      "contributions": 311
-    },
-    {
-      "username": "schmichri",
-      "profile": "https://github.com/schmichri",
-      "repository": "iunera/druid-mcp-server",
-      "contributions": 58
-    },
-    {
-      "username": "Matvey-Kuk",
-      "profile": "https://github.com/Matvey-Kuk",
-      "repository": "iunera/druid-mcp-server",
-      "contributions": 1
-    },
-    {
-      "username": "frankgiordano",
-      "profile": "https://github.com/frankgiordano",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 3266
-    },
-    {
-      "username": "kostrja",
-      "profile": "https://github.com/kostrja",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 56
-    },
-    {
-      "username": "Nurkambay",
-      "profile": "https://github.com/Nurkambay",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 41
-    },
-    {
-      "username": "shabaz213",
-      "profile": "https://github.com/shabaz213",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 39
-    },
-    {
-      "username": "Nike682631",
-      "profile": "https://github.com/Nike682631",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 39
-    },
-    {
-      "username": "Ashish-Kumar-Dash",
-      "profile": "https://github.com/Ashish-Kumar-Dash",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 31
-    },
-    {
-      "username": "fg892105",
-      "profile": "https://github.com/fg892105",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 30
-    },
-    {
-      "username": "AditheD",
-      "profile": "https://github.com/AditheD",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 20
-    },
-    {
-      "username": "chaitanyakatore",
-      "profile": "https://github.com/chaitanyakatore",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 14
-    },
-    {
-      "username": "Shaurya2k06",
-      "profile": "https://github.com/Shaurya2k06",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 13
-    },
-    {
-      "username": "Muhammad7839",
-      "profile": "https://github.com/Muhammad7839",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 11
-    },
-    {
-      "username": "Eshaan-byte",
-      "profile": "https://github.com/Eshaan-byte",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 9
-    },
-    {
-      "username": "SandalCodez",
-      "profile": "https://github.com/SandalCodez",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 7
-    },
-    {
-      "username": "corinned",
-      "profile": "https://github.com/corinned",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 6
-    },
-    {
-      "username": "Charishma1707",
-      "profile": "https://github.com/Charishma1707",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 3
-    },
-    {
-      "username": "jsamaniego4",
-      "profile": "https://github.com/jsamaniego4",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 3
-    },
-    {
-      "username": "Shantanu675",
-      "profile": "https://github.com/Shantanu675",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 2
-    },
-    {
-      "username": "aviralgarg05",
-      "profile": "https://github.com/aviralgarg05",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 2
-    },
-    {
-      "username": "vasiliy-mikhailov",
-      "profile": "https://github.com/vasiliy-mikhailov",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 2
-    },
-    {
-      "username": "AHS0003",
-      "profile": "https://github.com/AHS0003",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 1
-    },
-    {
-      "username": "hibaa23",
-      "profile": "https://github.com/hibaa23",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 1
-    },
-    {
-      "username": "Sanjay123-git",
-      "profile": "https://github.com/Sanjay123-git",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 1
-    },
-    {
-      "username": "KasperHelsted",
-      "profile": "https://github.com/KasperHelsted",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 1
-    },
-    {
-      "username": "plavjanik",
-      "profile": "https://github.com/plavjanik",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 1
-    },
-    {
-      "username": "tgmz",
-      "profile": "https://github.com/tgmz",
-      "repository": "zowe/zowe-client-java-sdk",
-      "contributions": 1
-    },
-    {
-      "username": "jdubois",
-      "profile": "https://github.com/jdubois",
-      "repository": "jdubois/boot-ui",
-      "contributions": 2319
-    },
-    {
-      "username": "qmonmert",
-      "profile": "https://github.com/qmonmert",
-      "repository": "jdubois/boot-ui",
+      "username": "gijsbotje",
+      "profile": "https://github.com/gijsbotje",
+      "repository": "twbs/bootstrap",
       "contributions": 40
     },
     {
-      "username": "BaptisteDixneuf",
-      "profile": "https://github.com/BaptisteDixneuf",
-      "repository": "jdubois/boot-ui",
-      "contributions": 1
-    },
-    {
-      "username": "thomaswue",
-      "profile": "https://github.com/thomaswue",
-      "repository": "jdubois/boot-ui",
-      "contributions": 1
-    },
-    {
-      "username": "12britz",
-      "profile": "https://github.com/12britz",
-      "repository": "jdubois/boot-ui",
-      "contributions": 1
-    },
-    {
-      "username": "jsunsoftware",
-      "profile": "https://github.com/jsunsoftware",
-      "repository": "jsunsoftware/http-request",
-      "contributions": 225
-    },
-    {
-      "username": "elasticsearchmachine",
-      "profile": "https://github.com/elasticsearchmachine",
-      "repository": "elastic/elasticsearch",
-      "contributions": 5655
-    },
-    {
-      "username": "kimchy",
-      "profile": "https://github.com/kimchy",
-      "repository": "elastic/elasticsearch",
-      "contributions": 4781
-    },
-    {
-      "username": "martijnvg",
-      "profile": "https://github.com/martijnvg",
-      "repository": "elastic/elasticsearch",
-      "contributions": 3491
-    },
-    {
-      "username": "nik9000",
-      "profile": "https://github.com/nik9000",
-      "repository": "elastic/elasticsearch",
-      "contributions": 3463
-    },
-    {
-      "username": "s1monw",
-      "profile": "https://github.com/s1monw",
-      "repository": "elastic/elasticsearch",
-      "contributions": 3182
-    },
-    {
-      "username": "rjernst",
-      "profile": "https://github.com/rjernst",
-      "repository": "elastic/elasticsearch",
-      "contributions": 3092
-    },
-    {
-      "username": "DaveCTurner",
-      "profile": "https://github.com/DaveCTurner",
-      "repository": "elastic/elasticsearch",
-      "contributions": 3029
-    },
-    {
-      "username": "jasontedor",
-      "profile": "https://github.com/jasontedor",
-      "repository": "elastic/elasticsearch",
-      "contributions": 2858
-    },
-    {
-      "username": "javanna",
-      "profile": "https://github.com/javanna",
-      "repository": "elastic/elasticsearch",
-      "contributions": 2557
-    },
-    {
-      "username": "original-brownbear",
-      "profile": "https://github.com/original-brownbear",
-      "repository": "elastic/elasticsearch",
-      "contributions": 2330
-    },
-    {
-      "username": "dnhatn",
-      "profile": "https://github.com/dnhatn",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1767
-    },
-    {
-      "username": "jrodewig",
-      "profile": "https://github.com/jrodewig",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1547
-    },
-    {
-      "username": "tlrx",
-      "profile": "https://github.com/tlrx",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1485
-    },
-    {
-      "username": "dadoonet",
-      "profile": "https://github.com/dadoonet",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1437
-    },
-    {
-      "username": "jpountz",
-      "profile": "https://github.com/jpountz",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1412
-    },
-    {
-      "username": "benwtrent",
-      "profile": "https://github.com/benwtrent",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1321
-    },
-    {
-      "username": "mark-vieira",
-      "profile": "https://github.com/mark-vieira",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1275
-    },
-    {
-      "username": "rmuir",
-      "profile": "https://github.com/rmuir",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1252
-    },
-    {
-      "username": "ywangd",
-      "profile": "https://github.com/ywangd",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1206
-    },
-    {
-      "username": "dakrone",
-      "profile": "https://github.com/dakrone",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1157
-    },
-    {
-      "username": "bleskes",
-      "profile": "https://github.com/bleskes",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1127
-    },
-    {
-      "username": "clintongormley",
-      "profile": "https://github.com/clintongormley",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1090
-    },
-    {
-      "username": "jimczi",
-      "profile": "https://github.com/jimczi",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1055
-    },
-    {
-      "username": "breskeby",
-      "profile": "https://github.com/breskeby",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1034
-    },
-    {
-      "username": "lcawl",
-      "profile": "https://github.com/lcawl",
-      "repository": "elastic/elasticsearch",
-      "contributions": 1018
-    },
-    {
-      "username": "spinscale",
-      "profile": "https://github.com/spinscale",
-      "repository": "elastic/elasticsearch",
-      "contributions": 998
-    },
-    {
-      "username": "costin",
-      "profile": "https://github.com/costin",
-      "repository": "elastic/elasticsearch",
-      "contributions": 994
-    },
-    {
-      "username": "jaymode",
-      "profile": "https://github.com/jaymode",
-      "repository": "elastic/elasticsearch",
-      "contributions": 970
-    },
-    {
-      "username": "cbuescher",
-      "profile": "https://github.com/cbuescher",
-      "repository": "elastic/elasticsearch",
-      "contributions": 966
-    },
-    {
-      "username": "davidkyle",
-      "profile": "https://github.com/davidkyle",
-      "repository": "elastic/elasticsearch",
-      "contributions": 897
-    },
-    {
-      "username": "rlamacraft",
-      "profile": "https://github.com/rlamacraft",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 581
-    },
-    {
-      "username": "mKowalski256",
-      "profile": "https://github.com/mKowalski256",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 365
-    },
-    {
-      "username": "tchoi-rs",
-      "profile": "https://github.com/tchoi-rs",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 230
-    },
-    {
-      "username": "rs-fraser",
-      "profile": "https://github.com/rs-fraser",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 154
-    },
-    {
-      "username": "rs-nicof",
-      "profile": "https://github.com/rs-nicof",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 148
-    },
-    {
-      "username": "nhanlon2",
-      "profile": "https://github.com/nhanlon2",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 69
-    },
-    {
-      "username": "mrowe-tan",
-      "profile": "https://github.com/mrowe-tan",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 41
-    },
-    {
-      "username": "nebay-abraha",
-      "profile": "https://github.com/nebay-abraha",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 36
-    },
-    {
-      "username": "tilorspace",
-      "profile": "https://github.com/tilorspace",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 34
-    },
-    {
-      "username": "tuxRamon",
-      "profile": "https://github.com/tuxRamon",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 10
-    },
-    {
-      "username": "tyteen4a03",
-      "profile": "https://github.com/tyteen4a03",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 7
-    },
-    {
-      "username": "akos326",
-      "profile": "https://github.com/akos326",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 1
-    },
-    {
-      "username": "ll4strw",
-      "profile": "https://github.com/ll4strw",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 1
-    },
-    {
-      "username": "richarda23",
-      "profile": "https://github.com/richarda23",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 1
-    },
-    {
-      "username": "tstoeter",
-      "profile": "https://github.com/tstoeter",
-      "repository": "rspace-os/rspace-web",
-      "contributions": 1
-    },
-    {
-      "username": "fora2323",
-      "profile": "https://github.com/fora2323",
-      "repository": "fora2323/Sketchware-DayGreen",
-      "contributions": 293
-    },
-    {
-      "username": "gus23-okta",
-      "profile": "https://github.com/gus23-okta",
-      "repository": "fora2323/Sketchware-DayGreen",
-      "contributions": 46
-    },
-    {
-      "username": "Liu1-stack",
-      "profile": "https://github.com/Liu1-stack",
-      "repository": "fora2323/Sketchware-DayGreen",
+      "username": "StevenBlack",
+      "profile": "https://github.com/StevenBlack",
+      "repository": "twbs/bootstrap",
       "contributions": 38
     },
     {
-      "username": "saqib-cipher",
-      "profile": "https://github.com/saqib-cipher",
-      "repository": "fora2323/Sketchware-DayGreen",
+      "username": "glebm",
+      "profile": "https://github.com/glebm",
+      "repository": "twbs/bootstrap",
+      "contributions": 37
+    },
+    {
+      "username": "burnsra",
+      "profile": "https://github.com/burnsra",
+      "repository": "twbs/bootstrap",
+      "contributions": 34
+    },
+    {
+      "username": "EricWang1358",
+      "profile": "https://github.com/EricWang1358",
+      "repository": "EricWang1358/dsh-web-studyhub",
+      "contributions": 3746
+    },
+    {
+      "username": "cjxdclaw",
+      "profile": "https://github.com/cjxdclaw",
+      "repository": "jichangx/free-nodes",
+      "contributions": 5
+    },
+    {
+      "username": "lollipopjiajia",
+      "profile": "https://github.com/lollipopjiajia",
+      "repository": "IterioDev/car-apps",
+      "contributions": 18
+    },
+    {
+      "username": "IterioDev",
+      "profile": "https://github.com/IterioDev",
+      "repository": "IterioDev/car-apps",
       "contributions": 10
     },
     {
-      "username": "farrel665",
-      "profile": "https://github.com/farrel665",
-      "repository": "fora2323/Sketchware-DayGreen",
+      "username": "dino15309",
+      "profile": "https://github.com/dino15309",
+      "repository": "IterioDev/car-apps",
+      "contributions": 4
+    },
+    {
+      "username": "JustAnotherPU",
+      "profile": "https://github.com/JustAnotherPU",
+      "repository": "IterioDev/car-apps",
       "contributions": 3
     },
     {
-      "username": "Sarg338",
-      "profile": "https://github.com/Sarg338",
-      "repository": "Sarg338/Homestead",
-      "contributions": 158
+      "username": "Ukr-Guy",
+      "profile": "https://github.com/Ukr-Guy",
+      "repository": "IterioDev/car-apps",
+      "contributions": 3
     },
     {
-      "username": "johndu30160",
-      "profile": "https://github.com/johndu30160",
-      "repository": "Sarg338/Homestead",
-      "contributions": 22
+      "username": "ahmetoguz1",
+      "profile": "https://github.com/ahmetoguz1",
+      "repository": "IterioDev/car-apps",
+      "contributions": 1
     },
     {
-      "username": "giu-napoletano29",
-      "profile": "https://github.com/giu-napoletano29",
-      "repository": "Sarg338/Homestead",
+      "username": "dvojtise",
+      "profile": "https://github.com/dvojtise",
+      "repository": "diverse-project/k3",
+      "contributions": 418
+    },
+    {
+      "username": "barais",
+      "profile": "https://github.com/barais",
+      "repository": "diverse-project/k3",
+      "contributions": 151
+    },
+    {
+      "username": "arnobl",
+      "profile": "https://github.com/arnobl",
+      "repository": "diverse-project/k3",
+      "contributions": 102
+    },
+    {
+      "username": "fontanella",
+      "profile": "https://github.com/fontanella",
+      "repository": "diverse-project/k3",
+      "contributions": 57
+    },
+    {
+      "username": "fcoulon",
+      "profile": "https://github.com/fcoulon",
+      "repository": "diverse-project/k3",
+      "contributions": 23
+    },
+    {
+      "username": "d-leroy",
+      "profile": "https://github.com/d-leroy",
+      "repository": "diverse-project/k3",
       "contributions": 10
     },
     {
-      "username": "hieusydo",
-      "profile": "https://github.com/hieusydo",
-      "repository": "Sarg338/Homestead",
-      "contributions": 4
+      "username": "ebousse",
+      "profile": "https://github.com/ebousse",
+      "repository": "diverse-project/k3",
+      "contributions": 8
     },
     {
-      "username": "PedroFlores199",
-      "profile": "https://github.com/PedroFlores199",
-      "repository": "Sarg338/Homestead",
-      "contributions": 4
+      "username": "combemale",
+      "profile": "https://github.com/combemale",
+      "repository": "diverse-project/k3",
+      "contributions": 7
     },
     {
-      "username": "markussandin1",
-      "profile": "https://github.com/markussandin1",
-      "repository": "Sarg338/Homestead",
+      "username": "damenac",
+      "profile": "https://github.com/damenac",
+      "repository": "diverse-project/k3",
       "contributions": 3
     },
     {
-      "username": "Sneeex",
-      "profile": "https://github.com/Sneeex",
-      "repository": "Sarg338/Homestead",
+      "username": "HarshAnand143",
+      "profile": "https://github.com/HarshAnand143",
+      "repository": "mwakidenis/Healthcare-Management-System",
+      "contributions": 15
+    },
+    {
+      "username": "novotnyr",
+      "profile": "https://github.com/novotnyr",
+      "repository": "novotnyr/jwt-intellij-plugin",
+      "contributions": 317
+    },
+    {
+      "username": "jean-voila",
+      "profile": "https://github.com/jean-voila",
+      "repository": "jean-voila/FeurStagram",
+      "contributions": 87
+    },
+    {
+      "username": "KabraX",
+      "profile": "https://github.com/KabraX",
+      "repository": "jean-voila/FeurStagram",
+      "contributions": 4
+    },
+    {
+      "username": "54keesh",
+      "profile": "https://github.com/54keesh",
+      "repository": "jean-voila/FeurStagram",
+      "contributions": 1
+    },
+    {
+      "username": "na-ji",
+      "profile": "https://github.com/na-ji",
+      "repository": "jean-voila/FeurStagram",
+      "contributions": 1
+    },
+    {
+      "username": "andreaschar15",
+      "profile": "https://github.com/andreaschar15",
+      "repository": "jean-voila/FeurStagram",
+      "contributions": 1
+    },
+    {
+      "username": "youssof20",
+      "profile": "https://github.com/youssof20",
+      "repository": "jean-voila/FeurStagram",
+      "contributions": 1
+    },
+    {
+      "username": "semaphore-agent-production[bot]",
+      "profile": "https://github.com/apps/semaphore-agent-production",
+      "repository": "confluentinc/common",
+      "contributions": 8583
+    },
+    {
+      "username": "ConfluentJenkins",
+      "profile": "https://github.com/ConfluentJenkins",
+      "repository": "confluentinc/common",
+      "contributions": 7527
+    },
+    {
+      "username": "ConfluentSemaphore",
+      "profile": "https://github.com/ConfluentSemaphore",
+      "repository": "confluentinc/common",
+      "contributions": 1782
+    },
+    {
+      "username": "janjwerner-confluent",
+      "profile": "https://github.com/janjwerner-confluent",
+      "repository": "confluentinc/common",
+      "contributions": 467
+    },
+    {
+      "username": "xjin-Confluent",
+      "profile": "https://github.com/xjin-Confluent",
+      "repository": "confluentinc/common",
+      "contributions": 225
+    },
+    {
+      "username": "patrick-premont",
+      "profile": "https://github.com/patrick-premont",
+      "repository": "confluentinc/common",
+      "contributions": 176
+    },
+    {
+      "username": "ewencp",
+      "profile": "https://github.com/ewencp",
+      "repository": "confluentinc/common",
+      "contributions": 169
+    },
+    {
+      "username": "nlou9",
+      "profile": "https://github.com/nlou9",
+      "repository": "confluentinc/common",
+      "contributions": 152
+    },
+    {
+      "username": "xli1996",
+      "profile": "https://github.com/xli1996",
+      "repository": "confluentinc/common",
+      "contributions": 149
+    },
+    {
+      "username": "andrewegel",
+      "profile": "https://github.com/andrewegel",
+      "repository": "confluentinc/common",
+      "contributions": 108
+    },
+    {
+      "username": "maxzheng",
+      "profile": "https://github.com/maxzheng",
+      "repository": "confluentinc/common",
+      "contributions": 87
+    },
+    {
+      "username": "norwood",
+      "profile": "https://github.com/norwood",
+      "repository": "confluentinc/common",
+      "contributions": 61
+    },
+    {
+      "username": "karan-singh-99",
+      "profile": "https://github.com/karan-singh-99",
+      "repository": "confluentinc/common",
+      "contributions": 57
+    },
+    {
+      "username": "xvrl",
+      "profile": "https://github.com/xvrl",
+      "repository": "confluentinc/common",
+      "contributions": 56
+    },
+    {
+      "username": "arvindth",
+      "profile": "https://github.com/arvindth",
+      "repository": "confluentinc/common",
+      "contributions": 41
+    },
+    {
+      "username": "ijuma",
+      "profile": "https://github.com/ijuma",
+      "repository": "confluentinc/common",
+      "contributions": 41
+    },
+    {
+      "username": "niteshmor",
+      "profile": "https://github.com/niteshmor",
+      "repository": "confluentinc/common",
+      "contributions": 39
+    },
+    {
+      "username": "rayokota",
+      "profile": "https://github.com/rayokota",
+      "repository": "confluentinc/common",
+      "contributions": 28
+    },
+    {
+      "username": "elismaga",
+      "profile": "https://github.com/elismaga",
+      "repository": "confluentinc/common",
+      "contributions": 26
+    },
+    {
+      "username": "xiangxin72",
+      "profile": "https://github.com/xiangxin72",
+      "repository": "confluentinc/common",
+      "contributions": 24
+    },
+    {
+      "username": "renovatebot-confluentinc[bot]",
+      "profile": "https://github.com/apps/renovatebot-confluentinc",
+      "repository": "confluentinc/common",
+      "contributions": 18
+    },
+    {
+      "username": "supark-cflt",
+      "profile": "https://github.com/supark-cflt",
+      "repository": "confluentinc/common",
+      "contributions": 18
+    },
+    {
+      "username": "service-bot-app[bot]",
+      "profile": "https://github.com/apps/service-bot-app",
+      "repository": "confluentinc/common",
+      "contributions": 16
+    },
+    {
+      "username": "cprovencher",
+      "profile": "https://github.com/cprovencher",
+      "repository": "confluentinc/common",
+      "contributions": 15
+    },
+    {
+      "username": "big-andy-coates",
+      "profile": "https://github.com/big-andy-coates",
+      "repository": "confluentinc/common",
+      "contributions": 15
+    },
+    {
+      "username": "omkreddy",
+      "profile": "https://github.com/omkreddy",
+      "repository": "confluentinc/common",
+      "contributions": 13
+    },
+    {
+      "username": "cchristous",
+      "profile": "https://github.com/cchristous",
+      "repository": "confluentinc/common",
+      "contributions": 13
+    },
+    {
+      "username": "shiremath",
+      "profile": "https://github.com/shiremath",
+      "repository": "confluentinc/common",
+      "contributions": 12
+    },
+    {
+      "username": "rhauch",
+      "profile": "https://github.com/rhauch",
+      "repository": "confluentinc/common",
+      "contributions": 11
+    },
+    {
+      "username": "dimitarndimitrov",
+      "profile": "https://github.com/dimitarndimitrov",
+      "repository": "confluentinc/common",
+      "contributions": 11
+    },
+    {
+      "username": "prian3003",
+      "profile": "https://github.com/prian3003",
+      "repository": "proxmint/free-proxy-list",
+      "contributions": 5067
+    },
+    {
+      "username": "ggleyzer",
+      "profile": "https://github.com/ggleyzer",
+      "repository": "xtclang/xvm",
+      "contributions": 6029
+    },
+    {
+      "username": "cpurdy",
+      "profile": "https://github.com/cpurdy",
+      "repository": "xtclang/xvm",
+      "contributions": 3096
+    },
+    {
+      "username": "lagergren",
+      "profile": "https://github.com/lagergren",
+      "repository": "xtclang/xvm",
+      "contributions": 237
+    },
+    {
+      "username": "markandrewfalco",
+      "profile": "https://github.com/markandrewfalco",
+      "repository": "xtclang/xvm",
+      "contributions": 61
+    },
+    {
+      "username": "thegridman",
+      "profile": "https://github.com/thegridman",
+      "repository": "xtclang/xvm",
+      "contributions": 32
+    },
+    {
+      "username": "cliffclick",
+      "profile": "https://github.com/cliffclick",
+      "repository": "xtclang/xvm",
+      "contributions": 13
+    },
+    {
+      "username": "mrcompator",
+      "profile": "https://github.com/mrcompator",
+      "repository": "xtclang/xvm",
+      "contributions": 12
+    },
+    {
+      "username": "Anon514",
+      "profile": "https://github.com/Anon514",
+      "repository": "xtclang/xvm",
+      "contributions": 11
+    },
+    {
+      "username": "jacksonthea",
+      "profile": "https://github.com/jacksonthea",
+      "repository": "xtclang/xvm",
+      "contributions": 5
+    },
+    {
+      "username": "azzazzel",
+      "profile": "https://github.com/azzazzel",
+      "repository": "xtclang/xvm",
       "contributions": 2
     },
     {
-      "username": "sj14",
-      "profile": "https://github.com/sj14",
-      "repository": "Sarg338/Homestead",
+      "username": "ezekielelvis",
+      "profile": "https://github.com/ezekielelvis",
+      "repository": "xtclang/xvm",
       "contributions": 1
+    },
+    {
+      "username": "cpswan",
+      "profile": "https://github.com/cpswan",
+      "repository": "xtclang/xvm",
+      "contributions": 1
+    },
+    {
+      "username": "keithc-ca",
+      "profile": "https://github.com/keithc-ca",
+      "repository": "xtclang/xvm",
+      "contributions": 1
+    },
+    {
+      "username": "mvanhorn",
+      "profile": "https://github.com/mvanhorn",
+      "repository": "xtclang/xvm",
+      "contributions": 1
+    },
+    {
+      "username": "RaphaelFakhri",
+      "profile": "https://github.com/RaphaelFakhri",
+      "repository": "xtclang/xvm",
+      "contributions": 1
+    },
+    {
+      "username": "kabutz",
+      "profile": "https://github.com/kabutz",
+      "repository": "xtclang/xvm",
+      "contributions": 1
+    },
+    {
+      "username": "Sprezzatura1989",
+      "profile": "https://github.com/Sprezzatura1989",
+      "repository": "xtclang/xvm",
+      "contributions": 1
+    },
+    {
+      "username": "pierre-yves-monnet",
+      "profile": "https://github.com/pierre-yves-monnet",
+      "repository": "camunda-community-hub/zeebe-cherry-runtime",
+      "contributions": 118
+    },
+    {
+      "username": "upgradingdave",
+      "profile": "https://github.com/upgradingdave",
+      "repository": "camunda-community-hub/zeebe-cherry-runtime",
+      "contributions": 17
+    },
+    {
+      "username": "actions-user",
+      "profile": "https://github.com/actions-user",
+      "repository": "camunda-community-hub/zeebe-cherry-runtime",
+      "contributions": 11
+    },
+    {
+      "username": "jtruon",
+      "profile": "https://github.com/jtruon",
+      "repository": "camunda-community-hub/zeebe-cherry-runtime",
+      "contributions": 10
+    },
+    {
+      "username": "berndruecker",
+      "profile": "https://github.com/berndruecker",
+      "repository": "camunda-community-hub/zeebe-cherry-runtime",
+      "contributions": 4
+    },
+    {
+      "username": "superbeagle",
+      "profile": "https://github.com/superbeagle",
+      "repository": "camunda-community-hub/zeebe-cherry-runtime",
+      "contributions": 4
+    },
+    {
+      "username": "jonathanlukas",
+      "profile": "https://github.com/jonathanlukas",
+      "repository": "camunda-community-hub/zeebe-cherry-runtime",
+      "contributions": 3
+    },
+    {
+      "username": "xomiamoore",
+      "profile": "https://github.com/xomiamoore",
+      "repository": "camunda-community-hub/zeebe-cherry-runtime",
+      "contributions": 1
+    },
+    {
+      "username": "plungu",
+      "profile": "https://github.com/plungu",
+      "repository": "camunda-community-hub/zeebe-cherry-runtime",
+      "contributions": 1
+    },
+    {
+      "username": "sherwinski",
+      "profile": "https://github.com/sherwinski",
+      "repository": "OneSignal/onesignal-java-api",
+      "contributions": 40
+    },
+    {
+      "username": "onesignal-deploy",
+      "profile": "https://github.com/onesignal-deploy",
+      "repository": "OneSignal/onesignal-java-api",
+      "contributions": 19
+    },
+    {
+      "username": "kesheshyan",
+      "profile": "https://github.com/kesheshyan",
+      "repository": "OneSignal/onesignal-java-api",
+      "contributions": 5
+    },
+    {
+      "username": "jkasten2",
+      "profile": "https://github.com/jkasten2",
+      "repository": "OneSignal/onesignal-java-api",
+      "contributions": 2
+    },
+    {
+      "username": "fadi-george",
+      "profile": "https://github.com/fadi-george",
+      "repository": "OneSignal/onesignal-java-api",
+      "contributions": 1
+    },
+    {
+      "username": "jmadler",
+      "profile": "https://github.com/jmadler",
+      "repository": "OneSignal/onesignal-java-api",
+      "contributions": 1
+    },
+    {
+      "username": "kweiner",
+      "profile": "https://github.com/kweiner",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 2047
+    },
+    {
+      "username": "ChristianMurphy",
+      "profile": "https://github.com/ChristianMurphy",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 2045
+    },
+    {
+      "username": "edalquist",
+      "profile": "https://github.com/edalquist",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 2023
+    },
+    {
+      "username": "drewwills",
+      "profile": "https://github.com/drewwills",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 1371
+    },
+    {
+      "username": "apetro",
+      "profile": "https://github.com/apetro",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 1281
+    },
+    {
+      "username": "bourey",
+      "profile": "https://github.com/bourey",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 845
+    },
+    {
+      "username": "bjagg",
+      "profile": "https://github.com/bjagg",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 551
+    },
+    {
+      "username": "renovate-bot",
+      "profile": "https://github.com/renovate-bot",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 458
+    },
+    {
+      "username": "ellentuck",
+      "profile": "https://github.com/ellentuck",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 215
+    },
+    {
+      "username": "fereira",
+      "profile": "https://github.com/fereira",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 196
+    },
+    {
+      "username": "nblair",
+      "profile": "https://github.com/nblair",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 186
+    },
+    {
+      "username": "sbramhall",
+      "profile": "https://github.com/sbramhall",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 171
+    },
+    {
+      "username": "timlevett",
+      "profile": "https://github.com/timlevett",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 134
+    },
+    {
+      "username": "jhelmer-unicon",
+      "profile": "https://github.com/jhelmer-unicon",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 122
+    },
+    {
+      "username": "jgribonvald",
+      "profile": "https://github.com/jgribonvald",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 87
+    },
+    {
+      "username": "lindholm",
+      "profile": "https://github.com/lindholm",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 74
+    },
+    {
+      "username": "vertein",
+      "profile": "https://github.com/vertein",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 72
+    },
+    {
+      "username": "cbeach47",
+      "profile": "https://github.com/cbeach47",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 69
+    },
+    {
+      "username": "wgthom",
+      "profile": "https://github.com/wgthom",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 49
+    },
+    {
+      "username": "shawnconnolly",
+      "profile": "https://github.com/shawnconnolly",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 43
+    },
+    {
+      "username": "doodelicious",
+      "profile": "https://github.com/doodelicious",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 42
+    },
+    {
+      "username": "jdlich",
+      "profile": "https://github.com/jdlich",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 36
+    },
+    {
+      "username": "agrabovskis",
+      "profile": "https://github.com/agrabovskis",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 32
+    },
+    {
+      "username": "andrewstuart",
+      "profile": "https://github.com/andrewstuart",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 28
+    },
+    {
+      "username": "mindblender",
+      "profile": "https://github.com/mindblender",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 25
+    },
+    {
+      "username": "mgillian",
+      "profile": "https://github.com/mgillian",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 25
+    },
+    {
+      "username": "loulou2u",
+      "profile": "https://github.com/loulou2u",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 25
+    },
+    {
+      "username": "groybal",
+      "profile": "https://github.com/groybal",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 24
+    },
+    {
+      "username": "bill-brown",
+      "profile": "https://github.com/bill-brown",
+      "repository": "uPortal-Project/uPortal",
+      "contributions": 17
     }
   ]
 }

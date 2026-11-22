@@ -10,10 +10,10 @@ from datetime import datetime, timezone
 USERNAME = "Dippp10-ally"
 API = "https://api.github.com"
 
-TOKEN = os.getenv("FOLLOWING_TOKEN5")
+TOKEN = os.getenv("FOLLOW_TOKEN")
 
 if not TOKEN:
-    raise SystemExit("FOLLOWING_TOKEN5 is missing.")
+    raise SystemExit("FOLLOW_TOKEN is missing.")
 
 HEADERS = {
     "Accept": "application/vnd.github+json",

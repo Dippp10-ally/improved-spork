@@ -18,16 +18,13 @@ ashishps1
 astaxie
 atilsamancioglu
 AUTOMATIC1111
-bailicangdu
 benawad
 BEPb
 bot50
-bradfitz
 bradtraversy
 brianyu28
 brunosimon
 buckyroberts
-BurntSushi
 campusx-official
 cassidoo
 Charles-Chrismann
@@ -60,9 +57,7 @@ elyxdev
 esin
 eust-w
 evanw
-fabpot
 fchollet
-fengdu78
 feross
 filipedeschamps
 florinpop17
@@ -72,7 +67,6 @@ gamemann
 garrytan
 geerlingguy
 geohot
-george0st
 getify
 ggerganov
 goodfeli
@@ -96,7 +90,6 @@ JacksonTian
 jadijadi
 jakevdp
 JakeWharton
-jashkenas
 JeffreyWay
 jeresig
 jessfraz
@@ -163,7 +156,6 @@ peter-kimanzi
 pewdiepie-archdaemon
 phodal
 poteto
-professorguanabara
 ProgrammingHero1
 programthink
 rafaballerini
@@ -185,7 +177,6 @@ shiffman
 simonw
 sindresorhus
 sorrycc
-soumith
 spf13
 standardgalactic
 steipete
@@ -200,6 +191,7 @@ techwithtim
 ThePrimeagen
 tiangolo
 tj
+tjdevries
 tomnomnom
 torvalds
 tpope
@@ -214,6 +206,5 @@ WebDevSimplified
 wesbos
 wesm
 xiaolai
-yinwang0
 yyx990803
 zarazhangrui

@@ -1,11 +1,13 @@
 {
   "account": "Dippp10-ally",
-  "updated_at": "2026-11-20T22:42:20.021932+00:00",
-  "followers": 6,
-  "following": 89,
-  "public_repositories": 17806,
-  "new_followers": [],
-  "new_followers_count": 0,
+  "updated_at": "2026-11-22T13:06:03.371584+00:00",
+  "followers": 7,
+  "following": 111,
+  "public_repositories": 17873,
+  "new_followers": [
+    "boldotter921"
+  ],
+  "new_followers_count": 1,
   "lost_followers": [],
   "lost_followers_count": 0
 }

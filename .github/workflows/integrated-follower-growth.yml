@@ -3,9 +3,7 @@ name: Integrated Follower Growth
 
 on:
   schedule:
-    # Every day at 8:15 PM Oman time
-    - cron: "15 16 * * *"
-
+    - cron: "15 16 * * *" # 8:15 PM Oman time
   workflow_dispatch:
 
 permissions:
@@ -23,7 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -31,26 +29,41 @@ jobs:
       - name: Discover potential developers
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FOLLOWING_TOKEN5: ${{ secrets.FOLLOWING_TOKEN5 }}
-        run: |
-          python attract_followers.py
+        run: python attract_followers.py
 
-      - name: Validate approved users
+      - name: Check 13 approved user files
         run: |
-          if [ ! -f approved_users.txt ]; then
-            echo "approved_users.txt not found"
+          total=0
+
+          for i in $(seq 1 13); do
+            file="approved_users_part_${i}.txt"
+
+            if [ -f "$file" ]; then
+              count=$(grep -cve '^[[:space:]]*$' "$file" || true)
+              echo "$file: $count usernames"
+              total=$((total + count))
+            else
+              echo "Missing file: $file"
+            fi
+          done
+
+          echo "Total approved usernames: $total"
+
+          if [ "$total" -eq 0 ]; then
+            echo "No approved usernames found."
             exit 1
           fi
 
-          echo "Approved usernames:"
-          grep -cve '^[[:space:]]*$' approved_users.txt || true
-
       - name: Process approved users
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FOLLOWING_TOKEN5: ${{ secrets.FOLLOWING_TOKEN5 }}
         run: |
-          python follow_users.py
+          if [ -n "$FOLLOWING_TOKEN5" ]; then
+            python follow_users.py
+          else
+            echo "FOLLOWING_TOKEN5 is not configured."
+            echo "Following step skipped; discovery and tracking can continue."
+          fi
 
       - name: Track actual incoming followers
         env:
@@ -64,78 +77,71 @@ jobs:
           from datetime import datetime, timezone
 
           username = "Dippp10-ally"
-          token = os.environ["GITHUB_TOKEN"]
+          token = os.getenv("GITHUB_TOKEN")
 
-          def get(url):
-              req = urllib.request.Request(
-                  url,
-                  headers={
-                      "Authorization": f"Bearer {token}",
-                      "Accept": "application/vnd.github+json"
-                  }
-              )
-              with urllib.request.urlopen(req) as response:
-                  return json.loads(response.read())
-
-          profile = get(
-              f"https://api.github.com/users/{username}"
-          )
-
-          actual = []
+          url = f"https://api.github.com/users/{username}/followers?per_page=100"
+          followers = []
           page = 1
 
           while True:
-              users = get(
-                  f"https://api.github.com/users/{username}/followers"
-                  f"?per_page=100&page={page}"
+              request = urllib.request.Request(
+                  f"{url}&page={page}",
+                  headers={
+                      "Accept": "application/vnd.github+json",
+                      **({"Authorization": f"Bearer {token}"} if token else {})
+                  }
               )
-              if not users:
+
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  data = json.loads(response.read().decode("utf-8"))
+
+              if not data:
                   break
-              actual.extend(u["login"] for u in users)
+
+              followers.extend(user["login"] for user in data)
               page += 1
 
-          path = Path("follower_history.json")
-          history = (
-              json.loads(path.read_text())
-              if path.exists() else []
-          )
+          history_file = Path("follower_history.json")
 
-          previous = (
-              history[-1]["actual_followers"]
-              if history else len(actual)
-          )
-
-          count = len(actual)
-          change = count - previous
+          if history_file.exists():
+              history = json.loads(history_file.read_text())
+          else:
+              history = []
 
           history.append({
               "date": datetime.now(timezone.utc).isoformat(),
-              "actual_followers": count,
-              "daily_change": change
+              "follower_count": len(followers),
+              "followers": sorted(set(followers))
           })
 
-          path.write_text(json.dumps(history, indent=2))
+          history_file.write_text(json.dumps(history, indent=2))
 
-          Path("follower_report.md").write_text(
-              f"# Daily Follower Report\n\n"
-              f"Account: {username}\n\n"
-              f"Profile count: {profile['followers']}\n\n"
-              f"Actual follower list: {count}\n\n"
-              f"Daily change: {change:+d}\n"
-          )
+          report = [
+              "# GitHub Follower Report",
+              "",
+              f"- Account: {username}",
+              f"- Current followers: {len(set(followers))}",
+              f"- Report date: {datetime.now(timezone.utc).isoformat()}",
+              "",
+              "## Current followers",
+              ""
+          ]
 
-          print("Actual followers:", count)
-          print("Daily change:", change)
+          report.extend(f"- {name}" for name in sorted(set(followers)))
+
+          Path("follower_report.md").write_text("\n".join(report) + "\n")
+
+          print(f"Current incoming followers: {len(set(followers))}")
           PY
 
       - name: Commit daily results
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email \
-            "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "Dippp10-ally"
+          git config user.email "dipikabarkat@gmail.com"
 
           for file in \
             potential_followers.json \
+            potential_followers.txt \
             follow_results.json \
             follower_history.json \
             follower_report.md
@@ -146,6 +152,8 @@ jobs:
           done
 
           if ! git diff --cached --quiet; then
-            git commit -m "chore: update follower growth data"
+            git commit -m "chore: update daily follower report"
             git push origin HEAD
+          else
+            echo "No changes to commit."
           fi

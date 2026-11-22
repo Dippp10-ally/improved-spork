@@ -10,150 +10,98 @@ permissions:
   contents: write
 
 concurrency:
-  group: follower-growth
+  group: integrated-follower-growth
   cancel-in-progress: false
 
 jobs:
   follower-growth:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Discover potential developers
-        env:
-          FOLLOWING_TOKEN5: ${{ secrets.FOLLOWING_TOKEN5 }}
-        run: python attract_followers.py
-
-      - name: Check 13 approved user files
+      - name: Verify approved user files
         run: |
-          total=0
+          count=0
 
           for i in $(seq 1 13); do
             file="approved_users_part_${i}.txt"
 
             if [ -f "$file" ]; then
-              count=$(grep -cve '^[[:space:]]*$' "$file" || true)
-              echo "$file: $count usernames"
-              total=$((total + count))
+              names=$(grep -cve '^[[:space:]]*$' "$file" || true)
+              echo "$file: $names usernames"
+              count=$((count + 1))
             else
-              echo "Missing file: $file"
+              echo "Missing: $file"
             fi
           done
 
-          echo "Total approved usernames: $total"
+          echo "Found $count of 13 approved-user files."
 
-          if [ "$total" -eq 0 ]; then
-            echo "No approved usernames found."
+          if [ "$count" -eq 0 ]; then
+            echo "No approved-user files found."
             exit 1
           fi
 
-      - name: Process approved users
-        env:
-          FOLLOW_TOKEN: ${{ secrets.FOLLOW_TOKEN }}
-        run: python follow_users.py
-
-      - name: Track actual incoming followers
+      - name: Discover potential developers
         env:
           FOLLOWING_TOKEN5: ${{ secrets.FOLLOWING_TOKEN5 }}
         run: |
-          python - <<'PY'
-          import json
-          import os
-          import urllib.request
-          from pathlib import Path
-          from datetime import datetime, timezone
+          python attract_followers.py
 
-          username = "Dippp10-ally"
-          token = os.getenv("FOLLOWING_TOKEN5")
-
-          headers = {
-              "Accept": "application/vnd.github+json",
-              "User-Agent": "Dippp10-ally-follower-tracker"
-          }
-
-          if token:
-              headers["Authorization"] = f"Bearer {token}"
-
-          followers = []
-          page = 1
-
-          while True:
-              url = (
-                  f"https://api.github.com/users/{username}/followers"
-                  f"?per_page=100&page={page}"
-              )
-
-              request = urllib.request.Request(url, headers=headers)
-
-              with urllib.request.urlopen(request, timeout=30) as response:
-                  data = json.loads(response.read().decode("utf-8"))
-
-              if not data:
-                  break
-
-              followers.extend(
-                  user["login"] for user in data if user.get("login")
-              )
-              page += 1
-
-          followers = sorted(set(followers), key=str.lower)
-
-          history_file = Path("follower_history.json")
-
-          if history_file.exists():
-              history = json.loads(history_file.read_text(encoding="utf-8"))
-          else:
-              history = []
-
-          history.append({
-              "date": datetime.now(timezone.utc).isoformat(),
-              "follower_count": len(followers),
-              "followers": followers
-          })
-
-          history_file.write_text(
-              json.dumps(history, indent=2),
-              encoding="utf-8"
-          )
-
-          report = [
-              "# GitHub Follower Report",
-              "",
-              f"Account: {username}",
-              f"Current followers: {len(followers)}",
-              f"Updated: {datetime.now(timezone.utc).isoformat()}",
-              "",
-              "## Current followers",
-              ""
-          ]
-
-          report.extend(f"- {name}" for name in followers)
-
-          Path("follower_report.md").write_text(
-              "\n".join(report) + "\n",
-              encoding="utf-8"
-          )
-
-          print(f"Current incoming followers: {len(followers)}")
-          PY
-
-      - name: Commit daily results
+      - name: Review approved users
+        env:
+          FOLLOW_TOKEN: ${{ secrets.FOLLOW_TOKEN }}
         run: |
-          git config user.name "Dippp10-ally"
-          git config user.email "dipikabarkat@gmail.com"
+          python follow_users.py
 
+      - name: Update incoming follower report
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python track_followers.py
+
+      - name: Check report sizes
+        run: |
           for file in \
-            potential_followers.json \
-            potential_followers.txt \
             follow_results.json \
             users_to_review.txt \
+            potential_followers.json \
+            potential_followers.txt \
+            follower_history.json \
+            follower_report.md
+          do
+            if [ -f "$file" ]; then
+              size=$(stat -c%s "$file")
+              echo "$file: $size bytes"
+
+              if [ "$size" -gt 90000000 ]; then
+                echo "ERROR: $file is too large to commit."
+                exit 1
+              fi
+            fi
+          done
+
+      - name: Commit compact reports
+        run: |
+          git config user.name "Dippp10-ally"
+          git config user.email \
+            "dipikabarkat@gmail.com"
+
+          for file in \
+            follow_results.json \
+            users_to_review.txt \
+            potential_followers.json \
+            potential_followers.txt \
             follower_history.json \
             follower_report.md
           do
@@ -163,8 +111,8 @@ jobs:
           done
 
           if ! git diff --cached --quiet; then
-            git commit -m "chore: update daily follower data"
-            git push origin HEAD
+            git commit -m "chore: update compact follower reports"
+            git push origin HEAD:main
           else
-            echo "No changes to commit."
+            echo "No report changes to commit."
           fi

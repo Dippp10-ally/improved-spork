@@ -1,10 +1,11 @@
 
-import os
 import json
+import os
+import re
 import urllib.request
-import urllib.parse
 import urllib.error
 from pathlib import Path
+from datetime import datetime, timezone
 
 USERNAME = "Dippp10-ally"
 API = "https://api.github.com"
@@ -12,154 +13,123 @@ API = "https://api.github.com"
 JSON_FILE = Path("potential_followers.json")
 TXT_FILE = Path("potential_followers.txt")
 
-TOKEN = (
-    os.getenv("GITHUB_TOKEN")
-    or os.getenv("FOLLOWING_TOKEN5")
-)
+SEARCH_QUERIES = [
+    "type:user followers:>5",
+    "type:user repos:>2",
+    "type:user followers:>10",
+    "type:user repos:>5"
+]
+
+TOKEN = os.getenv("GITHUB_TOKEN")
 
 HEADERS = {
     "Accept": "application/vnd.github+json",
-    "User-Agent": "Dippp10-ally-discovery"
+    "User-Agent": "Dippp10-ally-developer-discovery"
 }
 
 if TOKEN:
     HEADERS["Authorization"] = f"Bearer {TOKEN}"
 
-QUERIES = [
-    "type:user followers:>5",
-    "type:user repos:>2",
-    "type:user language:Python",
-    "type:user language:JavaScript",
-    "type:user language:Java",
-    "type:user followers:>10"
-]
 
+def search_users(query, page):
+    from urllib.parse import urlencode
 
-def api_get(url):
-    req = urllib.request.Request(
-        url,
-        headers=HEADERS
-    )
+    params = urlencode({
+        "q": query,
+        "per_page": 100,
+        "page": page
+    })
 
-    with urllib.request.urlopen(req, timeout=30) as response:
-        return json.loads(response.read())
+    url = f"{API}/search/users?{params}"
 
+    request = urllib.request.Request(url, headers=HEADERS)
 
-def discover_users():
-    discovered = {}
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            return json.loads(response.read().decode("utf-8"))
 
-    for query in QUERIES:
-        print("Searching:", query)
+    except urllib.error.HTTPError as error:
+        message = error.read().decode("utf-8", errors="replace")
+        print(f"Search error {error.code}: {message[:250]}")
+        return {}
 
-        for page in range(1, 3):
-            params = urllib.parse.urlencode({
-                "q": query,
-                "per_page": 100,
-                "page": page
-            })
-
-            url = f"{API}/search/users?{params}"
-
-            try:
-                result = api_get(url)
-
-                for user in result.get("items", []):
-                    login = user.get("login")
-
-                    if login and login.lower() != USERNAME.lower():
-                        discovered[login.lower()] = login
-
-                if page * 100 >= result.get("total_count", 0):
-                    break
-
-            except urllib.error.HTTPError as error:
-                print("API error:", error.code)
-                break
-
-            except Exception as error:
-                print("Search error:", error)
-                break
-
-    return discovered
+    except Exception as error:
+        print(f"Request failed: {error}")
+        return {}
 
 
 def load_existing():
-    if not JSON_FILE.exists():
-        return {}
+    names = set()
 
-    try:
-        data = json.loads(
-            JSON_FILE.read_text(encoding="utf-8")
-        )
+    if JSON_FILE.exists():
+        try:
+            data = json.loads(JSON_FILE.read_text(encoding="utf-8"))
 
-        users = {}
+            if isinstance(data, list):
+                for item in data:
+                    if isinstance(item, str):
+                        names.add(item)
+                    elif isinstance(item, dict) and item.get("login"):
+                        names.add(item["login"])
 
-        for item in data:
-            name = (
-                item if isinstance(item, str)
-                else item.get("login", "")
-            )
+        except (json.JSONDecodeError, OSError):
+            print("Could not read existing JSON; starting fresh.")
 
-            if name and name.lower() != USERNAME.lower():
-                users[name.lower()] = name
+    if TXT_FILE.exists():
+        try:
+            for line in TXT_FILE.read_text(encoding="utf-8").splitlines():
+                if line.strip():
+                    names.add(line.strip())
+        except OSError:
+            pass
 
-        return users
-
-    except (ValueError, TypeError):
-        print("Could not read existing JSON.")
-        return {}
-
-
-def save_files(users):
-    usernames = sorted(
-        users.values(),
-        key=str.lower
-    )
-
-    # JSON output
-    JSON_FILE.write_text(
-        json.dumps(usernames, indent=2),
-        encoding="utf-8"
-    )
-
-    # TXT output: one username per line
-    TXT_FILE.write_text(
-        "\n".join(usernames) + (
-            "\n" if usernames else ""
-        ),
-        encoding="utf-8"
-    )
-
-    print("\nFiles updated:")
-    print(JSON_FILE)
-    print(TXT_FILE)
+    return names
 
 
 def main():
-    print("GitHub developer discovery")
-    print("Account:", USERNAME)
+    discovered = load_existing()
 
-    existing = load_existing()
-    discovered = discover_users()
+    for query in SEARCH_QUERIES:
+        print(f"\nSearching: {query}")
 
-    new_users = {
-        key: value
-        for key, value in discovered.items()
-        if key not in existing
-    }
+        for page in (1, 2):
+            result = search_users(query, page)
 
-    combined = {**existing, **discovered}
+            for user in result.get("items", []):
+                login = user.get("login", "").strip()
 
-    save_files(combined)
+                if not login:
+                    continue
 
-    print("\nDiscovery completed")
-    print("New developers:", len(new_users))
-    print("Previous developers:", len(existing))
-    print("Total unique usernames:", len(combined))
+                if login.lower() == USERNAME.lower():
+                    continue
 
-    print("\nApproved files remain separate:")
-    for i in range(1, 14):
-        print(f"approved_users_part_{i}.txt")
+                if re.fullmatch(r"[A-Za-z0-9-]{1,39}", login):
+                    discovered.add(login)
+
+            print(f"Page {page}: {len(result.get('items', []))} results")
+
+    sorted_names = sorted(discovered, key=str.lower)
+
+    JSON_FILE.write_text(
+        json.dumps({
+            "account": USERNAME,
+            "updated_at": datetime.now(timezone.utc).isoformat(),
+            "count": len(sorted_names),
+            "usernames": sorted_names
+        }, indent=2),
+        encoding="utf-8"
+    )
+
+    TXT_FILE.write_text(
+        "\n".join(sorted_names) + ("\n" if sorted_names else ""),
+        encoding="utf-8"
+    )
+
+    print("\nDiscovery completed.")
+    print(f"Total saved usernames: {len(sorted_names)}")
+    print(f"JSON file: {JSON_FILE}")
+    print(f"TXT file: {TXT_FILE}")
 
 
 if __name__ == "__main__":

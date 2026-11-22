@@ -2,186 +2,146 @@
 import json
 import os
 import re
-import time
 import urllib.request
 import urllib.error
 from pathlib import Path
+from datetime import datetime, timezone
 
 USERNAME = "Dippp10-ally"
 API = "https://api.github.com"
 
-# Exactly 13 approved-user files
-APPROVED_FILES = [
-    Path(f"approved_users_part_{i}.txt")
-    for i in range(1, 14)
-]
+TOKEN = os.getenv("FOLLOWING_TOKEN5")
 
-OUTPUT_FILE = Path("follow_results.json")
+if not TOKEN:
+    raise SystemExit("FOLLOWING_TOKEN5 is missing.")
 
-DAILY_LIMIT = 20
-TOKEN = os.environ.get("FOLLOW_TOKEN")
+HEADERS = {
+    "Accept": "application/vnd.github+json",
+    "Authorization": f"Bearer {TOKEN}",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "User-Agent": "Dippp10-ally-approved-review"
+}
 
-
-def api_request(url, method="GET"):
-    headers = {
-        "Accept": "application/vnd.github+json",
-        "Authorization": "Bearer " + TOKEN,
-        "X-GitHub-Api-Version": "2022-11-28",
-        "User-Agent": "Dippp10-Follow-System"
-    }
-
-    request = urllib.request.Request(
-        url,
-        data=b"" if method == "PUT" else None,
-        headers=headers,
-        method=method
-    )
-
-    return urllib.request.urlopen(request, timeout=30)
+RESULT_FILE = Path("follow_results.json")
+REVIEW_FILE = Path("users_to_review.txt")
 
 
-def get_approved_users():
-    users = []
-    seen = set()
+def api_get(url):
+    request = urllib.request.Request(url, headers=HEADERS)
 
-    for file in APPROVED_FILES:
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            return json.loads(response.read().decode("utf-8"))
 
-        if not file.exists():
-            print("Missing file:", file)
+    except urllib.error.HTTPError as error:
+        print(f"GitHub API error: HTTP {error.code}")
+        print(error.read().decode("utf-8", errors="replace")[:250])
+        return None
+
+    except Exception as error:
+        print(f"Request failed: {error}")
+        return None
+
+
+def load_approved_users():
+    users = set()
+
+    for number in range(1, 14):
+        path = Path(f"approved_users_part_{number}.txt")
+
+        if not path.exists():
+            print(f"Missing: {path}")
             continue
 
-        print("Reading:", file)
+        with path.open(encoding="utf-8") as file:
+            for line in file:
+                name = line.strip()
 
-        with file.open("r", encoding="utf-8") as f:
-            for line in f:
-
-                login = line.strip().lstrip("@")
-
-                if not login or login.startswith("#"):
-                    continue
-
-                # GitHub username validation
                 if (
-                    len(login) > 39
-                    or not re.fullmatch(
-                        r"(?!.*--)[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?",
-                        login
-                    )
+                    name
+                    and not name.startswith("#")
+                    and re.fullmatch(r"[A-Za-z0-9-]{1,39}", name)
+                    and name.lower() != USERNAME.lower()
                 ):
-                    print("Invalid username skipped:", login)
-                    continue
+                    users.add(name)
 
-                if login.lower() == USERNAME.lower():
-                    continue
+    return sorted(users, key=str.lower)
 
-                if login.lower() in seen:
-                    continue
 
-                seen.add(login.lower())
-                users.append(login)
+def load_following():
+    following = set()
+    page = 1
 
-    print("Total unique approved users:", len(users))
+    while True:
+        url = (
+            f"{API}/users/{USERNAME}/following"
+            f"?per_page=100&page={page}"
+        )
 
-    return users
+        data = api_get(url)
+
+        if not isinstance(data, list):
+            raise SystemExit("Could not retrieve following list.")
+
+        if not data:
+            break
+
+        for user in data:
+            if user.get("login"):
+                following.add(user["login"].lower())
+
+        page += 1
+
+    return following
 
 
 def main():
+    approved = load_approved_users()
+    following = load_following()
 
-    if not TOKEN:
-        raise SystemExit("FOLLOW_TOKEN is missing.")
+    already_following = [
+        name for name in approved if name.lower() in following
+    ]
 
-    # Verify token owner
-    with api_request(API + "/user") as response:
-        account = json.loads(response.read().decode("utf-8"))
+    to_review = [
+        name for name in approved if name.lower() not in following
+    ]
 
-    if account.get("login", "").lower() != USERNAME.lower():
-        raise SystemExit(
-            "Token does not belong to Dippp10-ally. Stopping."
-        )
+    report = {
+        "account": USERNAME,
+        "date": datetime.now(timezone.utc).isoformat(),
+        "approved_count": len(approved),
+        "already_following_count": len(already_following),
+        "review_count": len(to_review),
+        "already_following": already_following,
+        "users_to_review": to_review
+    }
 
-    users = get_approved_users()
-
-    if not users:
-        raise SystemExit("No valid approved usernames found.")
-
-    results = []
-    newly_followed = 0
-
-    for login in users:
-
-        # Stop after 20 new follows
-        if newly_followed >= DAILY_LIMIT:
-            break
-
-        url = API + "/user/following/" + login
-
-        try:
-
-            # Check existing following status
-            try:
-                with api_request(url):
-                    print("Already following:", login)
-
-                    results.append({
-                        "username": login,
-                        "status": "already_following"
-                    })
-
-                    continue
-
-            except urllib.error.HTTPError as error:
-                if error.code != 404:
-                    raise
-
-            # Follow approved account
-            with api_request(url, "PUT"):
-                print("Followed successfully:", login)
-
-            newly_followed += 1
-
-            results.append({
-                "username": login,
-                "status": "followed"
-            })
-
-            time.sleep(2)
-
-        except urllib.error.HTTPError as error:
-
-            print("GitHub error:", login, error.code)
-
-            results.append({
-                "username": login,
-                "status": "error",
-                "http_code": error.code
-            })
-
-        except Exception as error:
-
-            print("Request failed:", login, str(error))
-
-            results.append({
-                "username": login,
-                "status": "error",
-                "message": str(error)
-            })
-
-    OUTPUT_FILE.write_text(
-        json.dumps({
-            "account": USERNAME,
-            "approved_files": len(APPROVED_FILES),
-            "processed": len(results),
-            "newly_followed": newly_followed,
-            "results": results
-        }, indent=2),
+    RESULT_FILE.write_text(
+        json.dumps(report, indent=2),
         encoding="utf-8"
     )
 
-    print("\n========== SUMMARY ==========")
-    print("Processed:", len(results))
-    print("Newly followed:", newly_followed)
-    print("Daily limit:", DAILY_LIMIT)
-    print("Saved:", OUTPUT_FILE)
+    lines = [
+        "# Review these approved GitHub accounts before following",
+        ""
+    ]
+
+    lines.extend(
+        f"{name} - https://github.com/{name}"
+        for name in to_review
+    )
+
+    REVIEW_FILE.write_text(
+        "\n".join(lines) + "\n",
+        encoding="utf-8"
+    )
+
+    print(f"Approved accounts: {len(approved)}")
+    print(f"Already following: {len(already_following)}")
+    print(f"Ready for review: {len(to_review)}")
+    print("Saved follow_results.json")
+    print("Saved users_to_review.txt")
 
 
 if __name__ == "__main__":

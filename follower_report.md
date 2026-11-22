@@ -3,7 +3,7 @@
 - Account: Dippp10-ally
 - Date (UTC): 2026-11-22
 - Current followers: 7
-- Change since previous recorded run: +7
+- Change since previous recorded run: +0
 
 ## Latest follower usernames
 

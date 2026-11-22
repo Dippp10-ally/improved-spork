@@ -1,0 +1,151 @@
+
+name: Integrated Follower Growth
+
+on:
+  schedule:
+    # Every day at 8:15 PM Oman time
+    - cron: "15 16 * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: follower-growth
+  cancel-in-progress: false
+
+jobs:
+  follower-growth:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Discover potential developers
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FOLLOWING_TOKEN5: ${{ secrets.FOLLOWING_TOKEN5 }}
+        run: |
+          python attract_followers.py
+
+      - name: Validate approved users
+        run: |
+          if [ ! -f approved_users.txt ]; then
+            echo "approved_users.txt not found"
+            exit 1
+          fi
+
+          echo "Approved usernames:"
+          grep -cve '^[[:space:]]*$' approved_users.txt || true
+
+      - name: Process approved users
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FOLLOWING_TOKEN5: ${{ secrets.FOLLOWING_TOKEN5 }}
+        run: |
+          python follow_users.py
+
+      - name: Track actual incoming followers
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          username = "Dippp10-ally"
+          token = os.environ["GITHUB_TOKEN"]
+
+          def get(url):
+              req = urllib.request.Request(
+                  url,
+                  headers={
+                      "Authorization": f"Bearer {token}",
+                      "Accept": "application/vnd.github+json"
+                  }
+              )
+              with urllib.request.urlopen(req) as response:
+                  return json.loads(response.read())
+
+          profile = get(
+              f"https://api.github.com/users/{username}"
+          )
+
+          actual = []
+          page = 1
+
+          while True:
+              users = get(
+                  f"https://api.github.com/users/{username}/followers"
+                  f"?per_page=100&page={page}"
+              )
+              if not users:
+                  break
+              actual.extend(u["login"] for u in users)
+              page += 1
+
+          path = Path("follower_history.json")
+          history = (
+              json.loads(path.read_text())
+              if path.exists() else []
+          )
+
+          previous = (
+              history[-1]["actual_followers"]
+              if history else len(actual)
+          )
+
+          count = len(actual)
+          change = count - previous
+
+          history.append({
+              "date": datetime.now(timezone.utc).isoformat(),
+              "actual_followers": count,
+              "daily_change": change
+          })
+
+          path.write_text(json.dumps(history, indent=2))
+
+          Path("follower_report.md").write_text(
+              f"# Daily Follower Report\n\n"
+              f"Account: {username}\n\n"
+              f"Profile count: {profile['followers']}\n\n"
+              f"Actual follower list: {count}\n\n"
+              f"Daily change: {change:+d}\n"
+          )
+
+          print("Actual followers:", count)
+          print("Daily change:", change)
+          PY
+
+      - name: Commit daily results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          for file in \
+            potential_followers.json \
+            follow_results.json \
+            follower_history.json \
+            follower_report.md
+          do
+            if [ -f "$file" ]; then
+              git add "$file"
+            fi
+          done
+
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update follower growth data"
+            git push origin HEAD
+          fi

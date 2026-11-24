@@ -2,6 +2,7 @@
 import json
 import os
 import re
+import time
 import urllib.request
 import urllib.error
 from urllib.parse import urlencode
@@ -11,6 +12,9 @@ from datetime import datetime, timezone
 USERNAME = "Dippp10-ally"
 API = "https://api.github.com"
 TOKEN = os.getenv("FOLLOWING_TOKEN5")
+
+TARGET_ACCOUNTS = 20_000_000
+MAX_PAGES_PER_QUERY = 10
 
 if not TOKEN:
     raise SystemExit("FOLLOWING_TOKEN5 is missing.")
@@ -29,7 +33,22 @@ QUERIES = [
     "type:user repos:>5"
 ]
 
-MAX_SAVED = 1000
+JSON_FILE = Path("potential_followers.json")
+TXT_FILE = Path("potential_followers.txt")
+
+
+def load_existing():
+    if not JSON_FILE.exists():
+        return set()
+
+    try:
+        data = json.loads(JSON_FILE.read_text(encoding="utf-8"))
+        return {
+            name for name in data.get("usernames", [])
+            if isinstance(name, str)
+        }
+    except (OSError, ValueError):
+        return set()
 
 
 def search_users(query, page):
@@ -44,70 +63,94 @@ def search_users(query, page):
         headers=HEADERS
     )
 
-    try:
-        with urllib.request.urlopen(request, timeout=30) as response:
-            return json.loads(
-                response.read().decode("utf-8")
-            )
-
-    except urllib.error.HTTPError as error:
-        print(f"GitHub search HTTP error: {error.code}")
-        raise
+    with urllib.request.urlopen(request, timeout=30) as response:
+        return json.loads(response.read().decode("utf-8"))
 
 
-def main():
-    discovered = set()
-
-    for query in QUERIES:
-        print(f"Searching: {query}")
-
-        for page in (1, 2):
-            try:
-                result = search_users(query, page)
-
-            except Exception as error:
-                print(f"Search failed: {error}")
-                continue
-
-            for user in result.get("items", []):
-                login = user.get("login", "").strip()
-
-                if (
-                    login
-                    and login.lower() != USERNAME.lower()
-                    and re.fullmatch(
-                        r"[A-Za-z0-9-]{1,39}", login
-                    )
-                ):
-                    discovered.add(login)
-
-                if len(discovered) >= MAX_SAVED:
-                    break
-
-            if len(discovered) >= MAX_SAVED:
-                break
-
-    names = sorted(discovered, key=str.lower)[:MAX_SAVED]
+def save_results(names):
+    ordered = sorted(names, key=str.lower)
 
     data = {
         "account": USERNAME,
         "updated_at": datetime.now(timezone.utc).isoformat(),
-        "saved_count": len(names),
-        "maximum_saved": MAX_SAVED,
-        "usernames": names
+        "saved_count": len(ordered),
+        "target_accounts": TARGET_ACCOUNTS,
+        "usernames": ordered
     }
 
-    Path("potential_followers.json").write_text(
+    JSON_FILE.write_text(
         json.dumps(data, indent=2),
         encoding="utf-8"
     )
 
-    Path("potential_followers.txt").write_text(
-        "\n".join(names) + ("\n" if names else ""),
+    TXT_FILE.write_text(
+        "\n".join(ordered) + ("\n" if ordered else ""),
         encoding="utf-8"
     )
 
-    print(f"Saved {len(names)} discovered usernames.")
+
+def main():
+    discovered = load_existing()
+
+    print(f"Previously saved: {len(discovered):,}")
+
+    for query in QUERIES:
+        if len(discovered) >= TARGET_ACCOUNTS:
+            break
+
+        print(f"\nSearching: {query}")
+
+        for page in range(1, MAX_PAGES_PER_QUERY + 1):
+            try:
+                result = search_users(query, page)
+
+                users = result.get("items", [])
+
+                if not users:
+                    break
+
+                for user in users:
+                    login = user.get("login", "").strip()
+
+                    if (
+                        login
+                        and login.lower() != USERNAME.lower()
+                        and re.fullmatch(
+                            r"[A-Za-z0-9-]{1,39}", login
+                        )
+                    ):
+                        discovered.add(login)
+
+                    if len(discovered) >= TARGET_ACCOUNTS:
+                        break
+
+                save_results(discovered)
+
+                print(
+                    f"Saved: {len(discovered):,} / "
+                    f"{TARGET_ACCOUNTS:,}"
+                )
+
+                if len(users) < 100:
+                    break
+
+                time.sleep(2.1)
+
+            except urllib.error.HTTPError as error:
+                print("GitHub HTTP error:", error.code)
+                if error.code == 403:
+                    print("Check GitHub API rate limits.")
+                break
+
+            except Exception as error:
+                print("Search failed:", error)
+                break
+
+    save_results(discovered)
+
+    print("\nDiscovery completed.")
+    print("Total unique usernames:", f"{len(discovered):,}")
+    print("Target:", f"{TARGET_ACCOUNTS:,}")
 
 
 if __name__ == "__main__":

@@ -3,6 +3,7 @@ import json
 import os
 import re
 import urllib.request
+import urllib.error
 from urllib.parse import urlencode
 from pathlib import Path
 from datetime import datetime, timezone
@@ -43,8 +44,15 @@ def search_users(query, page):
         headers=HEADERS
     )
 
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return json.loads(response.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            return json.loads(
+                response.read().decode("utf-8")
+            )
+
+    except urllib.error.HTTPError as error:
+        print(f"GitHub search HTTP error: {error.code}")
+        raise
 
 
 def main():
@@ -56,6 +64,7 @@ def main():
         for page in (1, 2):
             try:
                 result = search_users(query, page)
+
             except Exception as error:
                 print(f"Search failed: {error}")
                 continue
@@ -66,9 +75,17 @@ def main():
                 if (
                     login
                     and login.lower() != USERNAME.lower()
-                    and re.fullmatch(r"[A-Za-z0-9-]{1,39}", login)
+                    and re.fullmatch(
+                        r"[A-Za-z0-9-]{1,39}", login
+                    )
                 ):
                     discovered.add(login)
+
+                if len(discovered) >= MAX_SAVED:
+                    break
+
+            if len(discovered) >= MAX_SAVED:
+                break
 
     names = sorted(discovered, key=str.lower)[:MAX_SAVED]
 

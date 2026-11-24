@@ -18,6 +18,7 @@ ashishps1
 astaxie
 atilsamancioglu
 AUTOMATIC1111
+bailicangdu
 benawad
 BEPb
 bot50
@@ -25,7 +26,9 @@ bradfitz
 bradtraversy
 brianyu28
 brunosimon
+btholt
 buckyroberts
+BurntSushi
 campusx-official
 cassidoo
 Charles-Chrismann
@@ -180,6 +183,7 @@ shiffman
 simonw
 sindresorhus
 sorrycc
+soumith
 spf13
 standardgalactic
 steipete
@@ -209,5 +213,6 @@ WebDevSimplified
 wesbos
 wesm
 xiaolai
+yinwang0
 yyx990803
 zarazhangrui

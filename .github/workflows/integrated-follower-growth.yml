@@ -3,7 +3,7 @@ name: Integrated Follower Growth
 
 on:
   schedule:
-    - cron: "15 16 * * *" # 8:15 PM Oman time
+    - cron: "15 16 * * *"
   workflow_dispatch:
 
 permissions:
@@ -29,7 +29,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Verify approved user files
+      - name: Verify approved files
         run: |
           count=0
 
@@ -37,43 +37,38 @@ jobs:
             file="approved_users_part_${i}.txt"
 
             if [ -f "$file" ]; then
-              names=$(grep -cve '^[[:space:]]*$' "$file" || true)
-              echo "$file: $names usernames"
+              echo "$file exists"
               count=$((count + 1))
-            else
-              echo "Missing: $file"
             fi
           done
 
-          echo "Found $count of 13 approved-user files."
+          echo "Found $count approved files."
 
           if [ "$count" -eq 0 ]; then
-            echo "No approved-user files found."
+            echo "No approved files found."
             exit 1
           fi
 
       - name: Discover potential developers
         env:
           FOLLOWING_TOKEN5: ${{ secrets.FOLLOWING_TOKEN5 }}
-        run: |
-          python attract_followers.py
+        run: python attract_followers.py
 
-      - name: Review approved users
+      - name: Review and process approved users
         env:
           FOLLOW_TOKEN: ${{ secrets.FOLLOW_TOKEN }}
-        run: |
-          python follow_users.py
+        run: python follow_users.py
 
       - name: Update incoming follower report
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python track_followers.py
+        run: python track_followers.py
 
       - name: Check report sizes
         run: |
           for file in \
             follow_results.json \
+            follow_state.json \
             users_to_review.txt \
             potential_followers.json \
             potential_followers.txt \
@@ -85,20 +80,20 @@ jobs:
               echo "$file: $size bytes"
 
               if [ "$size" -gt 90000000 ]; then
-                echo "ERROR: $file is too large to commit."
+                echo "Report too large: $file"
                 exit 1
               fi
             fi
           done
 
-      - name: Commit compact reports
+      - name: Commit reports and follow state
         run: |
           git config user.name "Dippp10-ally"
-          git config user.email \
-            "dipikabarkat@gmail.com"
+          git config user.email "dipikabarkat@gmail.com"
 
           for file in \
             follow_results.json \
+            follow_state.json \
             users_to_review.txt \
             potential_followers.json \
             potential_followers.txt \
@@ -111,8 +106,8 @@ jobs:
           done
 
           if ! git diff --cached --quiet; then
-            git commit -m "chore: update compact follower reports"
+            git commit -m "chore: update follower reports"
             git push origin HEAD:main
           else
-            echo "No report changes to commit."
+            echo "No report changes."
           fi

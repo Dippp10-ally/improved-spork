@@ -28,7 +28,7 @@ RESULT_FILE = Path("follow_results.json")
 STATE_FILE = Path("follow_state.json")
 
 # Conservative daily limit for this workflow.
-MAX_FOLLOWS_PER_RUN = 10
+MAX_FOLLOWS_PER_RUN = 1000
 
 
 def api_request(url, method="GET"):

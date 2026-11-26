@@ -668,6 +668,7 @@ mxcl
 mxmnk
 mxstbr
 nahamsec
+Nai64
 Nakshatra05
 NARKOZ
 nat

@@ -1,25 +1,12 @@
 {
-  "date_utc": "2026-11-27T19:53:36.171897+00:00",
+  "date_utc": "2026-11-27T19:56:20.214066+00:00",
   "approved_unique_accounts": 17842901,
   "successful": 0,
-  "already_following": 12,
+  "already_following": 0,
   "failed": 20,
   "following_now": 635,
   "successful_usernames": [],
-  "already_following_usernames": [
-    "0-0-0dev",
-    "0-007pro",
-    "0-0april",
-    "0-0Astra",
-    "0-0Bienfaiteur",
-    "0-0Nikhil",
-    "0-2hero",
-    "0-Aadithya-0",
-    "0-alpha",
-    "0-and-1",
-    "0-angel-0",
-    "0-anmol-1"
-  ],
+  "already_following_usernames": [],
   "failed_requests": [
     {
       "username": "0-0-flareon",

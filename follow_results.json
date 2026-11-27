@@ -1,8 +1,6 @@
 {
-  "date_utc": "2026-11-27T19:45:59.718455+00:00",
-  "account": "Dippp10-ally",
+  "date_utc": "2026-11-27T19:53:36.171897+00:00",
   "approved_unique_accounts": 17842901,
-  "attempts": 20,
   "successful": 0,
   "already_following": 12,
   "failed": 20,
@@ -25,121 +23,101 @@
   "failed_requests": [
     {
       "username": "0-0-flareon",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-0eureka",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-0faces",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-0Farful0-0",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-0hi",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-0higemegane0-0",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-0maroro",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-0min",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-0paigee",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-0Rider",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-0shiro",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-0willow",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-10Meepo",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-120days",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-5-council",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-accident-lawyer",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-agency",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-akaneko-0",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-alfyan",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     },
     {
       "username": "0-anne-0",
-      "stage": "follow",
       "status": 404,
       "error": "Not Found"
     }

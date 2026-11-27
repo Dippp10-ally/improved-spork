@@ -3,7 +3,7 @@ name: Follow Approved Users
 
 on:
   schedule:
-    - cron: "15 16 * * *" # 8:15 PM Oman time
+    - cron: "15 16 * * *"
   workflow_dispatch:
 
 permissions:
@@ -14,70 +14,46 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  follow-approved-users:
+  follow-users:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.FOLLOW_TOKEN }}
+          ref: main
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Verify approved-user files
+      - name: Check progress file
         run: |
-          set -e
-          for i in $(seq 1 13); do
-            file="approved_users_part_${i}.txt"
-            if [ ! -f "$file" ]; then
-              echo "Missing file: $file"
-              exit 1
-            fi
-            count=$(grep -cve '^[[:space:]]*$' "$file" || true)
-            echo "$file: $count non-empty lines"
-          done
+          if [ ! -f following_progress.json ]; then
+            echo '{"next_page":1,"users":[],"scan_started":null}' > following_progress.json
+          fi
 
-      - name: Run follow script
-        env:
-          FOLLOW_TOKEN: ${{ secrets.FOLLOW_TOKEN }}
-        run: |
-          python follow_users.py
-
-      - name: Track following list
+      - name: Run following tracker
         env:
           FOLLOW_TOKEN: ${{ secrets.FOLLOW_TOKEN }}
         run: |
           python track_followers.py
 
-      - name: Show follow report
-        if: always()
-        run: |
-          if [ -f follow_results.json ]; then
-            cat follow_results.json
-          fi
-          if [ -f following_report.md ]; then
-            cat following_report.md
-          fi
-
-      - name: Commit updated progress and reports
+      - name: Commit progress and reports
         run: |
           git config user.name "Dippp10-ally"
           git config user.email "dipikabarkat@gmail.com"
 
-          git add \
-            followed_users.json \
-            follow_results.json \
-            following_history.json \
-            following_report.md
+          git add following_progress.json
+          git add following_history.json
+          git add following_report.md
 
           if ! git diff --cached --quiet; then
-            git commit -m "Update following progress and reports"
-            git push
+            git commit -m "Continue following list pagination"
+            git push origin HEAD:main
           else
-            echo "No report or progress changes to commit."
+            echo "No changes to commit"
           fi

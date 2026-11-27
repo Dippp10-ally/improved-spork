@@ -1,54 +1,83 @@
 
-name: Follow Approved GitHub Users
+name: Follow Approved Users
 
 on:
   schedule:
-    - cron: "15 16 * * *"
+    - cron: "15 16 * * *" # 8:15 PM Oman time
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: approved-user-following
+  group: follow-approved-users
   cancel-in-progress: false
 
 jobs:
-  follow:
+  follow-approved-users:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.FOLLOW_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Follow approved users
+      - name: Verify approved-user files
+        run: |
+          set -e
+          for i in $(seq 1 13); do
+            file="approved_users_part_${i}.txt"
+            if [ ! -f "$file" ]; then
+              echo "Missing file: $file"
+              exit 1
+            fi
+            count=$(grep -cve '^[[:space:]]*$' "$file" || true)
+            echo "$file: $count non-empty lines"
+          done
+
+      - name: Run follow script
         env:
           FOLLOW_TOKEN: ${{ secrets.FOLLOW_TOKEN }}
-        run: python follow_users.py
+        run: |
+          python follow_users.py
 
       - name: Track following list
         env:
           FOLLOW_TOKEN: ${{ secrets.FOLLOW_TOKEN }}
-        run: python track_followers.py
+        run: |
+          python track_followers.py
 
-      - name: Save reports
+      - name: Show follow report
+        if: always()
+        run: |
+          if [ -f follow_results.json ]; then
+            cat follow_results.json
+          fi
+          if [ -f following_report.md ]; then
+            cat following_report.md
+          fi
+
+      - name: Commit updated progress and reports
         run: |
           git config user.name "Dippp10-ally"
           git config user.email "dipikabarkat@gmail.com"
 
-          git add follow_results.json
-          git add following_history.json
-          git add following_report.md
+          git add \
+            followed_users.json \
+            follow_results.json \
+            following_history.json \
+            following_report.md
 
-          if git diff --cached --quiet; then
-            echo "No report changes."
-          else
-            git commit -m "Update daily following report"
+          if ! git diff --cached --quiet; then
+            git commit -m "Update following progress and reports"
             git push
+          else
+            echo "No report or progress changes to commit."
           fi

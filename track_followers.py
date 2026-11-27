@@ -7,13 +7,8 @@ import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
-# ==============================
-# CONFIGURATION
-# ==============================
-
 USERNAME = "Dippp10-ally"
 API = "https://api.github.com"
-
 TOKEN = os.getenv("FOLLOW_TOKEN")
 
 PER_PAGE = 100
@@ -33,10 +28,6 @@ HEADERS = {
     "X-GitHub-Api-Version": "2022-11-28",
 }
 
-
-# ==============================
-# GITHUB API
-# ==============================
 
 def get_json(url):
     request = urllib.request.Request(
@@ -61,18 +52,10 @@ def get_json(url):
         ) from error
 
 
-# ==============================
-# PROGRESS MANAGEMENT
-# ==============================
-
 def load_progress():
-
     if PROGRESS_PATH.exists():
-
         progress = json.loads(
-            PROGRESS_PATH.read_text(
-                encoding="utf-8"
-            )
+            PROGRESS_PATH.read_text(encoding="utf-8")
         )
 
         return {
@@ -91,7 +74,6 @@ def load_progress():
 
 
 def save_progress(progress):
-
     temporary = PROGRESS_PATH.with_suffix(".tmp")
 
     temporary.write_text(
@@ -102,40 +84,23 @@ def save_progress(progress):
     temporary.replace(PROGRESS_PATH)
 
 
-# ==============================
-# HISTORY
-# ==============================
-
 def load_history():
-
     if HISTORY_PATH.exists():
-
         return json.loads(
-            HISTORY_PATH.read_text(
-                encoding="utf-8"
-            )
+            HISTORY_PATH.read_text(encoding="utf-8")
         )
 
     return []
 
 
-# ==============================
-# COMPLETE SCAN
-# ==============================
-
 def finish_scan(users):
-
     today = datetime.now(
         timezone.utc
     ).strftime("%Y-%m-%d")
 
-    users = sorted(
-        set(users),
-        key=str.lower
-    )
+    users = sorted(set(users), key=str.lower)
 
     history = load_history()
-
     previous = history[-1] if history else None
 
     previous_users = (
@@ -196,38 +161,28 @@ def finish_scan(users):
     )
 
     print("FOLLOWING SCAN COMPLETED")
-    print(f"Total following: {len(users)}")
+    print(f"Following now: {len(users)}")
     print(f"New following: {len(new_users)}")
     print(f"Removed following: {len(removed_users)}")
 
 
-# ==============================
-# MAIN PAGINATION
-# ==============================
-
 def main():
-
     progress = load_progress()
 
     page = progress["next_page"]
-
     users = set(progress["users"])
 
     if not progress["scan_started"]:
-
         progress["scan_started"] = (
             datetime.now(timezone.utc).isoformat()
         )
 
-    print("=" * 45)
-    print("CONTINUOUS FOLLOWING TRACKER")
-    print("=" * 45)
-
-    print(f"Starting page: {page}")
-    print(f"Previously collected: {len(users)}")
-
     pages_processed = 0
     scan_complete = False
+
+    print("CONTINUOUS FOLLOWING TRACKER")
+    print(f"Starting page: {page}")
+    print(f"Previously collected: {len(users)}")
 
     while pages_processed < MAX_PAGES_PER_RUN:
 
@@ -236,58 +191,48 @@ def main():
             f"?per_page={PER_PAGE}&page={page}"
         )
 
-        print(f"Requesting page {page}")
+        print(f"Requesting page: {page}")
 
         batch = get_json(url)
 
         if not isinstance(batch, list):
-            raise RuntimeError(
-                "Unexpected GitHub API response."
-            )
+            raise RuntimeError("Unexpected API response.")
 
         if not batch:
-
             scan_complete = True
             break
 
-        page_users = {
-            user["login"]
-            for user in batch
-            if user.get("login")
-        }
+        for user in batch:
+            login = user.get("login")
+            if login:
+                users.add(login)
 
-        users.update(page_users)
-
-        print(f"Page {page} returned: {len(batch)}")
-        print(f"Unique collected: {len(users)}")
+        print(f"Accounts on page: {len(batch)}")
+        print(f"Total collected: {len(users)}")
 
         pages_processed += 1
 
-        if len(batch) < PER_PAGE:
+        page += 1
 
+        if len(batch) < PER_PAGE:
             scan_complete = True
             break
-
-        page += 1
 
     if scan_complete:
 
         finish_scan(users)
 
-        # Reset only after the entire scan is complete.
         save_progress({
             "next_page": 1,
             "users": [],
             "scan_started": None
         })
 
-        print("Scan completed.")
-        print("Next full scan starts at page 1.")
+        print("Complete scan finished.")
 
     else:
 
-        progress["next_page"] = page + 1
-
+        progress["next_page"] = page
         progress["users"] = sorted(
             users,
             key=str.lower
@@ -295,11 +240,9 @@ def main():
 
         save_progress(progress)
 
-        print("Progress saved successfully.")
-        print(f"Next page: {progress['next_page']}")
-        print(f"Collected usernames: {len(users)}")
-
-    print("=" * 45)
+        print("Progress saved.")
+        print(f"Next page: {page}")
+        print(f"Collected accounts: {len(users)}")
 
 
 if __name__ == "__main__":

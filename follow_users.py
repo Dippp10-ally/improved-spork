@@ -2,226 +2,179 @@
 import json
 import os
 import re
-import time
 import urllib.request
 import urllib.error
-
-from pathlib import Path
 from datetime import datetime, timezone
+from pathlib import Path
 
 USERNAME = "Dippp10-ally"
 API = "https://api.github.com"
-
 TOKEN = os.getenv("FOLLOW_TOKEN")
 
+MAX_NEW_FOLLOWS = 20
+RESULT_FILE = Path("follow_results.json")
+
 if not TOKEN:
-    raise SystemExit("FOLLOW_TOKEN is missing.")
+    raise SystemExit("FOLLOW_TOKEN secret is missing.")
 
 HEADERS = {
     "Accept": "application/vnd.github+json",
     "Authorization": f"Bearer {TOKEN}",
+    "User-Agent": "improved-spork",
     "X-GitHub-Api-Version": "2022-11-28",
-    "User-Agent": "Dippp10-ally"
 }
 
-RESULT_FILE = Path("follow_results.json")
-STATE_FILE = Path("follow_state.json")
 
-# Conservative daily limit for this workflow.
-MAX_FOLLOWS_PER_RUN = 20
-
-
-def api_request(url, method="GET"):
+def request_api(path, method="GET"):
     request = urllib.request.Request(
-        url,
+        API + path,
+        data=b"" if method == "PUT" else None,
         headers=HEADERS,
-        method=method
+        method=method,
     )
 
     try:
         with urllib.request.urlopen(request, timeout=30) as response:
             body = response.read().decode("utf-8")
-            return response.status, body
+            return response.status, json.loads(body) if body else None
 
     except urllib.error.HTTPError as error:
         body = error.read().decode("utf-8", errors="replace")
-
-        if error.code == 403:
-            if (
-                error.headers.get("X-RateLimit-Remaining") == "0"
-                or "rate limit" in body.lower()
-            ):
-                raise RuntimeError("GitHub API rate limit reached.")
-
-        return error.code, body
-
-
-def get_following():
-    following = set()
-    page = 1
-
-    while True:
-        url = (
-            f"{API}/users/{USERNAME}/following"
-            f"?per_page=100&page={page}"
-        )
-
-        status, body = api_request(url)
-
-        if status != 200:
-            raise RuntimeError(
-                f"Could not load following list: HTTP {status}"
-            )
-
-        users = json.loads(body)
-
-        if not users:
-            break
-
-        for user in users:
-            login = user.get("login")
-            if login:
-                following.add(login.lower())
-
-        page += 1
-
-    return following
+        try:
+            message = json.loads(body).get("message", body)
+        except json.JSONDecodeError:
+            message = body
+        return error.code, message
 
 
 def load_approved():
-    approved = set()
+    users = set()
 
     for number in range(1, 14):
         path = Path(f"approved_users_part_{number}.txt")
 
         if not path.exists():
-            print(f"Missing file: {path}")
-            continue
+            raise SystemExit(f"Missing subfile: {path}")
 
-        with path.open(
-            encoding="utf-8",
-            errors="ignore"
-        ) as file:
+        lines = path.read_text(encoding="utf-8").splitlines()
 
-            for line in file:
-                name = line.strip()
+        for line in lines:
+            name = line.strip()
 
-                if (
-                    name
-                    and not name.startswith("#")
-                    and re.fullmatch(r"[A-Za-z0-9-]{1,39}", name)
-                    and name.lower() != USERNAME.lower()
-                ):
-                    approved.add(name)
+            if (
+                name
+                and not name.startswith("#")
+                and re.fullmatch(r"[A-Za-z0-9-]{1,39}", name)
+                and name.lower() != USERNAME.lower()
+            ):
+                users.add(name)
 
-    return sorted(approved, key=str.lower)
-
-
-def load_state():
-    if not STATE_FILE.exists():
-        return {}
-
-    try:
-        return json.loads(STATE_FILE.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return {}
-
-
-def save_state(state):
-    STATE_FILE.write_text(
-        json.dumps(state, indent=2),
-        encoding="utf-8"
-    )
-
-
-def follow_user(name):
-    url = f"{API}/user/following/{name}"
-
-    status, _ = api_request(url, method="PUT")
-
-    return status in (204, 304)
+    return sorted(users, key=str.lower)
 
 
 def main():
+    now = datetime.now(timezone.utc).isoformat()
+
+    status, account = request_api("/user")
+
+    if status != 200:
+        raise SystemExit(f"Authentication error: {status}: {account}")
+
+    if account.get("login", "").lower() != USERNAME.lower():
+        raise SystemExit("Token belongs to a different GitHub account.")
+
     approved = load_approved()
 
-    print(f"Approved unique accounts: {len(approved)}")
-
-    following = get_following()
-    state = load_state()
-
     successful = []
-    already_following = []
+    already = []
     failed = []
-
     attempts = 0
 
-    for name in approved:
+    print("FOLLOW APPROVED USERS")
+    print("=" * 40)
+    print(f"Account: {USERNAME}")
+    print(f"Date UTC: {now}")
+    print(f"Approved unique accounts: {len(approved)}")
 
-        login = name.lower()
+    for target in approved:
+        if attempts >= MAX_NEW_FOLLOWS:
+            break
 
-        if login in following:
-            already_following.append(name)
+        check_status, check_message = request_api(
+            f"/user/following/{target}"
+        )
+
+        if check_status == 204:
+            already.append(target)
+            print(f"Already following: {target}")
             continue
 
-        if state.get(login) == "success":
-            # Verify actual GitHub following state before skipping.
-            print(f"Previously processed: {name}")
-
-        if attempts >= MAX_FOLLOWS_PER_RUN:
-            break
+        if check_status != 404:
+            failed.append({
+                "username": target,
+                "stage": "check",
+                "status": check_status,
+                "error": str(check_message)
+            })
+            print(f"Check failed: {target}: HTTP {check_status}")
+            if check_status in (401, 403):
+                break
+            continue
 
         attempts += 1
 
-        try:
-            if follow_user(name):
-                successful.append(name)
-                following.add(login)
-                state[login] = "success"
+        follow_status, follow_message = request_api(
+            f"/user/following/{target}", "PUT"
+        )
 
-                print(f"Follow request accepted: {name}")
+        if follow_status == 204:
+            successful.append(target)
+            print(f"Follow successful: {target}")
+        else:
+            failed.append({
+                "username": target,
+                "stage": "follow",
+                "status": follow_status,
+                "error": str(follow_message)
+            })
+            print(
+                f"Follow unsuccessful: {target} "
+                f"HTTP {follow_status}: {follow_message}"
+            )
 
-            else:
-                failed.append(name)
-                print(f"Follow request unsuccessful: {name}")
+            if follow_status in (401, 403, 422):
+                break
 
-        except RuntimeError:
-            save_state(state)
-            print("Stopping because of GitHub API rate limits.")
-            raise
+    status, account = request_api("/user")
 
-        except Exception as error:
-            failed.append(name)
-            print(f"Error for {name}: {error}")
-
-        time.sleep(2)
-
-    save_state(state)
+    if status != 200:
+        raise SystemExit("Could not retrieve final following count.")
 
     report = {
+        "date_utc": now,
         "account": USERNAME,
-        "updated_at": datetime.now(timezone.utc).isoformat(),
-        "approved_accounts": len(approved),
-        "following_before": len(get_following()) - len(successful),
-        "following_after": len(get_following()),
-        "successful_requests": successful,
-        "successful_count": len(successful),
-        "already_following_count": len(already_following),
-        "failed_accounts": failed,
-        "failed_count": len(failed),
-        "attempted_count": attempts
+        "approved_unique_accounts": len(approved),
+        "attempts": attempts,
+        "successful": len(successful),
+        "already_following": len(already),
+        "failed": len(failed),
+        "following_now": account["following"],
+        "successful_usernames": successful,
+        "already_following_usernames": already,
+        "failed_requests": failed,
     }
 
     RESULT_FILE.write_text(
-        json.dumps(report, indent=2),
+        json.dumps(report, indent=2) + "\n",
         encoding="utf-8"
     )
 
     print("\nFOLLOW REPORT")
-    print("Successful:", len(successful))
-    print("Already following:", len(already_following))
-    print("Failed:", len(failed))
-    print("Following now:", report["following_after"])
+    print("=" * 40)
+    print(f"Successful: {len(successful)}")
+    print(f"Already following: {len(already)}")
+    print(f"Failed: {len(failed)}")
+    print(f"Following now: {account['following']}")
 
 
 if __name__ == "__main__":
